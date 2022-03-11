@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 00:54:10 by leo              ###   ########.fr       */
+/*   Created: 2021/11/07 13:26:41 by leotran           #+#    #+#             */
+/*   Updated: 2021/11/16 14:38:58 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	initialize_struct(t_struct st, int size)
+char	*ft_strmap(const char*s, char (*f)(char))
 {
-	st.flag = 0;
-	st.stack_a = (int)malloc(sizeof(int) * size);
-	st.stack_b = (int)malloc(sizeof(int) * size);
-	ft_memset(st.stack_a, 0, size);
-	ft_memset(st.stack_b, 0, size);
+	int		i;
+	char	c;
+	char	*arr;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	arr = ft_strdup(s);
+	if (arr)
+	{
+		while (s[i])
+		{
+			c = (*f)(s[i]);
+			arr[i] = c;
+			i++;
+		}
+	}
+	return (arr);
 }

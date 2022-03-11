@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 00:54:10 by leo              ###   ########.fr       */
+/*   Created: 2021/11/22 09:48:03 by leotran           #+#    #+#             */
+/*   Updated: 2021/11/22 10:19:02 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	initialize_struct(t_struct st, int size)
+int	ft_lstsize(t_list **lst)
 {
-	st.flag = 0;
-	st.stack_a = (int)malloc(sizeof(int) * size);
-	st.stack_b = (int)malloc(sizeof(int) * size);
-	ft_memset(st.stack_a, 0, size);
-	ft_memset(st.stack_b, 0, size);
+	int	i;
+
+	i = 1;
+	if (*lst == NULL)
+		return (0);
+	while ((*lst)->next != NULL)
+	{
+		i++;
+		(*lst) = (*lst)->next;
+	}
+	return (i);
 }

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 00:54:10 by leo              ###   ########.fr       */
+/*   Created: 2021/11/05 23:37:42 by marvin            #+#    #+#             */
+/*   Updated: 2021/11/16 14:41:53 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	initialize_struct(t_struct st, int size)
+void	ft_strclr(char *s)
 {
-	st.flag = 0;
-	st.stack_a = (int)malloc(sizeof(int) * size);
-	st.stack_b = (int)malloc(sizeof(int) * size);
-	ft_memset(st.stack_a, 0, size);
-	ft_memset(st.stack_b, 0, size);
+	if (s == NULL)
+		return ;
+	ft_bzero(s, ft_strlen(s));
 }

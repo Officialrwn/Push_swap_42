@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   ft_countstrings.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 00:54:10 by leo              ###   ########.fr       */
+/*   Created: 2021/11/30 16:04:37 by leotran           #+#    #+#             */
+/*   Updated: 2021/12/08 16:18:45 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	initialize_struct(t_struct st, int size)
+int	ft_countstrings(const char *s, char c)
 {
-	st.flag = 0;
-	st.stack_a = (int)malloc(sizeof(int) * size);
-	st.stack_b = (int)malloc(sizeof(int) * size);
-	ft_memset(st.stack_a, 0, size);
-	ft_memset(st.stack_b, 0, size);
+	int	i;
+	int	x;
+
+	i = 0;
+	x = 0;
+	while (s[i])
+	{
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			x++;
+		i++;
+	}
+	if (x == 0)
+		x = 1;
+	return (x);
 }

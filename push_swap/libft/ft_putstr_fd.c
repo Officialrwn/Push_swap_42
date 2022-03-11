@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 00:54:10 by leo              ###   ########.fr       */
+/*   Created: 2021/11/05 15:13:46 by leotran           #+#    #+#             */
+/*   Updated: 2021/11/16 14:41:27 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	initialize_struct(t_struct st, int size)
+void	ft_putstr_fd(const char *s, int fd)
 {
-	st.flag = 0;
-	st.stack_a = (int)malloc(sizeof(int) * size);
-	st.stack_b = (int)malloc(sizeof(int) * size);
-	ft_memset(st.stack_a, 0, size);
-	ft_memset(st.stack_b, 0, size);
+	int		i;
+	char	*arr;
+
+	i = 0;
+	if (s == NULL)
+		return ;
+	arr = (char *)s;
+	while (arr[i])
+	{
+		write(fd, &arr[i], 1);
+		i++;
+	}
 }

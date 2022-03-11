@@ -10,17 +10,16 @@
 
 typedef struct s_struct
 {
-	int		flag;
-	//stack a_head;
-	//stack a_tail;
-	//stack b_head;
-	//stack b_tail;
+	int	flag;
+	int	*stack_a;
+	int *stack_b;
 }	t_struct;
 
 void	swap_ab(t_struct *st);
 void	push_ab(t_struct *st);
 void	rotate_ab(t_struct *st);
 void	reverse_rotate_ab(t_struct *st);
+void	initialize_struct(t_struct st, int size);
 
 typedef void		(*func_ptr)(t_struct *st);
 
