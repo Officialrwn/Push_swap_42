@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   op_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 00:22:28 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/12 15:58:51 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	swap_ab(t_struct *st)
 {
+	st->flag = 0;
 	//	sa - 	swap the first 2 elements at the top of stack a. 
 	//	(Do nothing if there is only one or no elements).
 
@@ -26,6 +27,8 @@ void	swap_ab(t_struct *st)
 
 void	push_ab(t_struct *st)
 {
+	st->flag = 0;
+	
 	//	take the first element at the top of b and put it at the top of a. 
 	//	Do nothing if b is empty.
 
@@ -35,6 +38,8 @@ void	push_ab(t_struct *st)
 
 void	rotate_ab(t_struct *st)
 {
+	st->flag = 0;
+	
 	// 	ra - shift up all elements of stack a by 1. 
 	//	The first element becomes the last one.
 
@@ -46,6 +51,8 @@ void	rotate_ab(t_struct *st)
 
 void	reverse_rotate_ab(t_struct *st)
 {
+	st->flag = 0;
+	
 	// 	rra - shift down all elements of stack a by 1. 
 	//	The last element becomes the first one.
 
@@ -53,3 +60,4 @@ void	reverse_rotate_ab(t_struct *st)
 	//	The last element becomes the first one.
 
 	//	rrr -	rra + rrb
+}
