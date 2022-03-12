@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
+/*   Updated: 2022/03/12 20:58:59 by leo              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -7,7 +19,6 @@
 # define AB 	3
 
 # define OP_INDEX "00011222333"
-# define OP_SIZE sizeof(g_op) / sizeof(g_op[0])
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -16,12 +27,18 @@
 /* Forbidden header */
 # include <stdio.h>
 
+typedef struct s_stack
+{
+	t_stack *next;
+	int		num;
+}	t_stack;
+
 typedef struct s_struct
 {
-	t_list	*head;
+	t_stack	*list;
 	int		flag;
 	int		*stack_a;
-	int 	*stack_b;
+	int		*stack_b;
 }	t_struct;
 
 void	swap_ab(t_struct *st);
@@ -30,16 +47,16 @@ void	rotate_ab(t_struct *st);
 void	reverse_rotate_ab(t_struct *st);
 void	initialize_struct(t_struct *st, int size);
 
-typedef void		(*func_ptr)(t_struct *st);
+typedef void		(*t_fptr)(t_struct *st);
 
-static const func_ptr	g_execute_op[4] = {
+static const t_fptr	g_execute_op[4] = {
 	swap_ab,
 	push_ab,
 	rotate_ab,
 	reverse_rotate_ab,
 };
 
-static const char		*g_op[] = {
+static const char	*g_op[] = {
 	"sa",
 	"sb",
 	"ss",
@@ -50,7 +67,7 @@ static const char		*g_op[] = {
 	"rr",
 	"rra",
 	"rrb",
-	"rrr",
+	"rrr"
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 16:18:34 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/12 19:58:56 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	initialize_struct(t_struct *st, int size)
 {
+	st->list = NULL;
 	st->flag = 0;
 	st->stack_a = (int *)malloc(sizeof(int) * size);
 	st->stack_b = (int *)malloc(sizeof(int) * size);
