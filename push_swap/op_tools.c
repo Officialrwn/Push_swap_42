@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 20:59:04 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 22:56:37 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 
 void	swap_ab(t_struct *st, t_op op)
 {
-	st->stack_b = NULL;
 	if (op == SA)
-		printf("executing swap_a\n");
+		stack_swap(st->stack_a);
  	else if (op == SB)
-		printf("executing swap_b\n");
+		st->stack_b = stack_swap(st->stack_b);
 	else if (op == SS)
 	{
-		printf("executing swap a + b\n");
+		st->stack_a = stack_swap(st->stack_a);
+		st->stack_b = stack_swap(st->stack_b);
 	}
 }
 //	take the first element at the top of b and put it at the top of a. 
@@ -40,7 +40,6 @@ void	swap_ab(t_struct *st, t_op op)
 void	push_ab(t_struct *st, t_op op)
 {
 	st->stack_b = NULL;
-
 	if (op == PA)
 		printf("executing swap_a\n");
 	if (op == PB)
@@ -57,7 +56,6 @@ void	push_ab(t_struct *st, t_op op)
 void	rotate_ab(t_struct *st, t_op op)
 {
 	st->stack_b = NULL;
-
 	if (op == RA)
 		printf("executing rotate_a\n");
 	if (op == RB)
@@ -76,7 +74,6 @@ void	rotate_ab(t_struct *st, t_op op)
 void	reverse_rotate_ab(t_struct *st, t_op op)
 {
 	st->stack_b = NULL;
-
 	if (op == RRA)
 		printf("executing reverse_rotate_a\n");
 	if (op == RRB)

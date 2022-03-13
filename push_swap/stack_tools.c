@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   stack_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/13 13:46:49 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 21:45:21 by leo              ###   ########.fr       */
+/*   Created: 2022/03/13 21:50:37 by leo               #+#    #+#             */
+/*   Updated: 2022/03/13 23:12:56 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_swap(int *a, int *b)
+t_list	*stack_swap(t_list *stack)
 {
-	int	i;
+	t_list	*head;
 
-	i = *a;
-	*a = *b;
-	*b = i;
+	if (stack == NULL || stack->next == NULL)
+		return (stack);
+	head = stack->next;
+	stack->next = stack->next->next;
+	head->next = stack;
+	return (head);
+}
+
+t_list	*stack_push(t_list *src, t_list *dest)
+{
+	t_list	*temp_dest;
+	t_list	*temp_src;
+
+	temp = ft_lstnew(src->content, src->content);
+	
 }
