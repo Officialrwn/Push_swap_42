@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 12:20:24 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 12:58:44 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 void	swap_ab(t_struct *st, t_op op)
 {
+	int *temp = st->stack_a;
+	temp = NULL;
 	if (op == SA)
 		printf("executing swap_a\n");
 	else if (op == SB)
@@ -36,6 +38,8 @@ void	swap_ab(t_struct *st, t_op op)
 
 void	push_ab(t_struct *st, t_op op)
 {
+	int *temp = st->stack_a;
+	temp = NULL;
 	if (op == PA)
 		printf("executing swap_a\n");
 	if (op == PB)
@@ -51,6 +55,8 @@ void	push_ab(t_struct *st, t_op op)
 
 void	rotate_ab(t_struct *st, t_op op)
 {
+	int *temp = st->stack_a;
+	temp = NULL;
 	if (op == RA)
 		printf("executing rotate_a\n");
 	if (op == RB)
@@ -68,6 +74,8 @@ void	rotate_ab(t_struct *st, t_op op)
 
 void	reverse_rotate_ab(t_struct *st, t_op op)
 {
+	int *temp = st->stack_a;
+	temp = NULL;
 	if (op == RRA)
 		printf("executing reverse_rotate_a\n");
 	if (op == RRB)

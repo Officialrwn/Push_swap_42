@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
+#    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/02/25 14:06:43 by leotran          ###   ########.fr        #
+#    Updated: 2022/03/13 12:51:11 by leo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c 
 		ft_lstsize.c ft_dlstnew.c ft_dlstaddfront.c ft_dlstaddend.c ft_dlstdelfront.c ft_countstrings.c \
 		ft_strccpy.c ft_get_next_line.c ft_foreach.c ft_uitoa_base.c ft_putaddr.c ft_put_u_nbr.c \
 		ft_uint_base_count.c ft_int_base_count.c ft_itoa_base.c ft_float_count.c ft_ftoa.c ft_strjoin_update.c \
+		ft_del_lst_content.c
 
 SRCS = $(addprefix ./, $(SRC))
 FLAGS = -Wall -Wextra -Werror -O3 -I. -I includes

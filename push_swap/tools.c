@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 12:18:27 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 12:51:59 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_heap(t_struct *st)
 {
 	free(st->stack_a);
 	free(st->stack_b);
-	ft_lstdel(&st->list, &ft_bzero);
+	ft_lstdel(&st->list, &ft_del_lst_content);
 }
 
 void	error_exit(t_struct *st, int flag)

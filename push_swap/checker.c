@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 12:17:16 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 12:59:00 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	initialize_struct(t_struct *st, int size)
 {
 	st->list = NULL;
-	st->flag = 0;
 	st->stack_a = (int *)malloc(sizeof(int) * size);
 	st->stack_b = (int *)malloc(sizeof(int) * size);
 	ft_memset(st->stack_a, 0, size);
@@ -101,10 +100,11 @@ int	main(int argc, char **argv)
 			st.stack_a[i - 1] = validate_argv(&st, argv[i], i - 1);
 		while (1)
 		{
-			ft_get_next_line(FD, &input);
-			if (ft_strcmp(input, "") == 0)
+ 			ft_get_next_line(FD, &input);
+		 	if (ft_strcmp(input, "") == 0)
 				break ;
 			get_op_calls(&st, input);
+			ft_strdel(&input);
 		}
 		execute_op(&st);
 		free_heap(&st);
