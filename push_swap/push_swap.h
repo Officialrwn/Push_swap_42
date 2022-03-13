@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 13:26:51 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 20:55:07 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@
 
 typedef struct s_struct
 {
-	t_list	*list;
-	int		*stack_a;
-	int		*stack_b;
-	int		stack_size;
+	t_list	*op_list;
+	t_list	*stack_a;
+	t_list	*stack_b;
 }	t_struct;
 
 typedef enum e_op
@@ -67,7 +66,6 @@ void	swap_ab(t_struct *st, t_op op);
 void	push_ab(t_struct *st, t_op op);
 void	rotate_ab(t_struct *stm, t_op op);
 void	reverse_rotate_ab(t_struct *st, t_op op);
-void	free_heap(t_struct *st);
 void	print_on_exit(t_struct *st, int flag);
 int		check_if_sorted(t_struct *st);
 

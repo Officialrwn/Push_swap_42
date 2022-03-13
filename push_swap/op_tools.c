@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 14:00:58 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 20:59:04 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 
 void	swap_ab(t_struct *st, t_op op)
 {
+	st->stack_b = NULL;
 	if (op == SA)
-		ft_swap(&st->stack_a[0], &st->stack_a[1]); 
-	else if (op == SB)
-		ft_swap(&st->stack_b[0], &st->stack_b[1]); 
+		printf("executing swap_a\n");
+ 	else if (op == SB)
+		printf("executing swap_b\n");
 	else if (op == SS)
 	{
-		ft_swap(&st->stack_a[0], &st->stack_a[1]); 
-		ft_swap(&st->stack_b[0], &st->stack_b[1]); 
+		printf("executing swap a + b\n");
 	}
 }
 //	take the first element at the top of b and put it at the top of a. 
@@ -39,9 +39,8 @@ void	swap_ab(t_struct *st, t_op op)
 
 void	push_ab(t_struct *st, t_op op)
 {
-	int	*temp;
+	st->stack_b = NULL;
 
-	temp = st->stack_a;
 	if (op == PA)
 		printf("executing swap_a\n");
 	if (op == PB)
@@ -57,9 +56,8 @@ void	push_ab(t_struct *st, t_op op)
 
 void	rotate_ab(t_struct *st, t_op op)
 {
-	int	*temp;
+	st->stack_b = NULL;
 
-	temp = st->stack_a;
 	if (op == RA)
 		printf("executing rotate_a\n");
 	if (op == RB)
@@ -77,9 +75,8 @@ void	rotate_ab(t_struct *st, t_op op)
 
 void	reverse_rotate_ab(t_struct *st, t_op op)
 {
-	int	*temp;
+	st->stack_b = NULL;
 
-	temp = st->stack_a;
 	if (op == RRA)
 		printf("executing reverse_rotate_a\n");
 	if (op == RRB)

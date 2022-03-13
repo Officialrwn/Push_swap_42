@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 13:25:44 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 20:59:54 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,29 @@ void	print_list(t_list *list)
 	current_node = list;
 	while (current_node != NULL)
 	{
-		printf("%s\n", (char *)current_node->content);
+		printf("%s ", (char *)current_node->content);
 		current_node = current_node->next;
 	}
 }
 
-void	free_heap(t_struct *st)
-{
-	free(st->stack_a);
-	free(st->stack_b);
-	ft_lstdel(&st->list, &ft_del_lst_content);
-}
-
 int	check_if_sorted(t_struct *st)
 {
-	int	i;
+	t_list	*current_node;
+	int		temp;
+	int		flag;
 
-	i = 0;
-	while (i < st->stack_size - 1)
+	flag = 1;
+	current_node = st->stack_a;
+	while (current_node->next != NULL)
 	{
-		if (st->stack_a[i] > st->stack_a[i + 1])
-			return (0);
-		i++;
+		temp = ft_atoi(current_node->content);
+		if (temp > ft_atoi(current_node->next->content))
+			flag = 0;
+		current_node = current_node->next;
 	}
-	return (1);
+	if (st->stack_b != NULL)
+		flag = 0;
+	return (flag);
 }
 
 void	print_on_exit(t_struct *st, int flag)
@@ -53,6 +52,8 @@ void	print_on_exit(t_struct *st, int flag)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	free_heap(st);
+	ft_lstdel(&st->stack_a, &ft_del_lst_content);
+	ft_lstdel(&st->stack_b, &ft_del_lst_content);
+	ft_lstdel(&st->op_list, &ft_del_lst_content);
 	exit(flag);
 }
