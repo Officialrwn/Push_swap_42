@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 13:22:09 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 13:50:54 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ static void	execute_op(t_struct *st)
 		g_execute_op[i](st, op);
 		current_node = current_node->next;
 	}
-	print_on_exit(st, VALID);
 }
 
 int	main(int argc, char **argv)
@@ -109,6 +108,7 @@ int	main(int argc, char **argv)
 			ft_strdel(&input);
 		}
 		execute_op(&st);
+		print_on_exit(&st, VALID);
 	}
 	return (0);
 }

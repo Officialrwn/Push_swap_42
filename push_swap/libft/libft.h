@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/13 12:51:16 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 13:47:37 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,6 @@ char	*ft_itoa_base(long long num, int base, int flag);
 char	*ft_ftoa(long double num, int precision_flag, int precision);
 char	*ft_strjoin_update(char const *s1, char const *s2);
 void	ft_del_lst_content(void *content, size_t contentsize);
+void	ft_swap(int *a, int *b);
 
 #endif

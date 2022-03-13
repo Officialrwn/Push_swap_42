@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 13:01:07 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 14:00:58 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@
 
 void	swap_ab(t_struct *st, t_op op)
 {
-	int	*temp;
-
-	temp = st->stack_a;
 	if (op == SA)
-		printf("executing swap_a\n");
+		ft_swap(&st->stack_a[0], &st->stack_a[1]); 
 	else if (op == SB)
-		printf("executing swap_b\n");
+		ft_swap(&st->stack_b[0], &st->stack_b[1]); 
 	else if (op == SS)
-		printf("executing swap a + b\n");
+	{
+		ft_swap(&st->stack_a[0], &st->stack_a[1]); 
+		ft_swap(&st->stack_b[0], &st->stack_b[1]); 
+	}
 }
 //	take the first element at the top of b and put it at the top of a. 
 //	Do nothing if b is empty.
 
 //	take the first element at the top of a and put it at the top of b. 
-//	Do nothing if b is empty.
+//	Do nothing if a is empty.
 
 void	push_ab(t_struct *st, t_op op)
 {
