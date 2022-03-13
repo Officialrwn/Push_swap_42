@@ -6,18 +6,14 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 20:58:59 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 12:17:09 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define STDIN 	0
-# define A 		1
-# define B 		2
-# define AB 	3
-
+# define FD 0
 # define OP_INDEX "00011222333"
 
 # include <unistd.h>
@@ -27,27 +23,38 @@
 /* Forbidden header */
 # include <stdio.h>
 
-typedef struct s_stack
-{
-	t_stack *next;
-	int		num;
-}	t_stack;
-
 typedef struct s_struct
 {
-	t_stack	*list;
+	t_list	*list;
 	int		flag;
 	int		*stack_a;
 	int		*stack_b;
 }	t_struct;
 
-void	swap_ab(t_struct *st);
-void	push_ab(t_struct *st);
-void	rotate_ab(t_struct *st);
-void	reverse_rotate_ab(t_struct *st);
-void	initialize_struct(t_struct *st, int size);
+typedef enum e_op
+{
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
+}	t_op;
 
-typedef void		(*t_fptr)(t_struct *st);
+void	print_list(t_list *list);
+void	swap_ab(t_struct *st, t_op op);
+void	push_ab(t_struct *st, t_op op);
+void	rotate_ab(t_struct *stm, t_op op);
+void	reverse_rotate_ab(t_struct *st, t_op op);
+void	free_heap(t_struct *st);
+void	error_exit(t_struct *st, int flag);
+
+typedef void		(*t_fptr)(t_struct *st, t_op op);
 
 static const t_fptr	g_execute_op[4] = {
 	swap_ab,

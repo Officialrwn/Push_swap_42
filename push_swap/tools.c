@@ -6,18 +6,37 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/12 19:58:56 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 12:18:27 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	initialize_struct(t_struct *st, int size)
+void	print_list(t_list *list)
 {
-	st->list = NULL;
-	st->flag = 0;
-	st->stack_a = (int *)malloc(sizeof(int) * size);
-	st->stack_b = (int *)malloc(sizeof(int) * size);
-	ft_memset(st->stack_a, 0, size);
-	ft_memset(st->stack_b, 0, size);
+	t_list	*current_node;
+
+	current_node = list;
+	while (current_node != NULL)
+	{
+		printf("%s\n", (char *)current_node->content);
+		current_node = current_node->next;
+	}
+}
+
+void	free_heap(t_struct *st)
+{
+	free(st->stack_a);
+	free(st->stack_b);
+	ft_lstdel(&st->list, &ft_bzero);
+}
+
+void	error_exit(t_struct *st, int flag)
+{
+	free_heap(st);
+	if (!flag)
+		write(2, "Error\n", 6);
+	else
+		write(1, "KO\n", 3);
+	exit(1);
 }
