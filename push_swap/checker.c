@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 12:59:00 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/13 13:01:29 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ int	main(int argc, char **argv)
 			st.stack_a[i - 1] = validate_argv(&st, argv[i], i - 1);
 		while (1)
 		{
- 			ft_get_next_line(FD, &input);
-		 	if (ft_strcmp(input, "") == 0)
+			ft_get_next_line(FD, &input);
+			if (ft_strcmp(input, "") == 0)
 				break ;
 			get_op_calls(&st, input);
 			ft_strdel(&input);
