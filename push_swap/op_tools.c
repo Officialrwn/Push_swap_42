@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 22:22:10 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 22:26:32 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	swap_ab(t_struct *st, t_op op)
 		st->stack_a = st->stack_a->next;
 		ft_lstswap(&st->stack_a, temp);
 	}	
- 	if (op == SB || op == SS)
+	if (op == SB || op == SS)
 	{
 		temp = st->stack_b;
 		st->stack_b = st->stack_b->next;

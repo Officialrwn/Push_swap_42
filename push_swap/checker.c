@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 21:46:32 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 22:29:41 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static void	validate_argv(t_struct *st, char *argv)
 	t_list	*temp;
 	size_t	len;
 	int		num;
-	
-	t_list	*cpynode;
 
 	current_node = st->stack_a;
 	num = ft_atoi(argv);
@@ -40,15 +38,11 @@ static void	validate_argv(t_struct *st, char *argv)
 	}
 	len = ft_strlen(argv) + 1;
 	temp = ft_lstnew(argv, len);
-	cpynode = ft_lstnew(argv, len);
 	if (st->stack_a == NULL)
 		st->stack_a = temp;
 	else
 		ft_lstaddend(&st->stack_a, temp);
-	if (st->stack_b == NULL)
-		st->stack_b = cpynode;
-	else
-		ft_lstaddend(&st->stack_b, cpynode);
+	cpytostackb(st, argv, len);
 }
 
 static void	get_op_calls(t_struct *st, char *input)

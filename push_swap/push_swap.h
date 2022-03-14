@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 22:24:15 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 22:31:28 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-/* Forbidden header */
+/* Forbidden header*/
 # include <stdio.h>
+/* Temp functions */
+void	cpytostackb(t_struct *st, char *argv, size_t len);
+void	print_list(t_list *list, t_list *list2);
 
 typedef struct s_struct
 {
@@ -61,7 +64,6 @@ static const char	*g_op[] = {
 	"rrr"
 };
 
-void	print_list(t_list *list, t_list *list2);
 void	swap_ab(t_struct *st, t_op op);
 void	push_ab(t_struct *st, t_op op);
 void	rotate_ab(t_struct *stm, t_op op);

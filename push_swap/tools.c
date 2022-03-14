@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 21:48:41 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 22:29:52 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_list(t_list *list, t_list *list2)
 {
 	t_list	*current_node;
 	t_list	*temp_node;
-	
+
 	temp_node = list2;
 	current_node = list;
 	while (current_node != NULL)
@@ -64,4 +64,15 @@ void	print_on_exit(t_struct *st, int flag)
 	ft_lstdel(&st->stack_b, &ft_del_lst_content);
 	ft_lstdel(&st->op_list, &ft_del_lst_content);
 	exit(flag);
+}
+
+void	cpytostackb(t_struct *st, char *argv, size_t len)
+{
+	t_list	*temp;
+
+	temp = ft_listnew(argv, len);
+	if (st->stack_b == NULL)
+		st->stack_b = temp;
+	else
+		ft_lstaddend(&st->stack_b, temp);
 }
