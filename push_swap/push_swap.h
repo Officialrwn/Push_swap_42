@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 22:31:28 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 22:36:40 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@
 
 /* Forbidden header*/
 # include <stdio.h>
-/* Temp functions */
-void	cpytostackb(t_struct *st, char *argv, size_t len);
-void	print_list(t_list *list, t_list *list2);
 
 typedef struct s_struct
 {
@@ -34,6 +31,10 @@ typedef struct s_struct
 	t_list	*stack_a;
 	t_list	*stack_b;
 }	t_struct;
+
+/* Temp functions */
+void	cpytostackb(t_struct *st, char *argv, size_t len);
+void	print_list(t_list *list, t_list *list2);
 
 typedef enum e_op
 {

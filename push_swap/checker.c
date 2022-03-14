@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 22:29:41 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 23:49:25 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	validate_argv(t_struct *st, char *argv)
 		st->stack_a = temp;
 	else
 		ft_lstaddend(&st->stack_a, temp);
-	cpytostackb(st, argv, len);
 }
+//cpytostackb(st, argv, len);
 
 static void	get_op_calls(t_struct *st, char *input)
 {
