@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 21:50:37 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 23:12:56 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 10:28:24 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ t_list	*stack_push(t_list *src, t_list *dest)
 	t_list	*temp_src;
 
 	temp = ft_lstnew(src->content, src->content);
-	
 }

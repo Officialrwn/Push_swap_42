@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 22:56:37 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 10:22:49 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 
 void	swap_ab(t_struct *st, t_op op)
 {
+	t_list	*head;
+
 	if (op == SA)
-		stack_swap(st->stack_a);
+		head = st->stack_a->next;
  	else if (op == SB)
 		st->stack_b = stack_swap(st->stack_b);
 	else if (op == SS)
@@ -30,6 +32,7 @@ void	swap_ab(t_struct *st, t_op op)
 		st->stack_a = stack_swap(st->stack_a);
 		st->stack_b = stack_swap(st->stack_b);
 	}
+	
 }
 //	take the first element at the top of b and put it at the top of a. 
 //	Do nothing if b is empty.
