@@ -6,47 +6,48 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 10:22:49 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 22:22:10 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//	sa - 	swap the first 2 elements at the top of stack a. 
-//	(Do nothing if there is only one or no elements).
-
-//	sb - 	swap the first 2 elements at the top of stack b. 
-//	(Do nothing if there is only one or no elements).
-
-//	ss -	sa + sb
 
 void	swap_ab(t_struct *st, t_op op)
 {
-	t_list	*head;
+	t_list	*temp;
 
-	if (op == SA)
-		head = st->stack_a->next;
- 	else if (op == SB)
-		st->stack_b = stack_swap(st->stack_b);
-	else if (op == SS)
+	temp = NULL;
+	if (op == SA || op == SS)
 	{
-		st->stack_a = stack_swap(st->stack_a);
-		st->stack_b = stack_swap(st->stack_b);
-	}
-	
+		temp = st->stack_a;
+		st->stack_a = st->stack_a->next;
+		ft_lstswap(&st->stack_a, temp);
+	}	
+ 	if (op == SB || op == SS)
+	{
+		temp = st->stack_b;
+		st->stack_b = st->stack_b->next;
+		ft_lstswap(&st->stack_b, temp);
+	}	
 }
-//	take the first element at the top of b and put it at the top of a. 
-//	Do nothing if b is empty.
-
-//	take the first element at the top of a and put it at the top of b. 
-//	Do nothing if a is empty.
 
 void	push_ab(t_struct *st, t_op op)
 {
-	st->stack_b = NULL;
-	if (op == PA)
-		printf("executing swap_a\n");
-	if (op == PB)
-		printf("executing swap_b\n");
+	t_list	*temp;
+
+	temp = NULL;
+	if (op == PA && st->stack_b != NULL)
+	{
+		temp = st->stack_b;
+		st->stack_b = st->stack_b->next;
+		ft_lstadd(&st->stack_a, temp);
+	}
+	if (op == PB && st->stack_a != NULL)
+	{
+		temp = st->stack_a;
+		st->stack_a = st->stack_a->next;
+		ft_lstadd(&st->stack_b, temp);
+	}	
 }
 // 	ra - shift up all elements of stack a by 1. 
 //	The first element becomes the last one.

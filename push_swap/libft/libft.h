@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/13 13:47:37 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 22:23:34 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 void	ft_lstaddend(t_list **alst, t_list *new);
 void	ft_lstdelend(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstswap(t_list **list, t_list *node);
 
 int		ft_lstsize(t_list **lst);
 t_dlist	*ft_dlstnew(void const *content, size_t content_size);

@@ -6,21 +6,29 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 20:59:54 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 21:48:41 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(t_list *list)
+void	print_list(t_list *list, t_list *list2)
 {
 	t_list	*current_node;
-
+	t_list	*temp_node;
+	
+	temp_node = list2;
 	current_node = list;
 	while (current_node != NULL)
 	{
 		printf("%s ", (char *)current_node->content);
 		current_node = current_node->next;
+	}
+	printf("\n");
+	while (temp_node != NULL)
+	{
+		printf("%s ", (char *)temp_node->content);
+		temp_node = temp_node->next;
 	}
 }
 
