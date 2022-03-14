@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 23:49:42 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/14 23:58:45 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 void	swap_ab(t_struct *st, t_op op)
 {
 	t_list	*temp;
+	int		stack_a;
+	int		stack_b;
 
-	if (st->stack_a->next != NULL && (op == SA || op == SS))
+	stack_a = (st->stack_a == NULL || st->stack_a->next == NULL);
+	stack_b = (st->stack_b == NULL || st->stack_b->next == NULL);
+	if (!stack_a && (op == SA || op == SS))
 	{
 		temp = st->stack_a;
 		st->stack_a = st->stack_a->next;
 		ft_lstswap(&st->stack_a, temp);
-	}	
-	if (st->stack_b->next != NULL && (op == SB || op == SS))
+	}
+	if (!stack_b && (op == SB || op == SS))
 	{
 		temp = st->stack_b;
 		st->stack_b = st->stack_b->next;
 		ft_lstswap(&st->stack_b, temp);
-	}	
+	}
 }
 
 void	push_ab(t_struct *st, t_op op)
@@ -57,26 +61,23 @@ void	push_ab(t_struct *st, t_op op)
 		}
 	}
 }
-// 	ra - shift up all elements of stack a by 1. 
-//	The first element becomes the last one.
-
-// 	rb - shift up all elements of stack a by 1. 
-//	The first element becomes the last one.
-
-//	rr -	ra + rb
 
 void	rotate_ab(t_struct *st, t_op op)
 {
 	t_list	*temp;
+	int		stack_a;
+	int		stack_b;
 
-	if (st->stack_a->next != NULL && (op == RA || op == RR))
+	stack_a = (st->stack_a == NULL || st->stack_a->next == NULL);
+	stack_b = (st->stack_b == NULL || st->stack_b->next == NULL);
+	if (!stack_a && (op == RA || op == RR))
 	{
 		temp = st->stack_a;
 		st->stack_a = st->stack_a->next;
 		temp->next = NULL;
 		ft_lstaddend(&st->stack_a, temp);
 	}
-	if (st->stack_b->next != NULL && (op == RB || op == RR))
+	if (!stack_b && (op == RB || op == RR))
 	{
 		temp = st->stack_b;
 		st->stack_b = st->stack_b->next;
@@ -84,22 +85,17 @@ void	rotate_ab(t_struct *st, t_op op)
 		ft_lstaddend(&st->stack_b, temp);
 	}
 }
-// 	rra - shift down all elements of stack a by 1. 
-//	The last element becomes the first one.
-
-// 	rrb - shift down all elements of stack a by 1. 
-//	The last element becomes the first one.
-
-//	rrr -	rra + rrb
 
 void	reverse_rotate_ab(t_struct *st, t_op op)
 {
 	t_list	*temp;
 	t_list	*end_node;
+	int		stack_a;
 	int		stack_b;
 
+	stack_a = (st->stack_a == NULL || st->stack_a->next == NULL);
 	stack_b = (st->stack_b == NULL || st->stack_b->next == NULL);
-	if (st->stack_a->next != NULL && (op == RRA || op == RRR))
+	if (!stack_a && (op == RRA || op == RRR))
 	{
 		temp = st->stack_a;
 		while (temp->next->next != NULL)
@@ -108,7 +104,7 @@ void	reverse_rotate_ab(t_struct *st, t_op op)
 		temp->next = NULL;
 		ft_lstadd(&st->stack_a, end_node);
 	}
-	if (op == RRB && !stack_b)
+	if (!stack_b && (op == RRB || op == RRR))
 	{
 		temp = st->stack_b;
 		while (temp->next->next != NULL)
