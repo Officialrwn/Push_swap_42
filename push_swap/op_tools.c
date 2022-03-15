@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 23:49:42 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 20:22:23 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,16 @@ void	push_ab(t_struct *st, t_op op)
 	if (op == PA && st->stack_b != NULL)
 	{
 		temp = st->stack_b;
-		st->stack_b = st->stack_b->next;
+		if (st->stack_b->next != NULL)
+			st->stack_b = st->stack_b->next;
 		ft_lstadd(&st->stack_a, temp);
 	}
 	else if (op == PB && st->stack_a != NULL)
 	{
-		if (st->stack_b == NULL)
-		{
-			str = ft_strdup((char *)st->stack_a->content);
-			st->stack_b = ft_lstnew(str, st->stack_a->content_size);
-			st->stack_a = NULL;
-		}	
-		else if (st->stack_a != NULL)
-		{
-			temp = st->stack_a;
+		temp = st->stack_a;
+		if (st->stack_a->next != NULL)
 			st->stack_a = st->stack_a->next;
-			ft_lstadd(&st->stack_b, temp);
-		}
+		ft_lstadd(&st->stack_b, temp);
 	}
 }
 // 	ra - shift up all elements of stack a by 1. 
