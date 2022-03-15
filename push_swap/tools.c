@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 20:39:14 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 21:42:57 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	print_on_exit(t_struct *st, int flag)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	//ft_lstdel(&st->stack_a, &ft_del_lst_content);
-	//ft_lstdel(&st->stack_b, &ft_del_lst_content);
-	//ft_lstdel(&st->op_list, &ft_del_lst_content);
+	ft_lstdel(&st->stack_a, &ft_del_lst_content);
+	ft_lstdel(&st->stack_b, &ft_del_lst_content);
+	ft_lstdel(&st->op_list, &ft_del_lst_content);
 	exit(flag);
 }
 
