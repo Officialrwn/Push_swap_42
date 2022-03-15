@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 21:42:57 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 21:48:08 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,19 @@ void	print_list(t_list *list, t_list *list2)
 
 	temp_node = list2;
 	current_node = list;
+	printf("stack a: ");
 	while (current_node != NULL)
 	{
 		printf("%s ", (char *)current_node->content);
 		current_node = current_node->next;
 	}
-	printf("\n");
+	printf("\nstack b: ");
 	while (temp_node != NULL)
 	{
 		printf("%s ", (char *)temp_node->content);
 		temp_node = temp_node->next;
 	}
+	printf("\n");
 }
 
 int	check_if_sorted(t_struct *st)
@@ -40,12 +42,15 @@ int	check_if_sorted(t_struct *st)
 
 	flag = 1;
 	current_node = st->stack_a;
-	while (current_node->next != NULL)
+	if (current_node != NULL)
 	{
-		temp = ft_atoi(current_node->content);
-		if (temp > ft_atoi(current_node->next->content))
-			flag = 0;
-		current_node = current_node->next;
+		while (current_node->next != NULL)
+		{
+			temp = ft_atoi(current_node->content);
+			if (temp > ft_atoi(current_node->next->content))
+				flag = 0;
+			current_node = current_node->next;
+		}
 	}
 	if (st->stack_b != NULL)
 		flag = 0;

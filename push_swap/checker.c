@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 21:42:31 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 21:44:39 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ int	main(int argc, char **argv)
 			ft_strdel(&input);
 		}
 		execute_op(&st);
-		//print_list(st.stack_a, st.stack_b);
-		//print_on_exit(&st, VALID);
+		print_list(st.stack_a, st.stack_b);
+		print_on_exit(&st, VALID);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 21:11:46 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 21:48:44 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,6 @@ void	push_ab(t_struct *st, t_op op)
 	}
 }
 
-// 	ra - shift up all elements of stack a by 1. 
-//	The first element becomes the last one.
-
-// 	rb - shift up all elements of stack a by 1. 
-//	The first element becomes the last one.
-
-//	rr -	ra + rb
-
 void	rotate_ab(t_struct *st, t_op op)
 {
 	t_list	*temp;
@@ -75,13 +67,6 @@ void	rotate_ab(t_struct *st, t_op op)
 		ft_lstaddend(&st->stack_b, temp);
 	}
 }
-// 	rra - shift down all elements of stack a by 1. 
-//	The last element becomes the first one.
-
-// 	rrb - shift down all elements of stack a by 1. 
-//	The last element becomes the first one.
-
-//	rrr -	rra + rrb
 
 void	reverse_rotate_ab(t_struct *st, t_op op)
 {
