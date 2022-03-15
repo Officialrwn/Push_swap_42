@@ -6,39 +6,39 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 10:12:42 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 15:21:11 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	initialize_struct(t_struct *st)
+static void	initialize_struct(t_struct *st, size_t size)
 {
 	st->op_list = NULL;
-	st->stack_a = NULL;
-	st->stack_b = NULL;
+	st->a.items = (int *)malloc(sizeof(int) * size);
+	st->a.top = -1;
+	st->b.items = (int *)malloc(sizeof(int) * size);
+	st->b.top = -1;
+	ft_memset(st->a.items, 0, size);
+	ft_memset(st->b.items, 0, size);
 }
 
 static void	validate_argv(t_struct *st, char *argv)
 {
-	t_list	*current_node;
-	t_list	*temp;
-	size_t	len;
-
-	current_node = st->stack_a;
-	while (current_node != NULL)
+	int	num;
+	int	i;
+	
+	num = ft_atoi(argv);
+	if (num == 0 && ft_strcmp(argv, "0") != 0)
+		print_on_exit(st, ERROR);
+ 	i = st->a.top;
+	while (i >= 0)
 	{
-		if (ft_strcmp(current_node->content, argv) == 0)
+		if (num == st->a.items[i--])
 			print_on_exit(st, ERROR);
-		current_node = current_node->next;
 	}
-	len = ft_strlen(argv) + 1;
-	temp = ft_lstnew(argv, len);
-	if (st->stack_a == NULL)
-		st->stack_a = temp;
-	else
-		ft_lstaddend(&st->stack_a, temp);
-	cpytostackb(st, argv, len);
+	st->a.items[st->a.top + 1] = num;
+	st->a.top++;
 }
 
 static void	get_op_calls(t_struct *st, char *input)
@@ -92,11 +92,11 @@ int	main(int argc, char **argv)
 	int			i;
 	char		*input;
 
-	i = 0;
 	if (argc > 1)
 	{
-		initialize_struct(&st);
-		while (i++ < argc - 1)
+		i = argc;
+		initialize_struct(&st, argc - 1);
+		while (--i > 0)
 			validate_argv(&st, argv[i]);
 		while (1)
 		{
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 			ft_strdel(&input);
 		}
 		execute_op(&st);
-		print_list(st.stack_a, st.stack_b);
+		print_list(&st);
 		print_on_exit(&st, VALID);
 	}
 	return (0);

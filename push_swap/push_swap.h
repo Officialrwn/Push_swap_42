@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/14 22:36:40 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 15:32:59 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,21 @@
 /* Forbidden header*/
 # include <stdio.h>
 
+typedef struct s_stack
+{
+	int	*items;
+	int	top;
+}	t_stack;
+
 typedef struct s_struct
 {
 	t_list	*op_list;
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_stack	a;
+	t_stack	b;
 }	t_struct;
 
 /* Temp functions */
-void	cpytostackb(t_struct *st, char *argv, size_t len);
-void	print_list(t_list *list, t_list *list2);
+void	print_list(t_struct *st);
 
 typedef enum e_op
 {
@@ -65,11 +70,11 @@ static const char	*g_op[] = {
 	"rrr"
 };
 
+void	print_on_exit(t_struct *st, int flag);
 void	swap_ab(t_struct *st, t_op op);
 void	push_ab(t_struct *st, t_op op);
 void	rotate_ab(t_struct *stm, t_op op);
 void	reverse_rotate_ab(t_struct *st, t_op op);
-void	print_on_exit(t_struct *st, int flag);
 int		check_if_sorted(t_struct *st);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op);
