@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 20:22:23 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 21:11:46 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,21 @@ void	swap_ab(t_struct *st, t_op op)
 void	push_ab(t_struct *st, t_op op)
 {
 	t_list	*temp;
-	char	*str;
 
 	if (op == PA && st->stack_b != NULL)
 	{
 		temp = st->stack_b;
-		if (st->stack_b->next != NULL)
-			st->stack_b = st->stack_b->next;
+		st->stack_b = st->stack_b->next;
 		ft_lstadd(&st->stack_a, temp);
 	}
-	else if (op == PB && st->stack_a != NULL)
+	if (op == PB && st->stack_a != NULL)
 	{
 		temp = st->stack_a;
-		if (st->stack_a->next != NULL)
-			st->stack_a = st->stack_a->next;
+		st->stack_a = st->stack_a->next;
 		ft_lstadd(&st->stack_b, temp);
 	}
 }
+
 // 	ra - shift up all elements of stack a by 1. 
 //	The first element becomes the last one.
 
