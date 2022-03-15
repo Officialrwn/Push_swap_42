@@ -6,14 +6,14 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 15:32:59 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 15:49:08 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define FD 0
+# define FD 	0
 # define VALID	0
 # define ERROR 	1
 # define OP_INDEX "00011222333"
@@ -37,9 +37,6 @@ typedef struct s_struct
 	t_stack	a;
 	t_stack	b;
 }	t_struct;
-
-/* Temp functions */
-void	print_list(t_struct *st);
 
 typedef enum e_op
 {
@@ -76,6 +73,7 @@ void	push_ab(t_struct *st, t_op op);
 void	rotate_ab(t_struct *stm, t_op op);
 void	reverse_rotate_ab(t_struct *st, t_op op);
 int		check_if_sorted(t_struct *st);
+void	print_list(t_struct *st);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op);
 

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 15:18:07 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/15 15:45:34 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,18 @@ void	swap_ab(t_struct *st, t_op op)
 
 void	push_ab(t_struct *st, t_op op)
 {
-	op = 0;
-	st->op_list = NULL;
+	if (st->b.top != -1 && op == PA)
+	{
+		st->a.items[st->a.top + 1] = st->b.items[st->b.top];
+		st->a.top++;
+		st->b.top--;
+	}
+	else if (st->a.top != -1 && op == PB)
+	{
+		st->b.items[st->b.top + 1] = st->a.items[st->a.top];
+		st->b.top++;
+		st->a.top--;
+	}
 }
 
 void	rotate_ab(t_struct *st, t_op op)
