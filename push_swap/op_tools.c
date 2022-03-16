@@ -6,19 +6,11 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 14:07:21 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 15:43:50 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	swap_ab(t_struct *st, t_op op)
-{
-	if (st->stack_a->next != NULL && (op == SA || op == SS))
-		swap(&st->stack_a, &st->tail_a);
-	if (st->stack_b->next != NULL && (op == SB || op == SS))
-		swap(&st->stack_b, &st->tail_b);
-}
 
 void	push_ab(t_struct *st, t_op op)
 {

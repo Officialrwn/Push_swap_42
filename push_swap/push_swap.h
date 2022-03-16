@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 15:07:59 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 15:37:37 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,18 @@ static const char	*g_op[] = {
 	"rrr"
 };
 
-void	swap_ab(t_struct *st, t_op op);
+//void	swap_ab(t_struct *st, t_op op);
 void	push_ab(t_struct *st, t_op op);
 void	rotate_ab(t_struct *stm, t_op op);
 void	reverse_rotate_ab(t_struct *st, t_op op);
 void	print_on_exit(t_struct *st, int flag);
-void	swap(t_list **stack, t_list **tail);
+void	swap(t_struct *st, t_op op);
 int		check_if_sorted(t_struct *st);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op);
 
 static const t_fptr	g_execute_op[4] = {
-	swap_ab,
+	swap,
 	push_ab,
 	rotate_ab,
 	reverse_rotate_ab,

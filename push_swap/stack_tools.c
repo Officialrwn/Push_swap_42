@@ -6,19 +6,30 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 14:05:24 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 15:47:14 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list **stack, t_list **tail)
+void	swap(t_struct *st, t_op op)
 {
-	t_list	*node;
+	t_list 		**stack;
+	t_list		**tail;
+	t_list		*node;
+	uint16_t 	flag;
 
+	stack = &st->stack_a;
+	tail = &st->tail_a;
+	flag = 0 ^ 1 << op;
+	if ((flag & STACK_B) != 0)
+	{
+		stack = &st->stack_b;
+		tail = &st->tail_b;
+	}
 	node = (*stack);
 	(*stack) = (*stack)->next;
 	ft_lstswap(stack, node);
 	if ((*stack) == (*tail))
-		(*tail) = node;	
+		(*tail) = node;
 }

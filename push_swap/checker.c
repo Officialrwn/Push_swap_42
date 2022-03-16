@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 14:26:11 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 15:50:39 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static void	get_op_calls(t_struct *st, char *input)
 	{
 		if (ft_strcmp(input, g_op[i]) == 0)
 		{
+			//i = uintflag. if flag == SS, RR, RRR
+			//put into its own function
 			num = OP_INDEX[i];
 			temp = ft_lstnew(&num, 1);
 			temp->content_size = (size_t)i;
