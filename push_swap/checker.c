@@ -6,53 +6,30 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 19:10:33 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 19:51:24 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	initialize_struct(t_struct *st)
+static void	store_op_call(t_list **op_list, int op_enum)
 {
-	st->op_list = NULL;
-	st->stack_a = NULL;
-	st->tail_a = NULL;
-	st->stack_b = NULL;
-	st->tail_b = NULL;
-}
-
-static void	validate_argv(t_struct *st, char *argv)
-{
-	t_list	*current_node;
 	t_list	*temp;
-	size_t	len;
-	int		num;
+	char	op_i;
 
-	current_node = st->stack_a;
-	num = ft_atoi(argv);
-	if (num == 0 && ft_strcmp(argv, "0") != 0)
-		print_on_exit(st, ERROR);
-	while (current_node != NULL)
-	{
-		if (ft_strcmp(current_node->content, argv) == 0)
-			print_on_exit(st, ERROR);
-		current_node = current_node->next;
-	}
-	len = ft_strlen(argv) + 1;
-	temp = ft_lstnew(argv, len);
-	if (st->stack_a == NULL)
-		st->stack_a = temp;
+	op_i = OP_INDEX[op_enum];
+	temp = ft_lstnew(&op_i, 1);
+	temp->content_size = (size_t)op_enum;
+	if ((*op_list) == NULL)
+		(*op_list) = temp;
 	else
-		ft_lstaddend(&st->stack_a, temp);
-	st->tail_a = temp;
+		ft_lstaddend(op_list, temp);
 }
 
-static void	get_op_calls(t_struct *st, char *input)
+static int	get_op_calls(t_struct *st, char *input)
 {
-	t_list	*temp;
 	int		i;
 	int		op_len;
-	char	num;
 
 	i = 0;
 	op_len = sizeof(g_op) / sizeof(g_op[0]);
@@ -62,21 +39,15 @@ static void	get_op_calls(t_struct *st, char *input)
 		{
 			//i = uintflag. if flag == SS, RR, RRR
 			//put into its own function
-			num = OP_INDEX[i];
-			temp = ft_lstnew(&num, 1);
-			temp->content_size = (size_t)i;
-			if (st->op_list == NULL)
-				st->op_list = temp;
-			else
-				ft_lstaddend(&st->op_list, temp);
-			return ;
+			store_op_call(&st->op_list, i);
+			return (0);
 		}
 		i++;
 	}
-	print_on_exit(st, ERROR);
+	return (print_on_exit(st, ERROR));
 }
 
-static void	execute_op(t_struct *st)
+static int	execute_op(t_struct *st)
 {
 	t_list	*current_node;
 	t_op	op;
@@ -93,7 +64,8 @@ static void	execute_op(t_struct *st)
 		current_node = current_node->next;
 	}
 	print_list(st->stack_a, st->stack_b);
-	print_on_exit(&st, VALID);
+	printf("tail a: %s\n", (char *)st->tail_a->content);
+	return (print_on_exit(st, VALID));
 }
 
 int	main(int argc, char **argv)
@@ -115,10 +87,11 @@ int	main(int argc, char **argv)
 			ft_get_next_line(fd, &input);
 			if (ft_strcmp(input, "") == 0)
 				break ;
-			get_op_calls(&st, input);
+			if (get_op_calls(&st, input) == 1)
+				return (1);
 			ft_strdel(&input);
 		}
-		execute_op(&st);
+		return (execute_op(&st));
 	}
 	return (0);
 }

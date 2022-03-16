@@ -6,32 +6,53 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 18:52:49 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 19:33:14 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(t_list *list, t_list *list2)
+uint16_t	convert_to_bits(int i)
+{
+	uint16_t	bit;
+
+	bit = 0 ^ 1 << i;
+	return (bit);
+}
+
+void	initialize_struct(t_struct *st)
+{
+	st->op_list = NULL;
+	st->stack_a = NULL;
+	st->tail_a = NULL;
+	st->stack_b = NULL;
+	st->tail_b = NULL;
+}
+
+void	validate_argv(t_struct *st, char *argv)
 {
 	t_list	*current_node;
-	t_list	*temp_node;
+	t_list	*temp;
+	size_t	len;
+	int		num;
 
-	temp_node = list2;
-	current_node = list;
-	ft_putstr("stack a: ");
+	current_node = st->stack_a;
+	num = ft_atoi(argv);
+	if (num == 0 && ft_strcmp(argv, "0") != 0)
+		print_on_exit(st, ERROR);
 	while (current_node != NULL)
 	{
-		ft_putstr((char *)current_node->content);
+		if (ft_strcmp(current_node->content, argv) == 0)
+			print_on_exit(st, ERROR);
 		current_node = current_node->next;
 	}
-	ft_putstr("\nstack b: ");
-	while (temp_node != NULL)
-	{
-		ft_putstr((char *)temp_node->content);
-		temp_node = temp_node->next;
-	}
-	ft_putstr("\n");
+	len = ft_strlen(argv) + 1;
+	temp = ft_lstnew(argv, len);
+	if (st->stack_a == NULL)
+		st->stack_a = temp;
+	else
+		ft_lstaddend(&st->stack_a, temp);
+	st->tail_a = temp;
 }
 
 int	check_if_sorted(t_struct *st)
@@ -55,18 +76,4 @@ int	check_if_sorted(t_struct *st)
 	if (st->stack_b != NULL)
 		flag = 0;
 	return (flag);
-}
-
-void	print_on_exit(t_struct *st, int flag)
-{
-	if (flag)
-		write(2, "Error\n", 6);
-	else if (check_if_sorted(st))
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
-	ft_lstdel(&st->stack_a, &ft_del_lst_content);
-	ft_lstdel(&st->stack_b, &ft_del_lst_content);
-	ft_lstdel(&st->op_list, &ft_del_lst_content);
-	exit(flag);
 }
