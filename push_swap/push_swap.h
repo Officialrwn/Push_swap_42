@@ -6,14 +6,13 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 21:10:17 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 11:48:32 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define FD 0
 # define VALID	0
 # define ERROR 	1
 # define OP_INDEX "00011222333"
@@ -29,7 +28,9 @@ typedef struct s_struct
 {
 	t_list	*op_list;
 	t_list	*stack_a;
+	t_list	*tail_a;
 	t_list	*stack_b;
+	t_list	*tail_b;
 }	t_struct;
 
 /* Temp functions */
