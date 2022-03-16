@@ -6,13 +6,13 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 21:10:31 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 21:33:22 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	store_op_call(t_list **op_list, int op_enum)
+static int	store_op_call(t_list **op_list, int op_enum)
 {
 	t_list	*temp;
 	char	op_i;
@@ -24,9 +24,11 @@ static void	store_op_call(t_list **op_list, int op_enum)
 		(*op_list) = temp;
 	else
 		ft_lstadd(op_list, temp);
+	return (1);
 }
+//store_opcall should check if flag == SS, RR, RRR
 
-static void	get_op_calls(t_struct *st, char *input)
+static int	get_op_calls(t_struct *st, char *input)
 {
 	int		i;
 	int		op_len;
@@ -36,15 +38,11 @@ static void	get_op_calls(t_struct *st, char *input)
 	while (i < op_len)
 	{
 		if (ft_strcmp(input, g_op[i]) == 0)
-		{
-			//i = uintflag. if flag == SS, RR, RRR
-			//put into its own function
-			store_op_call(&st->op_list, i);
-			return ;
-		}
+			return (store_op_call(&st->op_list, i));
 		i++;
 	}
 	print_on_exit(st, ERROR);
+	return (0);
 }
 
 static void	execute_op(t_struct *st)
