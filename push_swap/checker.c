@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 15:50:39 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 19:10:33 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	validate_argv(t_struct *st, char *argv)
 		ft_lstaddend(&st->stack_a, temp);
 	st->tail_a = temp;
 }
-//cpytostackb(st, argv, len);
 
 static void	get_op_calls(t_struct *st, char *input)
 {
@@ -93,6 +92,8 @@ static void	execute_op(t_struct *st)
 		g_execute_op[i](st, op);
 		current_node = current_node->next;
 	}
+	print_list(st->stack_a, st->stack_b);
+	print_on_exit(&st, VALID);
 }
 
 int	main(int argc, char **argv)
@@ -118,9 +119,6 @@ int	main(int argc, char **argv)
 			ft_strdel(&input);
 		}
 		execute_op(&st);
-		print_list(st.stack_a, st.stack_b);
-		printf("tail: %s\n", (char *)st.tail_a->content);
-		print_on_exit(&st, VALID);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 15:37:37 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 18:55:43 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define OP_INDEX "00011222333"
 # define STACK_A 0x129
 # define STACK_B 0x252
+# define STACK_AB 0x484
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -30,28 +31,27 @@ typedef struct s_struct
 {
 	t_list	*op_list;
 	t_list	*stack_a;
-	t_list	*tail_a;
 	t_list	*stack_b;
+	t_list	*tail_a;
 	t_list	*tail_b;
 }	t_struct;
 
 /* Temp functions */
-void	cpytostackb(t_struct *st, char *argv, size_t len);
 void	print_list(t_list *list, t_list *list2);
 
 typedef enum e_op
 {
-	SA = 0x1,
-	SB = 0x2,
-	SS = 0x4,
-	PA = 0x8,
-	PB = 0x10,
-	RA = 0x20,
-	RB = 0x40,
-	RR = 0x80,
-	RRA = 0x100,
-	RRB = 0x200,
-	RRR = 0x400,
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR,
 }	t_op;
 
 static const char	*g_op[] = {

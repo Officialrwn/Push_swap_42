@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 10:51:01 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 18:52:49 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,4 @@ void	print_on_exit(t_struct *st, int flag)
 	ft_lstdel(&st->stack_b, &ft_del_lst_content);
 	ft_lstdel(&st->op_list, &ft_del_lst_content);
 	exit(flag);
-}
-
-void	cpytostackb(t_struct *st, char *argv, size_t len)
-{
-	t_list	*temp;
-
-	temp = ft_lstnew(argv, len);
-	if (st->stack_b == NULL)
-		st->stack_b = temp;
-	else
-		ft_lstaddend(&st->stack_b, temp);
 }
