@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 22:08:29 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 23:06:37 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define VALID	0
 # define ERROR 	1
-# define OP_INDEX "00011222333"
+# define OP_INDEX "00012333444"
 # define STACK_A 0x129
 # define STACK_B 0x252
 # define STACK_AB 0x484
@@ -72,16 +72,18 @@ void		validate_argv(t_struct *st, char *argv);
 void		initialize_struct(t_struct *st);
 void		print_on_exit(t_struct *st, int flag);
 void		swap(t_struct *st, t_op op);
-void		push(t_struct *st, t_op op);
+void		push_a(t_struct *st, t_op op);
+void		push_b(t_struct *st, t_op op);
 
 int			check_if_sorted(t_struct *st);
 uint16_t	convert_to_bits(int i);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op);
 
-static const t_fptr	g_execute_op[4] = {
+static const t_fptr	g_execute_op[5] = {
 	swap,
-	push,
+	push_a,
+	push_b,
 	rotate_ab,
 	reverse_rotate_ab,
 };
