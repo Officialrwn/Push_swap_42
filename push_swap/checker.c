@@ -6,13 +6,13 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 21:33:22 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 21:44:39 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	store_op_call(t_list **op_list, int op_enum)
+static int	store_op_call(t_list **op_list, int op_enum, int flag)
 {
 	t_list	*temp;
 	char	op_i;
@@ -24,13 +24,15 @@ static int	store_op_call(t_list **op_list, int op_enum)
 		(*op_list) = temp;
 	else
 		ft_lstadd(op_list, temp);
+	if (flag)
+		return (store_op_call(op_list, op_enum - 1, 0));
 	return (1);
 }
-//store_opcall should check if flag == SS, RR, RRR
 
 static int	get_op_calls(t_struct *st, char *input)
 {
 	int		i;
+	int		flag;
 	int		op_len;
 
 	i = 0;
@@ -38,7 +40,10 @@ static int	get_op_calls(t_struct *st, char *input)
 	while (i < op_len)
 	{
 		if (ft_strcmp(input, g_op[i]) == 0)
-			return (store_op_call(&st->op_list, i));
+		{
+			flag = ((convert_to_bits(i) & STACK_AB) != 0);
+			return (store_op_call(&st->op_list, i, flag));
+		}
 		i++;
 	}
 	print_on_exit(st, ERROR);
@@ -62,7 +67,7 @@ static void	execute_op(t_struct *st)
 		current_node = current_node->next;
 	}
 	print_list(st->stack_a, st->stack_b);
-	printf("tail a: %s\n", (char *)st->tail_a->content);
+	//printf("tail a: %s\n", (char *)st->tail_a->content);
 	print_on_exit(st, VALID);
 }
 
