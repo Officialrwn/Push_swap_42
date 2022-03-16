@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 23:29:42 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 23:36:23 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	swap(t_struct *st, t_op op)
 		(*tail) = (*stack)->next;
 }
 
-void	push_a(t_struct *st, t_op op)
+void	push(t_struct *st, t_op op)
 {
 	t_list	*temp;
 
@@ -39,22 +39,10 @@ void	push_a(t_struct *st, t_op op)
 		st->stack_b = st->stack_b->next;
  		ft_lstadd(&st->stack_a, temp);
 	}
-}
-
-void	push_b(t_struct *st, t_op op)
-{
-	t_list	*temp;
-
 	if (op == PB && st->stack_a != NULL)
 	{
 		temp = st->stack_a;
 		st->stack_a = st->stack_a->next;
-		if (st->stack_b == NULL)
-		{
-			st->stack_b = temp;
-			st->stack_b->next = NULL;
-		}	
-		else
-			ft_lstadd(&st->stack_b, temp);
+		ft_lstadd(&st->stack_b, temp);
 	}
 }
