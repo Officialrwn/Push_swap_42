@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 21:48:08 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 10:51:01 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ void	print_list(t_list *list, t_list *list2)
 
 	temp_node = list2;
 	current_node = list;
-	printf("stack a: ");
+	ft_putstr("stack a: ");
 	while (current_node != NULL)
 	{
-		printf("%s ", (char *)current_node->content);
+		ft_putstr((char *)current_node->content);
 		current_node = current_node->next;
 	}
-	printf("\nstack b: ");
+	ft_putstr("\nstack b: ");
 	while (temp_node != NULL)
 	{
-		printf("%s ", (char *)temp_node->content);
+		ft_putstr((char *)temp_node->content);
 		temp_node = temp_node->next;
 	}
-	printf("\n");
+	ft_putstr("\n");
 }
 
 int	check_if_sorted(t_struct *st)
