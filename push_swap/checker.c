@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 19:51:24 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 20:34:30 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	store_op_call(t_list **op_list, int op_enum)
 	if ((*op_list) == NULL)
 		(*op_list) = temp;
 	else
-		ft_lstaddend(op_list, temp);
+		ft_lstadd(op_list, temp);
 }
 
-static int	get_op_calls(t_struct *st, char *input)
+static void	get_op_calls(t_struct *st, char *input)
 {
 	int		i;
 	int		op_len;
@@ -40,14 +40,14 @@ static int	get_op_calls(t_struct *st, char *input)
 			//i = uintflag. if flag == SS, RR, RRR
 			//put into its own function
 			store_op_call(&st->op_list, i);
-			return (0);
+			return ;
 		}
 		i++;
 	}
-	return (print_on_exit(st, ERROR));
+	print_on_exit(st, ERROR);
 }
 
-static int	execute_op(t_struct *st)
+static void	execute_op(t_struct *st)
 {
 	t_list	*current_node;
 	t_op	op;
@@ -63,35 +63,32 @@ static int	execute_op(t_struct *st)
 		g_execute_op[i](st, op);
 		current_node = current_node->next;
 	}
-	print_list(st->stack_a, st->stack_b);
-	printf("tail a: %s\n", (char *)st->tail_a->content);
-	return (print_on_exit(st, VALID));
+	//print_list(st->stack_a, st->stack_b);
+	//printf("tail a: %s\n", (char *)st->tail_a->content);
+	print_on_exit(st, VALID);
 }
 
 int	main(int argc, char **argv)
 {
 	t_struct	st;
-	int			i;
 	int			fd;
 	char		*input;
 
-	i = 0;
 	fd = 0;
 	if (argc > 1)
 	{
 		initialize_struct(&st);
-		while (i++ < argc - 1)
-			validate_argv(&st, argv[i]);
+		while (--argc > 0)
+			validate_argv(&st, argv[argc]);
 		while (1)
 		{
 			ft_get_next_line(fd, &input);
-			if (ft_strcmp(input, "") == 0)
+		 	if (ft_strcmp(input, "") == 0)
 				break ;
-			if (get_op_calls(&st, input) == 1)
-				return (1);
+			get_op_calls(&st, input);
 			ft_strdel(&input);
 		}
-		return (execute_op(&st));
+		execute_op(&st);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 19:45:41 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 20:01:30 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	reverse_rotate_ab(t_struct *st, t_op op);
 void	swap(t_struct *st, t_op op);
 void	validate_argv(t_struct *st, char *argv);
 void	initialize_struct(t_struct *st);
+void	print_on_exit(t_struct *st, int flag);
 
-int			print_on_exit(t_struct *st, int flag);
 int			check_if_sorted(t_struct *st);
 uint16_t	convert_to_bits(int i);
 

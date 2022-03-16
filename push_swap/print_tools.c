@@ -6,13 +6,13 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 19:45:20 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 20:26:18 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	print_on_exit(t_struct *st, int flag)
+void	print_on_exit(t_struct *st, int flag)
 {
 	if (flag)
 		write(2, "Error\n", 6);
@@ -23,7 +23,7 @@ int	print_on_exit(t_struct *st, int flag)
 	ft_lstdel(&st->stack_a, &ft_del_lst_content);
 	ft_lstdel(&st->stack_b, &ft_del_lst_content);
 	ft_lstdel(&st->op_list, &ft_del_lst_content);
-	return (flag);
+	exit(flag);
 }
 
 void	print_list(t_list *list, t_list *list2)

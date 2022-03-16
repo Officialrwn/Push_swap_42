@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 19:33:14 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/16 20:06:42 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ void	validate_argv(t_struct *st, char *argv)
 	len = ft_strlen(argv) + 1;
 	temp = ft_lstnew(argv, len);
 	if (st->stack_a == NULL)
+	{
 		st->stack_a = temp;
+		st->tail_a = temp;
+	}	
 	else
-		ft_lstaddend(&st->stack_a, temp);
-	st->tail_a = temp;
+		ft_lstadd(&st->stack_a, temp);
 }
 
 int	check_if_sorted(t_struct *st)
