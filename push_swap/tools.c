@@ -6,53 +6,72 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 16:18:21 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 11:25:01 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(t_struct *st)
+uint16_t	convert_to_bits(int i)
 {
-	int	i;
+	uint16_t	bit;
 
-	i = st->a.top;
-	while (i >= 0)
-		ft_putnbr(st->a.items[i--]);
-	i = st->b.top;
-	if (st->b.top != -1)
+	bit = 0 ^ 1 << i;
+	return (bit);
+}
+
+void	initialize_struct(t_struct *st)
+{
+	st->op_list = NULL;
+	st->stack_a = NULL;
+	st->tail_a = NULL;
+	st->stack_b = NULL;
+	st->tail_b = NULL;
+}
+
+void	validate_argv(t_struct *st, char *argv)
+{
+	t_list	*current_node;
+	t_list	*temp;
+	size_t	len;
+	int		num;
+
+	current_node = st->stack_a;
+	num = ft_atoi(argv);
+	if (num == 0 && ft_strcmp(argv, "0") != 0)
+		print_on_exit(st, ERROR);
+	while (current_node != NULL)
 	{
-		ft_putstr("\n");
-		while (i >= 0 && st->b.top != -1)
-			ft_putnbr(st->b.items[i--]);
+		if (ft_strcmp(current_node->content, argv) == 0)
+			print_on_exit(st, ERROR);
+		current_node = current_node->next;
 	}
-	ft_putstr("\n");
+	len = ft_strlen(argv) + 1;
+	temp = ft_lstnew(argv, len);
+	if (st->stack_a == NULL)
+	{
+		st->stack_a = temp;
+		st->tail_a = temp;
+	}	
+	else
+		ft_lstadd(&st->stack_a, temp);
 }
 
 int	check_if_sorted(t_struct *st)
 {
 	int	i;
 
-	i = st->a.top;
-	if (i == -1 || st->b.top != -1)
-		return (0);
-	while (i > 0)
+	flag = 1;
+	current_node = st->stack_a;
+	if (current_node != NULL)
 	{
-		if (st->a.items[i] > st->a.items[i - 1])
-			return (0);
-		i--;
+		while (current_node->next != NULL)
+		{
+			temp = ft_atoi(current_node->content);
+			if (temp > ft_atoi(current_node->next->content))
+				flag = 0;
+			current_node = current_node->next;
+		}
 	}
 	return (1);
-}
-
-void	print_on_exit(t_struct *st, int flag)
-{
-	st->op_list = NULL;
-	if (flag)
-		write(2, "Error\n", 6);
-	else if (check_if_sorted(st))
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
-	exit(flag);
 }

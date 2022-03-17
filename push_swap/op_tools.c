@@ -6,33 +6,27 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/15 16:26:30 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 11:24:58 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_ab(t_struct *st, t_op op)
-{
-	if (st->a.top > 0 && (op == SA || op == SS))
-		ft_swap(&st->a.items[st->a.top], &st->a.items[st->a.top - 1]);
-	if (st->b.top > 0 && (op == SB || op == SS))
-		ft_swap(&st->b.items[st->b.top], &st->b.items[st->b.top - 1]);
-}
-
 void	push_ab(t_struct *st, t_op op)
 {
-	if (st->b.top != -1 && op == PA)
+	t_list	*temp;
+
+	if (op == PA && st->stack_b != NULL)
 	{
 		st->a.items[st->a.top + 1] = st->b.items[st->b.top];
 		st->a.top++;
 		st->b.top--;
 	}
-	else if (st->a.top != -1 && op == PB)
+	if (op == PB && st->stack_a != NULL)
 	{
-		st->b.items[st->b.top + 1] = st->a.items[st->a.top];
-		st->b.top++;
-		st->a.top--;
+		temp = st->stack_a;
+		st->stack_a = st->stack_a->next;
+		ft_lstadd(&st->stack_b, temp);
 	}
 }
 
