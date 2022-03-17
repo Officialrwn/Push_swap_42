@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 20:06:42 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 11:47:57 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-uint16_t	convert_to_bits(int i)
-{
-	uint16_t	bit;
-
-	bit = 0 ^ 1 << i;
-	return (bit);
-}
 
 void	initialize_struct(t_struct *st)
 {

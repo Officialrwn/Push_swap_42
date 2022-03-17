@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 10:42:12 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 11:48:01 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static uint16_t	convert_to_bits(int i)
+{
+	uint16_t	bit;
+
+	bit = 0 ^ 1 << i;
+	return (bit);
+}
 
 static int	store_op_call(t_list **op_list, int op_enum, int flag)
 {
