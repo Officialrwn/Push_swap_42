@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   op_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:49:48 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 13:28:01 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 20:45:32 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/* 
 void	push_ab(t_struct *st, t_op op)
 {
 	t_list	*temp;
@@ -75,4 +75,4 @@ void	reverse_rotate_ab(t_struct *st, t_op op)
 		temp->next = NULL;
 		ft_lstadd(&st->stack_b, end_node);
 	}
-}
+} */

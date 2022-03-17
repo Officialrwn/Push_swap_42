@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/16 19:05:52 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 20:42:41 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void	ft_lstaddend(t_list **alst, t_list *new);
 void	ft_lstdelend(t_list **alst, void (*del)(void *, size_t));
 void	ft_lstswap(t_list **list);
+void	ft_dlstswap(t_dlist **list);
 
 int		ft_lstsize(t_list **lst);
 t_dlist	*ft_dlstnew(void const *content, size_t content_size);
@@ -123,7 +124,7 @@ char	*ft_uitoa_base(unsigned long long num, int base, int flag);
 char	*ft_itoa_base(long long num, int base, int flag);
 char	*ft_ftoa(long double num, int precision_flag, int precision);
 char	*ft_strjoin_update(char const *s1, char const *s2);
-void	ft_del_lst_content(void *content, size_t contentsize);
+void	ft_lstdel_content(void *content, size_t contentsize);
 void	ft_swap(int *a, int *b);
 
 #endif

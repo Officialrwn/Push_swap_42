@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 19:02:57 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 20:45:44 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@
 typedef struct s_struct
 {
 	t_list	*op_list;
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*tail_a;
-	t_list	*tail_b;
+	t_dlist	*stack_a;
+	t_dlist	*stack_b;
+	t_dlist	*tail_a;
+	t_dlist	*tail_b;
 }	t_struct;
 
 typedef enum e_op
@@ -65,17 +65,15 @@ static const char	*g_op[] = {
 	"rrr"
 };
 
-void	print_list(t_list *list, t_list *list2);
-void	rotate_ab(t_struct *stm, t_op op);
-void	reverse_rotate_ab(t_struct *st, t_op op);
+//void	reverse_rotate_ab(t_struct *st, t_op op);
+void	print_list(t_dlist *list, t_dlist *list2);
 void	validate_argv(t_struct *st, char *argv);
 void	initialize_struct(t_struct *st);
 void	print_on_exit(t_struct *st, int flag);
 void	swap(t_struct *st, t_op op);
 void	push(t_struct *st, t_op op);
 void	rotate(t_struct *st, t_op op);
-void	reverse_rotate(t_struct *st, t_op);
-
+void	reverse_rotate(t_struct *st, t_op op);
 
 int		check_if_sorted(t_struct *st);
 

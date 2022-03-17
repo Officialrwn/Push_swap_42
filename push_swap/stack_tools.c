@@ -6,25 +6,28 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 19:13:45 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 20:56:06 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_list	*pop(t_list **stack)
+static t_dlist	*pop(t_dlist **stack)
 {
-	t_list	*temp;
+	t_dlist	*temp;
 
 	temp = (*stack);
 	(*stack) = (*stack)->next;
+	//(*stack)->previous = NULL;
+	//temp->next = NULL;
+	//temp->previous = NULL;
 	return (temp);
 }
 
 void	swap(t_struct *st, t_op op)
 {
-	t_list	**stack;
-	t_list	**tail;
+	t_dlist	**stack;
+	t_dlist	**tail;
 
 	stack = &st->stack_a;
 	tail = &st->tail_a;
@@ -33,7 +36,7 @@ void	swap(t_struct *st, t_op op)
 		stack = &st->stack_b;
 		tail = &st->tail_b;
 	}
-	ft_lstswap(stack);
+	ft_dlstswap(stack);
 	if ((*stack) == (*tail))
 		(*tail) = (*stack)->next;
 }
@@ -41,15 +44,15 @@ void	swap(t_struct *st, t_op op)
 void	push(t_struct *st, t_op op)
 {
 	if (op == PA && st->stack_b != NULL)
- 		ft_lstadd(&st->stack_a, pop(&st->stack_b));
+		ft_dlstaddfront(&st->stack_a, pop(&st->stack_b));
 	if (op == PB && st->stack_a != NULL)
-		ft_lstadd(&st->stack_b, pop(&st->stack_a));
+		ft_dlstaddfront(&st->stack_b, pop(&st->stack_a));
 }
 
 void	rotate(t_struct *st, t_op op)
 {
-	t_list	**stack;
-	t_list	**tail;
+	t_dlist	**stack;
+	t_dlist	**tail;
 
 	stack = &st->stack_a;
 	tail = &st->tail_a;
@@ -59,13 +62,13 @@ void	rotate(t_struct *st, t_op op)
 		tail = &st->tail_b;
 	}
 	(*tail) = pop(stack);
-	ft_lstaddend(stack, (*tail));
+	ft_dlstaddend(stack, (*tail));
 }
 
 void	reverse_rotate(t_struct *st, t_op op)
 {
-	t_list	**stack;
-	t_list	**tail;
+	t_dlist	**stack;
+	t_dlist	**tail;
 
 	stack = &st->stack_a;
 	tail = &st->tail_a;
@@ -74,7 +77,6 @@ void	reverse_rotate(t_struct *st, t_op op)
 		stack = &st->stack_b;
 		tail = &st->tail_b;
 	}
-	(*tail) = pop(stack);
-	ft_lstadd(stack, (*tail));
-	//Need to loop through list and set new tail;
+	(*tail) = (*tail)->previous;
+	ft_dlstaddfront(stack, pop(&(*tail)->next));
 }

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_lst_content.c                               :+:      :+:    :+:   */
+/*   ft_dlstswap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/13 12:50:25 by leo               #+#    #+#             */
-/*   Updated: 2022/03/13 12:50:55 by leo              ###   ########.fr       */
+/*   Created: 2022/03/14 22:23:06 by leo               #+#    #+#             */
+/*   Updated: 2022/03/17 20:42:26 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_del_lst_content(void *content, size_t contentsize)
+void	ft_dlstswap(t_dlist **list)
 {
-	if (content != NULL)
-	{
-		free(content);
-		content = NULL;
-	}
-	contentsize = 0;
+	t_dlist	*node;
+
+	node = (*list);
+	(*list) = (*list)->next;
+	node->next = (*list)->next;
+	node->previous = (*list);
+	(*list)->next->previous = node;
+	(*list)->next = node;
+	(*list)->previous = NULL;
 }

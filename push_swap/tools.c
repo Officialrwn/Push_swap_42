@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 11:47:57 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 20:46:09 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void	initialize_struct(t_struct *st)
 {
 	st->op_list = NULL;
 	st->stack_a = NULL;
-	st->tail_a = NULL;
 	st->stack_b = NULL;
+	st->tail_a = NULL;
 	st->tail_b = NULL;
 }
 
 void	validate_argv(t_struct *st, char *argv)
 {
-	t_list	*current_node;
-	t_list	*temp;
+	t_dlist	*current_node;
+	t_dlist	*temp;
 	size_t	len;
 	int		num;
 
@@ -39,19 +39,19 @@ void	validate_argv(t_struct *st, char *argv)
 		current_node = current_node->next;
 	}
 	len = ft_strlen(argv) + 1;
-	temp = ft_lstnew(argv, len);
+	temp = ft_dlstnew(argv, len);
 	if (st->stack_a == NULL)
 	{
 		st->stack_a = temp;
 		st->tail_a = temp;
 	}	
 	else
-		ft_lstadd(&st->stack_a, temp);
+		ft_dlstaddfront(&st->stack_a, temp);
 }
 
 int	check_if_sorted(t_struct *st)
 {
-	t_list	*current_node;
+	t_dlist	*current_node;
 	int		temp;
 	int		flag;
 
