@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 23:36:23 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 10:43:24 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap(t_struct *st, t_op op)
 
 	stack = &st->stack_a;
 	tail = &st->tail_a;
-	if ((convert_to_bits(op) & STACK_A) == 0)
+	if (op == SB)
 	{
 		stack = &st->stack_b;
 		tail = &st->tail_b;
