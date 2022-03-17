@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 11:48:15 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 12:16:04 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	initialize_struct(t_struct *st);
 void	print_on_exit(t_struct *st, int flag);
 void	swap(t_struct *st, t_op op);
 void	push(t_struct *st, t_op op);
+void	rotate(t_struct *st, t_op op);
+
 
 int		check_if_sorted(t_struct *st);
 
@@ -81,7 +83,7 @@ typedef void		(*t_fptr)(t_struct *st, t_op op);
 static const t_fptr	g_execute_op[4] = {
 	swap,
 	push,
-	rotate_ab,
+	rotate,
 	reverse_rotate_ab,
 };
 

@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 11:48:01 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 13:04:36 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ static void	execute_op(t_struct *st)
 		current_node = current_node->next;
 	}
 	print_list(st->stack_a, st->stack_b);
-	//printf("tail a: %s\n", (char *)st->tail_a->content);
+	printf("tail a: %s\n", (char *)st->tail_a->content);
+	if (st->tail_b != NULL)
+		printf("tail b: %s\n", (char *)st->tail_b->content);
 	print_on_exit(st, VALID);
 }
 
