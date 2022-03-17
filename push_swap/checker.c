@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/16 23:31:08 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 10:08:53 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	store_op_call(t_list **op_list, int op_enum, int flag)
 	if ((*op_list) == NULL)
 		(*op_list) = temp;
 	else
-		ft_lstadd(op_list, temp);
+		ft_lstaddend(op_list, temp);
 	if (flag)
-		return (store_op_call(op_list, op_enum - 1, 0));
+		return (store_op_call(op_list, op_enum + 1, 0));
 	return (1);
 }
 
@@ -36,12 +36,14 @@ static int	get_op_calls(t_struct *st, char *input)
 	int		op_len;
 
 	i = 0;
+	flag = 0;
 	op_len = sizeof(g_op) / sizeof(g_op[0]);
 	while (i < op_len)
 	{
 		if (ft_strcmp(input, g_op[i]) == 0)
 		{
 			flag = ((convert_to_bits(i) & STACK_AB) != 0);
+			i = i - 2 * (flag);
 			return (store_op_call(&st->op_list, i, flag));
 		}
 		i++;
