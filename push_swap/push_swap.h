@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 12:16:04 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 19:02:57 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	print_on_exit(t_struct *st, int flag);
 void	swap(t_struct *st, t_op op);
 void	push(t_struct *st, t_op op);
 void	rotate(t_struct *st, t_op op);
+void	reverse_rotate(t_struct *st, t_op);
 
 
 int		check_if_sorted(t_struct *st);
@@ -84,7 +85,7 @@ static const t_fptr	g_execute_op[4] = {
 	swap,
 	push,
 	rotate,
-	reverse_rotate_ab,
+	reverse_rotate,
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlstaddend.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 15:10:56 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/23 17:44:17 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 19:15:47 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void	ft_dlstaddend(t_dlist **alst, t_dlist *new)
 		temp = temp->next;
 	temp->next = new;
 	new->previous = temp;
+	new->next = NULL;
 }

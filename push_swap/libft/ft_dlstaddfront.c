@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlstaddfront.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.42.fr>            +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 15:02:37 by leotran           #+#    #+#             */
-/*   Updated: 2021/11/23 17:38:06 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 19:14:43 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ void	ft_dlstaddfront(t_dlist **alst, t_dlist *new)
 	new->next = (*alst);
 	(*alst)->previous = new;
 	(*alst) = new;
+	(*alst)->previous = NULL;
 }

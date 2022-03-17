@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 13:28:04 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 19:13:45 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,21 @@ void	rotate(t_struct *st, t_op op)
 	}
 	(*tail) = pop(stack);
 	ft_lstaddend(stack, (*tail));
+}
+
+void	reverse_rotate(t_struct *st, t_op op)
+{
+	t_list	**stack;
+	t_list	**tail;
+
+	stack = &st->stack_a;
+	tail = &st->tail_a;
+	if (op == RB)
+	{
+		stack = &st->stack_b;
+		tail = &st->tail_b;
+	}
+	(*tail) = pop(stack);
+	ft_lstadd(stack, (*tail));
+	//Need to loop through list and set new tail;
 }
