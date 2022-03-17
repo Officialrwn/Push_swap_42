@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 22:08:52 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 23:08:27 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,18 @@ void	print_list(t_struct *st)
 		temp = temp->next;
 	}
 	temp = st->stack_b;
-	ft_putstr("\nstack b: ");
+	if (st->tail_a)
+		printf(" tail a: %s\n", (char *)st->tail_a->content);
+	else
+		printf("\n");
+	ft_putstr("stack b: ");
 	while (temp != NULL && st->stack_b)
 	{
 		printf("%s ", (char *)temp->content);
 		temp = temp->next;
 	}
-	ft_putstr("\n");
-	if (st->tail_a)
-		printf("tail a: %s\n", (char *)st->tail_a->content);
 	if (st->tail_b)
-		printf("tail b: %s\n", (char *)st->tail_b->content);
+		printf(" tail b: %s\n", (char *)st->tail_b->content);
+	else
+		printf("\n");
 }

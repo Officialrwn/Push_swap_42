@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 22:12:05 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 22:48:59 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define VALID	0
 # define ERROR 	1
-# define OP_INDEX "00011222333"
+# define OP_INDEX "00011222222"
 # define STACK_A 0x129
 # define STACK_B 0x252
 # define STACK_AB 0x484
@@ -74,17 +74,15 @@ void	print_on_exit(t_struct *st, int flag);
 void	swap(t_struct *st, t_op op);
 void	push(t_struct *st, t_op op);
 void	rotate(t_struct *st, t_op op);
-void	reverse_rotate(t_struct *st, t_op op);
 
 int		check_if_sorted(t_struct *st);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op);
 
-static const t_fptr	g_execute_op[4] = {
+static const t_fptr	g_execute_op[3] = {
 	swap,
 	push,
 	rotate,
-	reverse_rotate,
 };
 
 #endif

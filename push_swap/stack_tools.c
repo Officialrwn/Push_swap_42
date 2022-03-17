@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 22:11:08 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 23:04:59 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,34 @@ static t_list	*pop(t_list **stack)
 	return (temp);
 }
 
+static t_list	*set_tail_to_prev(t_list **stack)
+{
+	t_list	*temp;
+
+	temp = (*stack);
+	while (temp->next->next)
+		temp = temp->next;
+	return (temp);
+}
+
 void	swap(t_struct *st, t_op op)
 {
 	t_list	**stack;
 	t_list	**tail;
 
-	stack = &st->stack_a;
 	tail = &st->tail_a;
+	stack = &st->stack_a;
 	if (op == SB)
 	{
 		stack = &st->stack_b;
 		tail = &st->tail_b;
 	}
-	ft_lstswap(stack);
-	if ((*stack) == (*tail))
-		(*tail) = (*stack)->next;
+	if ((*stack))
+	{
+		ft_lstswap(stack);
+		if ((*stack) == (*tail))
+			(*tail) = (*stack)->next;
+	}	
 }
 
 void	push(t_struct *st, t_op op)
@@ -65,32 +78,20 @@ void	rotate(t_struct *st, t_op op)
 
 	stack = &st->stack_a;
 	tail = &st->tail_a;
-	if (op == RB)
+	if (op == RB || op == RRB)
 	{
 		stack = &st->stack_b;
 		tail = &st->tail_b;
 	}
-	(*tail) = pop(stack);
-	ft_lstaddend(stack, (*tail));
-}
-
-void	reverse_rotate(t_struct *st, t_op op)
-{
-	t_list	**stack;
-	t_list	**tail;
-	t_list	*temp;
-
-	stack = &st->stack_a;
-	tail = &st->tail_a;
-	if (op == RB)
+	if ((*stack) && (op == RA || op == RB))
 	{
-		stack = &st->stack_b;
-		tail = &st->tail_b;
+		(*tail) = pop(stack);
+		ft_lstaddend(stack, (*tail));
 	}
-	(*tail) = pop(stack);
-	ft_lstadd(stack, (*tail));
-	temp = (*stack);
-	while (temp->next != NULL)
-		temp = temp->next;
-	(*tail) = temp;
+	else if ((*stack))
+	{
+		(*tail) = set_tail_to_prev(stack);
+		ft_lstadd(stack, (*tail)->next);
+		(*tail)->next = NULL;
+	}
 }
