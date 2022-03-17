@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 13:04:36 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 21:56:00 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ static void	execute_op(t_struct *st)
 		g_execute_op[i](st, op);
 		current_node = current_node->next;
 	}
-	print_list(st->stack_a, st->stack_b);
-	printf("tail a: %s\n", (char *)st->tail_a->content);
-	if (st->tail_b != NULL)
-		printf("tail b: %s\n", (char *)st->tail_b->content);
+	print_list(st);
 	print_on_exit(st, VALID);
 }
 

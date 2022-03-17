@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 19:02:57 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/17 22:12:05 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static const char	*g_op[] = {
 	"rrr"
 };
 
-void	print_list(t_list *list, t_list *list2);
+void	print_list(t_struct *st);
 void	rotate_ab(t_struct *stm, t_op op);
 void	reverse_rotate_ab(t_struct *st, t_op op);
 void	validate_argv(t_struct *st, char *argv);
@@ -74,8 +74,7 @@ void	print_on_exit(t_struct *st, int flag);
 void	swap(t_struct *st, t_op op);
 void	push(t_struct *st, t_op op);
 void	rotate(t_struct *st, t_op op);
-void	reverse_rotate(t_struct *st, t_op);
-
+void	reverse_rotate(t_struct *st, t_op op);
 
 int		check_if_sorted(t_struct *st);
 

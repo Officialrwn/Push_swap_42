@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 11:47:57 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/17 22:04:52 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	check_if_sorted(t_struct *st)
 
 	flag = 1;
 	current_node = st->stack_a;
-	if (current_node != NULL)
+	if (st->stack_a)
 	{
 		while (current_node->next != NULL)
 		{
@@ -67,7 +67,7 @@ int	check_if_sorted(t_struct *st)
 			current_node = current_node->next;
 		}
 	}
-	if (st->stack_b != NULL)
+	if (st->stack_b)
 		flag = 0;
 	return (flag);
 }
