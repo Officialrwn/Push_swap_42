@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/18 12:51:00 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/18 16:13:42 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-
-/* Forbidden header*/
-# include <stdio.h>
-
 
 typedef struct s_struct
 {

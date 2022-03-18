@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_tools.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/03/17 23:08:27 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/18 16:13:34 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,22 @@ void	print_list(t_struct *st)
 	ft_putstr("stack a: ");
 	while (temp != NULL && st->stack_a)
 	{
-		printf("%s ", (char *)temp->content);
+		ft_printf("%s ", (char *)temp->content);
 		temp = temp->next;
 	}
 	temp = st->stack_b;
 	if (st->tail_a)
-		printf(" tail a: %s\n", (char *)st->tail_a->content);
+		ft_printf(" tail a: %s\n", (char *)st->tail_a->content);
 	else
-		printf("\n");
+		ft_printf("\n");
 	ft_putstr("stack b: ");
 	while (temp != NULL && st->stack_b)
 	{
-		printf("%s ", (char *)temp->content);
+		ft_printf("%s ", (char *)temp->content);
 		temp = temp->next;
 	}
 	if (st->tail_b)
-		printf(" tail b: %s\n", (char *)st->tail_b->content);
+		ft_printf(" tail b: %s\n", (char *)st->tail_b->content);
 	else
-		printf("\n");
+		ft_printf("\n");
 }
