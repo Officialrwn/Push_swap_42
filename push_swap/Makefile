@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
+#    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/03/18 15:24:05 by leotran          ###   ########.fr        #
+#    Updated: 2022/03/19 00:50:53 by leo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = libft/
+NODE = libft/node_struct/
 NAME = a.out
 SRC = 	*.c
 #SRCS = $(addprefix ./src/, $(SRC))
@@ -22,7 +23,7 @@ all: $(NAME)
 	
 $(NAME):
 	@make -C $(LIBFT)
-	gcc $(FLAGS) $(LIBFT)libft.a $(SRC)
+	gcc $(FLAGS) $(LIBFT)libft.a $(NODE)libftnode.a $(SRC)
 #$(SRCS)
 
 clean:

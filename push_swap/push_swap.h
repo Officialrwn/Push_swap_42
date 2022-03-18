@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/18 16:13:42 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/19 00:06:06 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
+# include "libft/node_struct/node.h"
 
 typedef struct s_struct
 {
 	t_list	*op_list;
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*tail_a;
-	t_list	*tail_b;
+	t_node	*stack_a;
+	t_node	*stack_b;
+	t_node	*tail_a;
+	t_node	*tail_b;
 }	t_struct;
 
 typedef enum e_op
