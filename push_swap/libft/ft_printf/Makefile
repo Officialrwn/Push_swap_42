@@ -6,32 +6,27 @@
 #    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/03/18 15:24:05 by leotran          ###   ########.fr        #
+#    Updated: 2022/03/18 16:08:19 by leotran          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT = libft/
-NAME = a.out
-SRC = 	*.c
-#SRCS = $(addprefix ./src/, $(SRC))
-HEADERS = /includes/
+MAKEFLAGS += --silent
+NAME = libftprintf.a
+SRC = 	char_printf.c flags_printf.c int_printf.c length_tools.c \
+		pointers_printf.c ft_printf.c tools.c get_formats.c bonus.c
 FLAGS = -Wall -Wextra -Werror -O3 -I. -Iincludes/
-OBJ = *.o
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 	
 $(NAME):
-	@make -C $(LIBFT)
-	gcc $(FLAGS) $(LIBFT)libft.a $(SRC)
-#$(SRCS)
+	gcc $(FLAGS) -c $(SRC)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-	@make -C $(LIBFT) clean
 	rm -rf $(OBJ)
-	rm -rf $(SURPL_O)
 
 fclean: clean
-	@make -C $(LIBFT) fclean
-	rm -rf $(NAME) *.out
+	rm -rf $(NAME)
 
 re: fclean all

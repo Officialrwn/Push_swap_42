@@ -3,15 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
+#    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/03/14 22:23:48 by leo              ###   ########.fr        #
+#    Updated: 2022/03/18 16:06:40 by leotran          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS += --silent
 NAME = libft.a
+NODE = node_struct/
+PRINTF = ft_printf/
 SRC = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 		ft_itoa.c ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
 		ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putchar.c ft_putendl_fd.c ft_putendl.c \
@@ -24,22 +26,30 @@ SRC = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c 
 		ft_lstsize.c ft_dlstnew.c ft_dlstaddfront.c ft_dlstaddend.c ft_dlstdelfront.c ft_countstrings.c \
 		ft_strccpy.c ft_get_next_line.c ft_foreach.c ft_uitoa_base.c ft_putaddr.c ft_put_u_nbr.c \
 		ft_uint_base_count.c ft_int_base_count.c ft_itoa_base.c ft_float_count.c ft_ftoa.c ft_strjoin_update.c \
-		ft_del_lst_content.c ft_swap.c ft_lstswap.c
+		ft_del_lst_content.c ft_swap.c ft_lstswap.c \
 
 SRCS = $(addprefix ./, $(SRC))
-FLAGS = -Wall -Wextra -Werror -O3 -I. -I includes
+FLAGS = -Wall -Wextra -Werror -O3 -I. -Iincludes/
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@make -C $(NODE)
+	@make -C $(PRINTF)
+	cp $(NODE)libftnode.a $(NAME)
+	cp $(PRINTF)libftprintf.a $(NAME)
 	gcc $(FLAGS) -c $(SRCS)
 	ar rc $(NAME) $(OBJ)
 
 clean:
+	@make -C $(NODE) clean
+	@make -C $(PRINTF) clean
 	/bin/rm -f $(OBJ)
 
 fclean: clean
+	@make -C $(NODE) fclean
+	@make -C $(PRINTF) fclean
 	/bin/rm -f $(NAME)
 
 re: fclean all

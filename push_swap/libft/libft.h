@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/16 19:05:52 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/18 16:10:31 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,6 @@ char	*ft_ftoa(long double num, int precision_flag, int precision);
 char	*ft_strjoin_update(char const *s1, char const *s2);
 void	ft_del_lst_content(void *content, size_t contentsize);
 void	ft_swap(int *a, int *b);
+int		ft_printf(const char *format, ...);
 
 #endif
