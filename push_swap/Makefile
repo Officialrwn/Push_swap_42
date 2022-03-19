@@ -6,7 +6,7 @@
 #    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/03/19 15:34:08 by leo              ###   ########.fr        #
+#    Updated: 2022/03/19 15:48:05 by leo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NODE = libft/node_struct/libftnode.a
 CHECKER = checker
 CHK_SRC = src/checker/checker.c
 PUSHSWAP = push_swap
-PS_SRC = src/push_swap/push_swap.c
+PS_SRC = src/push_swap/*.c
 COMMON_SRC = src/common/*.c
 #SRCS = $(addprefix ./src/, $(SRC))
 HEADERS = /includes/
