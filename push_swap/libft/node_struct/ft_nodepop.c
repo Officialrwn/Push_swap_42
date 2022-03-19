@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nodepop.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 14:02:12 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/18 14:03:23 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/19 14:27:04 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ t_node	*ft_nodepop(t_node **node)
 
 	temp = (*node);
 	(*node) = (*node)->next;
+	temp->next = NULL;
 	return (temp);
 }

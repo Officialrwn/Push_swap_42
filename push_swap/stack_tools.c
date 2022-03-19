@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/19 00:46:58 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/19 14:29:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,27 @@ void	push(t_struct *st, t_op op)
 {
 	if (op == PA && st->stack_b)
 	{
-		if (!st->stack_a)
-			st->tail_a = st->stack_b;
 		if (!st->stack_b->next)
 			st->tail_b = NULL;
-		ft_nodeadd_front(&st->stack_a, ft_nodepop(&st->stack_b));
+		if (!st->stack_a)
+		{
+			st->tail_a = st->stack_b;
+			st->stack_a = ft_nodepop(&st->stack_b);
+		}
+		else	
+			ft_nodeadd_front(&st->stack_a, ft_nodepop(&st->stack_b));
 	}
 	if (op == PB && st->stack_a)
 	{
-		if (!st->stack_b)
-			st->tail_b = st->stack_a;
 		if (!st->stack_a->next)
 			st->tail_a = NULL;
-		ft_nodeadd_front(&st->stack_b, ft_nodepop(&st->stack_a));
+	 	if (!st->stack_b)
+		{
+			st->tail_b = st->stack_a;
+			st->stack_b = ft_nodepop(&st->stack_a);
+		}
+		else
+			ft_nodeadd_front(&st->stack_b, ft_nodepop(&st->stack_a));
 	}
 }
 
