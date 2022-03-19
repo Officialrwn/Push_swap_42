@@ -6,39 +6,53 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/19 16:32:46 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/20 01:20:00 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-static int	set_pivot(int first, int mid, int last)
+void	print_intarr(int *num, int size)
 {
-	int	pivot;
+	int	i;
 
-	pivot = mid;
-	if (first > pivot && first < last)
-		pivot = first;
-	else if (last > pivot && last < first)
-		pivot = last;
-	return (pivot);
+	i = 0;
+	while (i < size)
+		ft_printf("%d ", num[i++]);
+	ft_putstr("\n");
+}
+
+void	get_lis(int lis[], t_struct st, int size)
+{
+	int		num[size];
+ 	int		i;
+
+	i = 0;
+	while (st.stack_a)
+	{
+		lis[i] = 1;
+		num[i++] = st.stack_a->num;
+		st.stack_a = st.stack_a->next;
+	}
+	print_intarr(num, size);
 }
 
 int	main(int argc, char **argv)
 {
 	t_struct	st;
-	int			count;
-	int			pivot;
+	int			lis[argc - 1];
+	int			size;
 
 	if (argc > 1)
 	{
-		count = argc / 2;
+		size = argc - 1;
 		initialize_struct(&st);
 		while (--argc > 0)
 			validate_argv(&st, argv[argc]);
-		pivot = set_pivot(st.stack_a->num, ft_atoi(argv[count]), st.tail_a->num);
-		//print_list(&st);
-		ft_printf("%d\n", pivot);
+		get_lis(lis, st, size);
+
+		print_intarr(lis, size);
+		print_list(&st);
 	}
 	return (0);
 }
