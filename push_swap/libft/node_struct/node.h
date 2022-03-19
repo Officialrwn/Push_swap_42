@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 12:50:34 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/18 15:22:07 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/19 14:48:04 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <stdlib.h>
 
-typedef struct	s_node
+typedef struct s_node
 {
-	int		num;
+	int				num;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
