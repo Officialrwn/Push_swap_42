@@ -6,11 +6,11 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/03/19 14:31:41 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/19 15:39:32 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 void	print_on_exit(t_struct *st, int flag)
 {

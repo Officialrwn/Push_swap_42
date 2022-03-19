@@ -6,11 +6,11 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/19 14:48:21 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/19 15:39:38 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 void	swap(t_struct *st, t_op op)
 {

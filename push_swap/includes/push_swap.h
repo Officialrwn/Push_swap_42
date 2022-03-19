@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/19 00:06:06 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/19 14:59:27 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ void	print_on_exit(t_struct *st, int flag);
 void	swap(t_struct *st, t_op op);
 void	push(t_struct *st, t_op op);
 void	rotate(t_struct *st, t_op op);
+void	execute_op(t_struct *st);
 
+int		store_op_call(t_list **op_list, int op_enum, int flag);
 int		check_if_sorted(t_struct *st);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op);
