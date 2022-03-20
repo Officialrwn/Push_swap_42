@@ -6,51 +6,39 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/20 01:20:00 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/20 14:13:05 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-void	print_intarr(int *num, int size)
+static void	initialize_intarrays(int **lis, int **num, int size)
 {
-	int	i;
-
-	i = 0;
-	while (i < size)
-		ft_printf("%d ", num[i++]);
-	ft_putstr("\n");
-}
-
-void	get_lis(int lis[], t_struct st, int size)
-{
-	int		num[size];
- 	int		i;
-
-	i = 0;
-	while (st.stack_a)
-	{
-		lis[i] = 1;
-		num[i++] = st.stack_a->num;
-		st.stack_a = st.stack_a->next;
-	}
-	print_intarr(num, size);
+	(*lis) = (int *)malloc(sizeof(int) * size);
+	(*num) = (int *)malloc(sizeof(int) * size);
+	if (!(*num) || !(*lis))
+		exit (1);
+	while (size--)
+		(*lis)[size] = 1;
 }
 
 int	main(int argc, char **argv)
 {
 	t_struct	st;
-	int			lis[argc - 1];
+	int			*lis;
+	int			*num;
 	int			size;
 
 	if (argc > 1)
 	{
 		size = argc - 1;
 		initialize_struct(&st);
+		initialize_intarrays(&lis, &num, size);
 		while (--argc > 0)
-			validate_argv(&st, argv[argc]);
-		get_lis(lis, st, size);
+			num[argc - 1] = validate_argv(&st, argv[argc]);
+		get_lislen(&lis, num, size);
 
+		print_intarr(lis, size);
 		print_intarr(lis, size);
 		print_list(&st);
 	}

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/03/19 15:39:32 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/20 13:32:29 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,14 @@ void	print_list(t_struct *st)
 		ft_printf(" tail b: %d\n", st->tail_b->num);
 	else
 		ft_printf("\n");
+}
+
+void	print_intarr(int *num, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+		ft_printf("%d ", num[i++]);
+	ft_putstr("\n");
 }

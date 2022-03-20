@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/18 16:10:31 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/20 14:03:41 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,7 @@ char	*ft_strjoin_update(char const *s1, char const *s2);
 void	ft_del_lst_content(void *content, size_t contentsize);
 void	ft_swap(int *a, int *b);
 int		ft_printf(const char *format, ...);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
 
 #endif

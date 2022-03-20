@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/19 15:39:44 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/20 13:41:48 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	initialize_struct(t_struct *st)
 	st->tail_b = NULL;
 }
 
-void	validate_argv(t_struct *st, char *argv)
+int	validate_argv(t_struct *st, char *argv)
 {
 	t_node	*current_node;
 	t_node	*temp;
@@ -45,6 +45,7 @@ void	validate_argv(t_struct *st, char *argv)
 	}
 	else
 		ft_nodeadd_front(&st->stack_a, temp);
+	return (num);
 }
 
 int	check_if_sorted(t_struct *st)
