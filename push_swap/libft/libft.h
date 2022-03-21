@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/20 14:03:41 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 12:10:59 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ void	ft_swap(int *a, int *b);
 int		ft_printf(const char *format, ...);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
+long	ft_atol(const char *nptr);
 
 #endif

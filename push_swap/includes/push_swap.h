@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/21 09:36:33 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 11:31:36 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,20 @@
 # define STACK_A 0x129
 # define STACK_B 0x252
 # define STACK_AB 0x484
+# define MAXINT 2147483647
+# define MININT -2147483648
 
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
 # include "libft/node_struct/node.h"
+
+typedef struct s_nums
+{
+	int	*lis;
+	int	*num;
+	int	size;
+}	t_nums;
 
 typedef struct s_struct
 {
@@ -74,7 +83,7 @@ void	print_on_exit(t_struct *st, int flag);
 void	print_intarr(int *num, int size);
 void	print_list(t_struct *st);
 
-int		get_lisindex(int **lis, int *num, int size);
+int		get_lislen(t_nums *arr);
 int		validate_argv(t_struct *st, char *argv);
 int		store_op_call(t_list **op_list, int op_enum, int flag);
 int		check_if_sorted(t_struct *st);

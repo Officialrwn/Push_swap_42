@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/03/20 13:41:48 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 12:08:04 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	validate_argv(t_struct *st, char *argv)
 {
 	t_node	*current_node;
 	t_node	*temp;
-	int		num;
+	long	num;
 
 	current_node = st->stack_a;
-	num = ft_atoi(argv);
-	if (num == 0 && ft_strcmp(argv, "0") != 0)
+	num = ft_atol(argv);
+	if ((num == 0 && ft_strcmp(argv, "0") != 0) || num > MAXINT || num < MININT)
 		print_on_exit(st, ERROR);
 	while (current_node)
 	{
