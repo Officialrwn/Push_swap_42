@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/20 14:13:02 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 09:36:33 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void	execute_op(t_struct *st);
 void	print_on_exit(t_struct *st, int flag);
 void	print_intarr(int *num, int size);
 void	print_list(t_struct *st);
-void	get_lislen(int **lis, int *num, int size);
 
+int		get_lisindex(int **lis, int *num, int size);
 int		validate_argv(t_struct *st, char *argv);
 int		store_op_call(t_list **op_list, int op_enum, int flag);
 int		check_if_sorted(t_struct *st);

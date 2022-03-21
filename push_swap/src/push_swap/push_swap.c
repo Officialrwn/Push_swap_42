@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/20 14:13:05 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 09:41:34 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ int	main(int argc, char **argv)
 		initialize_intarrays(&lis, &num, size);
 		while (--argc > 0)
 			num[argc - 1] = validate_argv(&st, argv[argc]);
-		get_lislen(&lis, num, size);
-
-		print_intarr(lis, size);
+		int test = get_lisindex(&lis, num, size);
 		print_intarr(lis, size);
 		print_list(&st);
 	}
