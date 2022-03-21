@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nodeadd_end.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:24:25 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/18 13:39:52 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/21 15:18:06 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	ft_nodeadd_end(t_node **tail, t_node *node)
 	node->prev = (*tail);
 	node->next = NULL;
 	(*tail) = node;
+	(*tail)->size++;
 }

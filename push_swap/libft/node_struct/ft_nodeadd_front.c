@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nodeadd_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:18:45 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/18 13:59:11 by leotran          ###   ########.fr       */
+/*   Updated: 2022/03/21 15:18:18 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ void	ft_nodeadd_front(t_node **head, t_node *node)
 	node->next = (*head);
 	(*head)->prev = node;
 	(*head) = node;
+	(*head)->size++;
 }

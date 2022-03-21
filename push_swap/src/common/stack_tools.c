@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/19 15:39:38 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 15:30:03 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	swap(t_struct *st, t_op op)
 		stack = &st->stack_b;
 		tail = &st->tail_b;
 	}
-	if ((*stack))
+	if ((*stack) && (*stack)->next)
 	{
 		ft_nodeswap(stack);
 		if ((*stack) == (*tail))
@@ -72,9 +72,9 @@ void	rotate(t_struct *st, t_op op)
 		stack = &st->stack_b;
 		tail = &st->tail_b;
 	}
-	if ((*stack) && (op == RA || op == RB))
+	if ((*stack) && (*stack)->next && (op == RA || op == RB))
 		ft_nodeadd_end(tail, ft_nodepop(stack));
-	else if ((*stack))
+	else if ((*stack) && (*stack)->next)
 	{
 		(*tail) = (*tail)->prev;
 		ft_nodeadd_front(stack, (*tail)->next);
