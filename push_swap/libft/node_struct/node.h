@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 12:50:34 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/21 15:16:50 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 15:58:46 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 	int				num;
-	int				size;
 }	t_node;
 
 t_node	*ft_nodenew(int n);

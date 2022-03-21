@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/03/21 15:37:54 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 15:52:48 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	push(t_struct *st, t_op op)
 {
 	if (op == PA && st->stack_b)
 	{
-		/* if (!st->stack_b->next)
-			st->tail_b = NULL; */
+		if (!st->stack_b->next)
+			st->tail_b = NULL;
 		if (!st->stack_a)
 		{
-		//	st->tail_a = st->stack_b;
+			st->tail_a = st->stack_b;
 			st->stack_a = ft_nodepop(&st->stack_b);
 		}
 		else
@@ -48,11 +48,11 @@ void	push(t_struct *st, t_op op)
 	}
 	if (op == PB && st->stack_a)
 	{
-		/* if (!st->stack_a->next)
-			st->tail_a = NULL; */
+		if (!st->stack_a->next)
+			st->tail_a = NULL;
 		if (!st->stack_b)
 		{
-		//	st->tail_b = st->stack_a;
+			st->tail_b = st->stack_a;
 			st->stack_b = ft_nodepop(&st->stack_a);
 		}
 		else

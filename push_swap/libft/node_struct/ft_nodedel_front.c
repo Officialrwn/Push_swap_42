@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:49:58 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/21 15:18:33 by leo              ###   ########.fr       */
+/*   Updated: 2022/03/21 15:56:48 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,4 @@ void	ft_nodedel_front(t_node **node)
 	(*node) = (*node)->next;
 	free(current);
 	current = NULL;
-	(*node)->size--;
 }
