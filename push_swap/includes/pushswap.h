@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/03/21 12:46:00 by leotran          ###   ########.fr       */
+/*   Updated: 2022/05/30 22:56:21 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSHSWAP_H
+# define PUSHSWAP_H
 
 # define VALID	0
 # define ERROR 	1
@@ -29,9 +29,12 @@
 
 typedef struct s_nums
 {
-	int	*lis;
-	int	*num;
-	int	size;
+	t_node	*lis_head;
+	t_node	*lis_tail;
+	int		*lis;
+	int		*num;
+	int		size;
+	int		mean;
 }	t_nums;
 
 typedef struct s_struct

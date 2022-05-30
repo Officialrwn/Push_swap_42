@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_tools.c                                      :+:      :+:    :+:   */
+/*   lis_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/03/21 12:56:58 by leotran          ###   ########.fr       */
+/*   Updated: 2022/05/30 22:58:26 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "includes/pushswap.h"
 
-static void	correct_lis(t_nums *arr, int max, int size)
+static void	init_lis_stack(t_nums *arr, int max, int size)
 {
-	while (size >= 0)
+	t_node	*temp;
+	int		num;
+
+	while (size-- > 0)
 	{
+		num = 0;
 		if (arr->lis[size] == max && max > 0)
+		{
+			num = max;
 			max--;
+		}
+		temp = ft_nodenew(num);
+		if (!arr->lis_head)
+		{
+			arr->lis_head = temp;
+			arr->lis_tail = temp;
+		}	
 		else
-			arr->lis[size] = -1;
-		size--;
+			ft_nodeadd_front(&arr->lis_head, temp);
 	}
 }
 
@@ -45,5 +57,5 @@ void	get_lis(t_nums *arr)
 	max = arr->lis[j];
 	while (--j)
 		max = ft_max(max, arr->lis[j]);
-	correct_lis(arr, max, arr->size);
+	init_lis_stack(arr, max, arr->size);
 }

@@ -6,64 +6,101 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/03/21 15:24:24 by leo              ###   ########.fr       */
+/*   Updated: 2022/05/30 23:21:38 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "includes/pushswap.h"
 
 static void	initialize_intarrays(t_nums *arr, int size)
 {
+	arr->lis_head = NULL;
+	arr->lis_tail = NULL;
 	arr->lis = (int *)malloc(sizeof(int) * size);
 	arr->num = (int  *)malloc(sizeof(int) * size);
 	if (!arr->num || !arr->lis)
 		exit (1);
 	arr->size = size;
+	arr->mean = 0;
 	while (size--)
 		arr->lis[size] = 1;
 }
 
-static void	initialize_stacks(t_nums arr, t_struct *st, int mean)
+/* static void pushtob(int *left, int *right, t_struct *st)
+{
+	if (*left <= *right)
+	{
+		while (*left-- > 0)
+			rotate(st, RA);
+		ft_printf("RA\n");
+	}	
+	else
+	{
+		ft_printf("right: %d\n", *right);
+		while (*right-- >= 0)
+		{
+			rotate(st, RRA);
+			// ft_printf("RRA\n");
+		}	
+	}
+	push(st, PB);
+} */
+
+static int get_closest_non_lis(t_node *lis)
 {
 	t_node	*current;
-	int		i;
-	int		count;
+	int		result;
 
-	current = st->stack_a;
-	i = 0;
-	count = 0;
-	while (i < arr.size)
+	current = lis;
+	result = 0;
+	while (current->num != 0 && !lis->prev)
 	{
-		if (arr.lis[i++] == -1)
-			push(st, PB);
-		else
-			rotate(st, RA);
-		count++;
+		current = current->next;
+		result++;
 	}
-	ft_printf("count: %d\n", count);
-	mean = 0;
+	while (current->num != 0 && !lis->next)
+	{
+		current = current->prev;
+		result++;
+	}
+	return (result);
+}
+
+static void	initialize_stacks(t_nums arr, t_struct *st)
+{
+	int		left;
+	int		right;
+
+	while (1)
+	{
+		left = get_closest_non_lis(arr.lis_head);
+		right = get_closest_non_lis(arr.lis_tail);
+		
+		
+	}
+	st->op_list = NULL;
+	arr.mean = 0;
+
 }
 
 int	main(int argc, char **argv)
 {
 	t_struct	st;
 	t_nums		arr;
-	int			mean;
 
 	if (argc > 1)
 	{
-		mean = 0;
 		initialize_struct(&st);
 		initialize_intarrays(&arr, argc - 1);
 		while (--argc > 0)
 		{
 			arr.num[argc - 1] = validate_argv(&st, argv[argc]);
-			mean += arr.num[argc - 1];
+			arr.mean += arr.num[argc - 1];
 		}
 		get_lis(&arr);
-		initialize_stacks(arr, &st, mean);
-		//ft_printf("mean: %d\n", mean);
-		//print_intarr(arr.lis, arr.size);
+		initialize_stacks(arr, &st);
+		// ft_printf("mean: %d\n", mean);
+		ft_nodeprint(&arr.lis_head);
 		print_list(&st);
 	}
 	return (0);

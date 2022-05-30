@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 12:50:34 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/21 15:58:46 by leo              ###   ########.fr       */
+/*   Updated: 2022/05/30 03:19:59 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ void	ft_nodeadd_front(t_node **head, t_node *node);
 void	ft_nodeadd_end(t_node **tail, t_node *node);
 void	ft_nodedel(t_node **head);
 void	ft_nodeswap(t_node **head);
+void	ft_nodeprint(t_node **head);
 
 #endif
