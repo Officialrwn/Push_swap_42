@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/05/30 23:21:38 by leo              ###   ########.fr       */
+/*   Updated: 2022/05/31 20:21:24 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,25 @@ static void	initialize_intarrays(t_nums *arr, int size)
 static int get_closest_non_lis(t_node *lis)
 {
 	t_node	*current;
-	int		result;
+	t_node	*temp;
+	int		res;
 
 	current = lis;
-	result = 0;
-	while (current->num != 0 && !lis->prev)
+	res = 0;
+	while (current)
 	{
-		current = current->next;
-		result++;
+		temp = current;
+		if (current->num == 0)
+			break ;
+		else if (!lis->prev)
+			current = current->next;
+		else
+			current = current->prev;
+		res++;
 	}
-	while (current->num != 0 && !lis->next)
-	{
-		current = current->prev;
-		result++;
-	}
-	return (result);
+	if (!current && temp->num != 0)
+		res = -1;
+	return (res);
 }
 
 static void	initialize_stacks(t_nums arr, t_struct *st)
@@ -74,9 +78,9 @@ static void	initialize_stacks(t_nums arr, t_struct *st)
 	while (1)
 	{
 		left = get_closest_non_lis(arr.lis_head);
-		right = get_closest_non_lis(arr.lis_tail);
-		
-		
+		right = get_closest_non_lis(arr.lis_tail) + 1;
+		ft_printf("left: %d right: %d\n", left, right);
+		break ;
 	}
 	st->op_list = NULL;
 	arr.mean = 0;
