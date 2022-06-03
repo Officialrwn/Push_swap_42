@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/06/03 23:01:10 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/03 23:10:15 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	main(int argc, char **argv)
 			arr.mean += arr.num[argc - 1];
 		}
 		arr.mean /= arr.size;
-		get_lis(&arr);
-		init_stacks(&arr, &st);
+		get_lis_nums(&arr);
+		init_push_non_lis_to_b(&arr, &st);
 		ft_nodeprint(&arr.lis_head);
 		print_list(&st);
 	}

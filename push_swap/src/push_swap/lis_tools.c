@@ -6,11 +6,16 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/06/03 23:03:56 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/03 23:10:08 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/pushswap.h"
+
+/* 
+**	Functions to calculate LIS (Longest increasing subsequence) numbers
+**	and push non LIS nums to stack b. 
+*/
 
 static void	init_lis_stack(t_nums *arr, int max, int size)
 {
@@ -36,7 +41,7 @@ static void	init_lis_stack(t_nums *arr, int max, int size)
 	}
 }
 
-void	get_lis(t_nums *arr)
+void	get_lis_nums(t_nums *arr)
 {
 	int	i;
 	int	j;
@@ -60,7 +65,7 @@ void	get_lis(t_nums *arr)
 	init_lis_stack(arr, max, arr->size);
 }
 
-void	init_stacks(t_nums *arr, t_struct *st)
+void	init_push_non_lis_to_b(t_nums *arr, t_struct *st)
 {
 	int	*n;
 	int	left;
