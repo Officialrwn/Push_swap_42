@@ -6,11 +6,11 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/06/03 23:17:36 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/12 18:19:46 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pushswap.h"
+#include "pushswap.h"
 
 /* 
 **	Functions to calculate LIS (Longest increasing subsequence) numbers
@@ -65,26 +65,7 @@ void	get_lis_nums(t_nums *arr)
 	init_lis_stack(arr, max, arr->size);
 }
 
-void	init_push_non_lis_to_b(t_nums *arr, t_struct *st)
-{
-	int	*n;
-	int	left;
-	int	right;
-
-	while (1)
-	{
-		n = &left;
-		left = get_closest_non_lis(arr->lis_head, 1);
-		right = get_closest_non_lis(arr->lis_tail, 0) + 1;
-		if (left > right)
-			n = &right;
-		if (left == -1)
-			break ;
-		arr = non_lis_to_stackb(st, arr, n, (left < right));
-	}
-}
-
-int	get_closest_non_lis(t_node *lis, int flag)
+static int	get_closest_non_lis(t_node *lis, int flag)
 {
 	t_node	*current;
 	t_node	*temp;
@@ -108,7 +89,7 @@ int	get_closest_non_lis(t_node *lis, int flag)
 	return (res);
 }
 
-t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
+static t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
 {
 	while ((*n)--)
 	{
@@ -130,4 +111,23 @@ t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
 	if (st->stack_b->num <= arr->mean)
 		rotate(st, RB);
 	return (arr);
+}
+
+void	init_push_non_lis_to_b(t_struct *st, t_nums *arr)
+{
+	int	*n;
+	int	left;
+	int	right;
+
+	while (1)
+	{
+		n = &left;
+		left = get_closest_non_lis(arr->lis_head, 1);
+		right = get_closest_non_lis(arr->lis_tail, 0) + 1;
+		if (left > right)
+			n = &right;
+		if (left == -1)
+			break ;
+		arr = non_lis_to_stackb(st, arr, n, (left < right));
+	}
 }

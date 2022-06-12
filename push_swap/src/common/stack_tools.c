@@ -6,11 +6,24 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/05/29 18:07:44 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/12 18:49:40 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pushswap.h"
+#include "pushswap.h"
+
+static void print_op(t_op op)
+{
+	if (op == PA)
+		ft_printf("PA");
+	if (op == PB)
+		ft_printf("PB");
+	if (op == RA)
+		ft_printf("RA");
+	if (op == RRA)
+		ft_printf("RRA");
+	ft_printf("\n");
+}
 
 void	swap(t_struct *st, t_op op)
 {
@@ -58,6 +71,7 @@ void	push(t_struct *st, t_op op)
 		else
 			ft_nodeadd_front(&st->stack_b, ft_nodepop(&st->stack_a));
 	}
+	print_op(op);
 }
 
 void	rotate(t_struct *st, t_op op)
@@ -80,4 +94,5 @@ void	rotate(t_struct *st, t_op op)
 		ft_nodeadd_front(stack, (*tail)->next);
 		(*tail)->next = NULL;
 	}
+	print_op(op);
 }

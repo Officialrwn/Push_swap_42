@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/06/03 23:08:37 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/04 12:06:43 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,11 @@ void	print_on_exit(t_struct *st, int flag);
 void	print_intarr(int *num, int size);
 void	print_list(t_struct *st);
 
-void	init_stacks(t_nums *arr, t_struct *st);
+void	init_push_non_lis_to_b(t_struct *st, t_nums *arr);
 void	get_lis_nums(t_nums *arr);
 int		validate_argv(t_struct *st, char *argv);
 int		store_op_call(t_list **op_list, int op_enum, int flag);
 int		check_if_sorted(t_struct *st);
-int		get_closest_non_lis(t_node *lis, int flag);
-
-t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op);
 

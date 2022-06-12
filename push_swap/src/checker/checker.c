@@ -6,11 +6,11 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/05/29 18:09:10 by leo              ###   ########.fr       */
+/*   Updated: 2022/06/12 18:20:34 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/pushswap.h"
+#include "pushswap.h"
 
 static uint16_t	convert_to_bits(int i)
 {
