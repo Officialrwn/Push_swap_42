@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/06/12 18:54:41 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/25 09:10:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ void	sort_list(t_struct *st, t_nums *arr)
 	int count = 0;
 	while (1)
 	{
-		int head_a = st->stack_a->num, head_b = st->stack_b->num, tail_a = st->tail_a->num;
-		if (!st->stack_b || count == 20)
+		int head_a = st->stack_a->num;
+		int head_b = st->stack_b->num;
+		int tail_a = st->tail_a->num;
+		
+		if (!st->stack_b || count == 35)
 			break ;
 		if (head_b < head_a && head_b > tail_a)
 			push(st, PA);
@@ -63,10 +66,11 @@ int	main(int argc, char **argv)
 			arr.mean += arr.num[argc - 1];
 		}
 		arr.mean /= arr.size;
-		get_lis_nums(&arr);
+		get_lis_nums(&st, &arr);
 		init_push_non_lis_to_b(&st, &arr);
-		sort_list(&st, &arr);
+		// sort_list(&st, &arr);
 		// ft_nodeprint(&arr.lis_head);
+		ft_printf("\nMax: %d Min: %d\n", st.max, st.min);
 		print_list(&st);
 	}
 	return (0);

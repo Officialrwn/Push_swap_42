@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/06/12 18:20:29 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/25 08:49:24 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	initialize_struct(t_struct *st)
 	st->stack_b = NULL;
 	st->tail_a = NULL;
 	st->tail_b = NULL;
+	st->min = 0;
+	st->max = 0;
 }
 
 int	validate_argv(t_struct *st, char *argv)
