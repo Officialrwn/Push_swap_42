@@ -6,24 +6,26 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/07/25 08:28:30 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/28 07:13:20 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static void print_op(t_op op)
+static void	print_op(t_op op)
 {
-	// return ;
+	static int 	count = 0;
+	char 		*str;
+
 	if (op == PA)
-		ft_printf("PA");
+		str = "PA";
 	if (op == PB)
-		ft_printf("PB");
+		str = "PB";
 	if (op == RA)
-		ft_printf("RA");
+		str = "RA";
 	if (op == RRA)
-		ft_printf("RRA");
-	ft_printf("\n");
+		str = "RRA";
+	ft_printf("%-5s count: %d\n", str, ++count);
 }
 
 void	swap(t_struct *st, t_op op)

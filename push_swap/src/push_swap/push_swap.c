@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/07/25 09:10:12 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/28 07:45:33 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,43 @@ static void	init_intarrays(t_nums *arr, int size)
 		arr->lis[size] = 1;
 }
 
-void	sort_list(t_struct *st, t_nums *arr)
+static int	check_push_conditions(t_struct *st)
 {
-	// return ;
-	// st->op_list = NULL;
+	int head_a = st->stack_a->num;
+	int head_b = st->stack_b->num;
+	int tail_a = st->tail_a->num;
+	int	res = 0;
+	if (head_b < head_a && head_b > tail_a)
+		res = 1;
+	if (head_b > tail_a && tail_a == st->max)
+	{
+		res = 1;
+		st->max = head_b;
+	}
+	if (head_b < head_a && head_a == st->min)
+	{
+		res = 1;
+		st->min = head_b;
+	}
+	return (res);
+}
+
+static void	sort_list(t_struct *st, t_nums *arr)
+{
 	ft_printf("Sort: \n");
 	arr->mean = 0;
 	int count = 0;
 	while (1)
 	{
-		int head_a = st->stack_a->num;
-		int head_b = st->stack_b->num;
-		int tail_a = st->tail_a->num;
-		
-		if (!st->stack_b || count == 35)
+
+		if (check_if_sorted(st))
 			break ;
-		if (head_b < head_a && head_b > tail_a)
+		if (st->stack_b && check_push_conditions(st))
+		{
 			push(st, PA);
-		if (head_b > head_a)
+			continue;
+		}
+		if (st->stack_b && st->stack_b->num > st->stack_a->num)
 			rotate(st, RA);
 		else
 			rotate(st, RRA);
@@ -67,10 +86,7 @@ int	main(int argc, char **argv)
 		}
 		arr.mean /= arr.size;
 		get_lis_nums(&st, &arr);
-		init_push_non_lis_to_b(&st, &arr);
-		// sort_list(&st, &arr);
-		// ft_nodeprint(&arr.lis_head);
-		ft_printf("\nMax: %d Min: %d\n", st.max, st.min);
+		sort_list(&st, &arr);
 		print_list(&st);
 	}
 	return (0);

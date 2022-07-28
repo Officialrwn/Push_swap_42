@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/07/25 09:08:22 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/28 06:40:31 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,8 @@ void	execute_op(t_struct *st);
 void	print_on_exit(t_struct *st, int flag);
 void	print_intarr(int *num, int size);
 void	print_list(t_struct *st);
-
-void	init_push_non_lis_to_b(t_struct *st, t_nums *arr);
 void	get_lis_nums(t_struct *st, t_nums *arr);
+
 int		validate_argv(t_struct *st, char *argv);
 int		store_op_call(t_list **op_list, int op_enum, int flag);
 int		check_if_sorted(t_struct *st);

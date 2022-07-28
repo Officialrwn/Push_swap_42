@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/07/25 09:10:30 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/28 06:47:35 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	init_lis_stack(t_struct *st, t_nums *arr, int max, int size)
 			ft_nodeadd_front(&arr->lis_head, temp);
 	}
 }
+
 static t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
 {
 	while ((*n)--)
@@ -90,7 +91,7 @@ static int	get_closest_non_lis(t_node *lis, int flag)
 	return (res);
 }
 
-void	init_push_non_lis_to_b(t_struct *st, t_nums *arr)
+static void	init_push_non_lis_to_b(t_struct *st, t_nums *arr)
 {
 	int	*n;
 	int	left;
@@ -128,7 +129,8 @@ void	get_lis_nums(t_struct *st, t_nums *arr)
 		}
 	}
 	max = arr->lis[j];
-	while (--j) 
+	while (--j)
 		max = ft_max(max, arr->lis[j]);
 	init_lis_stack(st, arr, max, arr->size);
+	init_push_non_lis_to_b(st, arr);
 }
