@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/07/28 07:13:20 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/28 07:47:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	print_op(t_op op)
 {
-	static int 	count = 0;
-	char 		*str;
+	static int	count = 0;
+	char		*str;
 
 	if (op == PA)
 		str = "PA";
