@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/07/28 08:14:33 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/28 08:31:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static void	sort_list(t_struct *st, t_nums *arr)
 	t_op	op;
 
 	arr->mean = 0;
-	ft_printf("Sort: \n");
 	while (1)
 	{
 		if (st->stack_b && check_push_conditions(st))
