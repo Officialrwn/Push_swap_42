@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/07/29 20:50:42 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/30 02:09:32 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,9 @@
 
 static void	print_op(t_op op)
 {
-	static int	count = 0;
-	char		*str;
+	static int	count;
 
-	if (op == PA)
-		str = "PA";
-	if (op == PB)
-		str = "PB";
-	if (op == RA)
-		str = "RA";
-	if (op == RRA)
-		str = "RRA";
-	ft_printf("%-5s count: %d\n", str, ++count);
+	ft_printf("%-5s count: %d\n", g_op[op], ++count);
 }
 
 void	swap(t_struct *st, t_op op)
@@ -46,6 +37,7 @@ void	swap(t_struct *st, t_op op)
 		if ((*stack) == (*tail))
 			(*tail) = (*stack)->next;
 	}	
+	print_op(op);
 }
 
 void	push(t_struct *st, t_op op)
@@ -84,7 +76,7 @@ void	rotate(t_struct *st, t_op op)
 
 	stack = &st->stack_a;
 	tail = &st->tail_a;
-	if (op == RB || op == RRB)
+	if (op == RB || op == RRB || op == RR)
 	{
 		stack = &st->stack_b;
 		tail = &st->tail_b;
@@ -97,5 +89,11 @@ void	rotate(t_struct *st, t_op op)
 		ft_nodeadd_front(stack, (*tail)->next);
 		(*tail)->next = NULL;
 	}
-	print_op(op);
+	if (op == RR)
+	{
+		rotate(st, RA);
+		print_op(RR);
+	}
+	else
+		print_op(op);
 }

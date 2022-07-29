@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/07/29 23:17:06 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/30 01:53:31 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ int	main(int argc, char **argv)
 		while (--argc)
 		{
 			*temp = validate_argv(&st, *(argv++));
-			arr.mean += *(temp++);
+			temp++;
 		}
-		arr.mean /= arr.size;
 		get_lis_nums(&st, &arr);
-		sort_list(&st, &arr);
+		// sort_list(&st, &arr);
+		ft_printf("mean: %d min: %d max: %d\n", arr.mean, st.min, st.max);
 		print_list(&st);
 	}
 	return (0);

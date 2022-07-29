@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/07/29 22:12:18 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/30 02:12:17 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,24 @@ static void	init_lis_stack(t_struct *st, t_nums *arr, int max, int size)
 	int		temp_max;
 
 	temp_max = max;
-	st->max = arr->num[max];
 	while (size--)
 	{
 		num = 0;
 		if (arr->lis[size] == temp_max && temp_max > 0)
 		{
 			num = temp_max;
-			temp_max--;
+			st->max = st->max + (arr->num[size] * (temp_max == max));
 			st->min = arr->num[size];
+			temp_max--;
 		}
+		else
+			arr->mean += arr->num[size];
 		temp = ft_nodenew(num);
 		if (!arr->lis_head)
 		{
 			arr->lis_head = temp;
 			arr->lis_tail = temp;
-		}	
+		}
 		else
 			ft_nodeadd_front(&arr->lis_head, temp);
 	}
@@ -49,9 +51,13 @@ static t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
 {
 	while ((*n)--)
 	{
+
 		if (flag)
 		{
-			rotate(st, RA);
+			if (st->stack_b->num < arr->mean)
+				rotate(st, RR);
+			else
+				rotate(st, RA);
 			ft_nodeadd_end(&arr->lis_tail, ft_nodepop(&arr->lis_head));
 		}
 		else
@@ -64,8 +70,6 @@ static t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
 	}
 	ft_nodedel_front(&arr->lis_head);
 	push(st, PB);
-	// if (st->stack_b->num <= arr->mean)
-		// rotate(st, RB);
 	return (arr);
 }
 
@@ -134,5 +138,6 @@ void	get_lis_nums(t_struct *st, t_nums *arr)
 	while (--j)
 		max = ft_max(max, arr->lis[j]);
 	init_lis_stack(st, arr, max, arr->size);
+	arr->mean /= (arr->size - max);
 	init_push_non_lis_to_b(st, arr);
 }
