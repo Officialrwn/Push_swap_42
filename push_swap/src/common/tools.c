@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/07/25 08:49:24 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/29 13:47:23 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	validate_argv(t_struct *st, char *argv)
 		st->tail_a = temp;
 	}
 	else
-		ft_nodeadd_front(&st->stack_a, temp);
+		ft_nodeadd_end(&st->tail_a, temp);
 	return (num);
 }
 

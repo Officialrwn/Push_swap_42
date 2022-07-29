@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/07/28 06:47:35 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/29 22:12:18 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,18 @@ static void	init_lis_stack(t_struct *st, t_nums *arr, int max, int size)
 {
 	t_node	*temp;
 	int		num;
+	int		temp_max;
 
-	while (size-- > 0)
+	temp_max = max;
+	st->max = arr->num[max];
+	while (size--)
 	{
 		num = 0;
-		if (arr->lis[size] == max && max > 0)
+		if (arr->lis[size] == temp_max && temp_max > 0)
 		{
-			num = max;
-			max--;
-			st->min = ft_min(st->min, arr->num[size]);
-			st->max = ft_max(st->max, arr->num[size]);
+			num = temp_max;
+			temp_max--;
+			st->min = arr->num[size];
 		}
 		temp = ft_nodenew(num);
 		if (!arr->lis_head)
@@ -62,8 +64,8 @@ static t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
 	}
 	ft_nodedel_front(&arr->lis_head);
 	push(st, PB);
-	if (st->stack_b->num <= arr->mean)
-		rotate(st, RB);
+	// if (st->stack_b->num <= arr->mean)
+		// rotate(st, RB);
 	return (arr);
 }
 
@@ -122,7 +124,7 @@ void	get_lis_nums(t_struct *st, t_nums *arr)
 	{
 		if (arr->num[i] < arr->num[j])
 			arr->lis[j] = ft_max(arr->lis[j], arr->lis[i] + 1);
-		if (++i == j && j + 1 != arr->size)
+		if (++i == j && j != arr->size - 1)
 		{
 			i = 0;
 			j++;

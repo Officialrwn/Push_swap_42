@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/06/12 18:20:22 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/29 19:17:18 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_on_exit(t_struct *st, int flag)
 {
+	return ;
 	if (flag)
 		write(2, "Error\n", 6);
 	else if (check_if_sorted(st))
