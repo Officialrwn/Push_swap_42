@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/07/29 00:43:38 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:05:10 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ typedef struct s_struct
 
 typedef enum e_op
 {
-	SA,
-	SB,
-	SS,
-	PA,
-	PB,
-	RA,
-	RB,
-	RR,
-	RRA,
-	RRB,
-	RRR,
+	SA = 0,
+	SB = 1,
+	SS = 2,
+	PA = 3,
+	PB = 4,
+	RA = 5,
+	RB = 6,
+	RR = 7,
+	RRA = 8,
+	RRB = 9,
+	RRR = 10,
 }	t_op;
 
 static const char	*g_op[] = {
@@ -83,7 +83,6 @@ void	initialize_struct(t_struct *st);
 void	swap(t_struct *st, t_op op);
 void	push(t_struct *st, t_op op);
 void	rotate(t_struct *st, t_op op);
-void	execute_op(t_struct *st);
 void	print_on_exit(t_struct *st, int flag);
 void	print_intarr(int *num, int size);
 void	print_list(t_struct *st);
@@ -91,8 +90,8 @@ void	get_lis_nums(t_struct *st, t_nums *arr);
 void	sort_list(t_struct *st, t_nums *arr);
 
 int		validate_argv(t_struct *st, char *argv);
-int		store_op_call(t_list **op_list, int op_enum, int flag);
 int		check_if_sorted(t_struct *st);
+char	**init_str_argv(char *str, int *argc);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op);
 

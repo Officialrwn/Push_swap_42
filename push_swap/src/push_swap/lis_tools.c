@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/07/30 02:18:08 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:24:11 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ static void	init_lis_stack(t_struct *st, t_nums *arr, int max, int size)
 		num = 0;
 		if (arr->lis[size] == temp_max && temp_max > 0)
 		{
-			num = temp_max;
 			st->max = st->max + (arr->num[size] * (temp_max == max));
 			st->min = arr->num[size];
-			temp_max--;
+			num = temp_max--;
 		}
 		else
 			arr->mean += arr->num[size];
@@ -51,10 +50,9 @@ static t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
 {
 	while ((*n)--)
 	{
-
 		if (flag)
 		{
-			if (st->stack_b->num < arr->mean)
+			if (st->stack_b && st->stack_b->num < arr->mean)
 				rotate(st, RR);
 			else
 				rotate(st, RA);

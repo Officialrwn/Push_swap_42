@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/07/30 02:09:32 by leo              ###   ########.fr       */
+/*   Updated: 2022/07/31 01:17:36 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 static void	print_op(t_op op)
 {
-	static int	count;
-
-	ft_printf("%-5s count: %d\n", g_op[op], ++count);
+	ft_printf("%s\n", g_op[op]);
 }
 
 void	swap(t_struct *st, t_op op)
@@ -71,29 +69,26 @@ void	push(t_struct *st, t_op op)
 
 void	rotate(t_struct *st, t_op op)
 {
-	t_node	**stack;
-	t_node	**tail;
+	int	check_stack_a;
+	int	check_stack_b;
 
-	stack = &st->stack_a;
-	tail = &st->tail_a;
-	if (op == RB || op == RRB || op == RR)
+	check_stack_a = (st->stack_a && st->stack_a->next);
+	check_stack_b = (st->stack_b && st->stack_b->next);
+	if (check_stack_a && (op == RA || op == RR))
+		ft_nodeadd_end(&st->tail_a, ft_nodepop(&st->stack_a));
+	if (check_stack_b && (op == RA || op == RR))
+		ft_nodeadd_end(&st->tail_b, ft_nodepop(&st->stack_b));
+	if (check_stack_a && (op == RRA || op == RRR))
 	{
-		stack = &st->stack_b;
-		tail = &st->tail_b;
+		st->tail_a = st->tail_a->prev;
+		ft_nodeadd_front(&st->stack_a, st->tail_a->next);
+		st->tail_a->next = NULL;
 	}
-	if ((*stack) && (*stack)->next && (op == RA || op == RB))
-		ft_nodeadd_end(tail, ft_nodepop(stack));
-	else if ((*stack) && (*stack)->next)
+	if (check_stack_b && (op == RRB || op == RRR))
 	{
-		(*tail) = (*tail)->prev;
-		ft_nodeadd_front(stack, (*tail)->next);
-		(*tail)->next = NULL;
+		st->tail_b = st->tail_b->prev;
+		ft_nodeadd_front(&st->stack_b, st->tail_b->next);
+		st->tail_b->next = NULL;
 	}
-	if (op == RR)
-	{
-		rotate(st, RA);
-		print_op(RR);
-	}
-	else
-		print_op(op);
+	print_op(op);
 }

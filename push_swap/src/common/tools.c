@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/07/29 13:47:23 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:11:09 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,39 +69,15 @@ int	check_if_sorted(t_struct *st)
 	return (flag * (!st->stack_b));
 }
 
-int	store_op_call(t_list **op_list, int op_enum, int flag)
+char	**init_str_argv(char *str, int *argc)
 {
-	t_list	*temp;
-	char	op_i;
+	char	**argv;
+	char	**temp;
 
-	op_i = OP_INDEX[op_enum];
-	temp = ft_lstnew(&op_i, 1);
-	temp->content_size = (size_t)op_enum;
-	if ((*op_list) == NULL)
-		(*op_list) = temp;
-	else
-		ft_lstaddend(op_list, temp);
-	if (flag)
-		return (store_op_call(op_list, op_enum + 1, 0));
-	return (1);
-}
-
-void	execute_op(t_struct *st)
-{
-	t_list	*current_node;
-	t_op	op;
-	char	*temp;
-	int		i;
-
-	current_node = st->op_list;
-	while (current_node != NULL)
-	{
-		op = current_node->content_size;
-		temp = (char *)current_node->content;
-		i = temp[0] - '0';
-		g_execute_op[i](st, op);
-		current_node = current_node->next;
-	}
-	print_list(st);
-	print_on_exit(st, VALID);
+	argv = ft_strsplit(str, ' ');
+	temp = argv;
+	*argc = 1;
+	while (*(temp++))
+		(*argc)++;
+	return (argv);
 }

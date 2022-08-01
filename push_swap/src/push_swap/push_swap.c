@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/07/30 02:21:47 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:24:46 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,6 @@ static void	init_intarrays(t_nums *arr, int size)
 	arr->mean = 0;
 	while (size--)
 		arr->lis[size] = 1;
-}
-
-static char	**init_str_argv(char *str, int *argc)
-{
-	char	**argv;
-	char	**temp;
-
-	argv = ft_strsplit(str, ' ');
-	temp = argv;
-	*argc = 1;
-	while (*(temp++))
-		(*argc)++;
-	return (argv);
 }
 
 int	main(int argc, char **argv)
@@ -60,10 +47,11 @@ int	main(int argc, char **argv)
 		}
 		get_lis_nums(&st, &arr);
 		sort_list(&st, &arr);
-		print_intarr(arr.lis , arr.size);
-		print_intarr(arr.num, arr.size);
-		ft_printf("mean: %d min: %d max: %d\n", arr.mean, st.min, st.max);
-		print_list(&st);
 	}
 	return (0);
 }
+
+		// print_intarr(arr.lis , arr.size);
+		// print_intarr(arr.num, arr.size);
+		// ft_printf("mean: %d min: %d max: %d\n", arr.mean, st.min, st.max);
+		// print_list(&st);
