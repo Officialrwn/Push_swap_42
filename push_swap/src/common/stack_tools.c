@@ -6,18 +6,19 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/07/31 01:17:36 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:57:37 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static void	print_op(t_op op)
+static void	print_op(t_op op, int flag)
 {
-	ft_printf("%s\n", g_op[op]);
+	if (flag)
+		ft_printf("%s\n", g_op[op]);
 }
 
-void	swap(t_struct *st, t_op op)
+void	swap(t_struct *st, t_op op, int flag)
 {
 	t_node	**stack;
 	t_node	**tail;
@@ -34,11 +35,11 @@ void	swap(t_struct *st, t_op op)
 		ft_nodeswap(stack);
 		if ((*stack) == (*tail))
 			(*tail) = (*stack)->next;
-	}	
-	print_op(op);
+	}
+	print_op(op, flag);
 }
 
-void	push(t_struct *st, t_op op)
+void	push(t_struct *st, t_op op, int flag)
 {
 	if (op == PA && st->stack_b)
 	{
@@ -64,10 +65,10 @@ void	push(t_struct *st, t_op op)
 		else
 			ft_nodeadd_front(&st->stack_b, ft_nodepop(&st->stack_a));
 	}
-	print_op(op);
+	print_op(op, flag);
 }
 
-void	rotate(t_struct *st, t_op op)
+void	rotate(t_struct *st, t_op op, int flag)
 {
 	int	check_stack_a;
 	int	check_stack_b;
@@ -76,7 +77,7 @@ void	rotate(t_struct *st, t_op op)
 	check_stack_b = (st->stack_b && st->stack_b->next);
 	if (check_stack_a && (op == RA || op == RR))
 		ft_nodeadd_end(&st->tail_a, ft_nodepop(&st->stack_a));
-	if (check_stack_b && (op == RA || op == RR))
+	if (check_stack_b && (op == RB || op == RR))
 		ft_nodeadd_end(&st->tail_b, ft_nodepop(&st->stack_b));
 	if (check_stack_a && (op == RRA || op == RRR))
 	{
@@ -90,5 +91,5 @@ void	rotate(t_struct *st, t_op op)
 		ft_nodeadd_front(&st->stack_b, st->tail_b->next);
 		st->tail_b->next = NULL;
 	}
-	print_op(op);
+	print_op(op, flag);
 }

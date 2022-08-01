@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 02:24:46 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:59:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-
-		// print_intarr(arr.lis , arr.size);
-		// print_intarr(arr.num, arr.size);
-		// ft_printf("mean: %d min: %d max: %d\n", arr.mean, st.min, st.max);
-		// print_list(&st);

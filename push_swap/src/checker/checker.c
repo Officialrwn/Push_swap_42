@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 02:10:27 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:35:27 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	execute_op(t_struct *st)
 		op = current_node->content_size;
 		temp = (char *)current_node->content;
 		i = temp[0] - '0';
-		g_execute_op[i](st, op);
+		g_execute_op[i](st, op, PRINT_OFF);
 		current_node = current_node->next;
 	}
 	print_on_exit(st, VALID);

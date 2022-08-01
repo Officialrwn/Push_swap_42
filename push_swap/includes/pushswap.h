@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 02:05:10 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:34:19 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define VALID	0
 # define ERROR 	1
+# define PRINT_ON 1
+# define PRINT_OFF 0
 # define OP_INDEX "00011222222"
 # define STACK_A 0x129
 # define STACK_B 0x252
@@ -80,9 +82,9 @@ static const char	*g_op[] = {
 void	rotate_ab(t_struct *stm, t_op op);
 void	reverse_rotate_ab(t_struct *st, t_op op);
 void	initialize_struct(t_struct *st);
-void	swap(t_struct *st, t_op op);
-void	push(t_struct *st, t_op op);
-void	rotate(t_struct *st, t_op op);
+void	swap(t_struct *st, t_op op, int flag);
+void	push(t_struct *st, t_op op, int flag);
+void	rotate(t_struct *st, t_op op, int flag);
 void	print_on_exit(t_struct *st, int flag);
 void	print_intarr(int *num, int size);
 void	print_list(t_struct *st);
@@ -93,7 +95,7 @@ int		validate_argv(t_struct *st, char *argv);
 int		check_if_sorted(t_struct *st);
 char	**init_str_argv(char *str, int *argc);
 
-typedef void		(*t_fptr)(t_struct *st, t_op op);
+typedef void		(*t_fptr)(t_struct *st, t_op op, int flag);
 
 static const t_fptr	g_execute_op[3] = {
 	swap,

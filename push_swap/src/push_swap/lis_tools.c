@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 02:24:11 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:34:40 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,21 @@ static t_nums	*non_lis_to_stackb(t_struct *st, t_nums *arr, int *n, int flag)
 		if (flag)
 		{
 			if (st->stack_b && st->stack_b->num < arr->mean)
-				rotate(st, RR);
+				rotate(st, RR, PRINT_ON);
 			else
-				rotate(st, RA);
+				rotate(st, RA, PRINT_ON);
 			ft_nodeadd_end(&arr->lis_tail, ft_nodepop(&arr->lis_head));
 		}
 		else
 		{
-			rotate(st, RRA);
+			rotate(st, RRA, PRINT_ON);
 			arr->lis_tail = arr->lis_tail->prev;
 			ft_nodeadd_front(&arr->lis_head, arr->lis_tail->next);
 			arr->lis_tail->next = NULL;
 		}
 	}
 	ft_nodedel_front(&arr->lis_head);
-	push(st, PB);
+	push(st, PB, PRINT_ON);
 	return (arr);
 }
 

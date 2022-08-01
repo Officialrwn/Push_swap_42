@@ -6,11 +6,12 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/07/29 00:45:42 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 02:58:10 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+#define FLAG 1
 
 static int	check_push_conditions(t_struct *st)
 {
@@ -65,17 +66,17 @@ void	sort_list(t_struct *st, t_nums *arr)
 	{
 		if (st->stack_b && check_push_conditions(st))
 		{
-			push(st, PA);
+			push(st, PA, PRINT_ON);
 			continue ;
 		}
 		if (!st->stack_b)
 			break ;
 		if (st->stack_b->num > st->stack_a->num)
-			rotate(st, RA);
+			rotate(st, RA, PRINT_ON);
 		else
-			rotate(st, RRA);
+			rotate(st, RRA, PRINT_ON);
 	}
 	op = find_optimal_operation(st, arr->size);
 	while (!check_if_sorted(st))
-		rotate(st, op);
+		rotate(st, op, PRINT_ON);
 }
