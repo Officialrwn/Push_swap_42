@@ -27,3 +27,14 @@ ARG=$(python3 rand_nums.py -500 500 500)
 push=$(./push_swap $ARG | wc -l)
 push_check=$(./push_swap $ARG | ./checker $ARG)
 printf "%-40s avg:%s status: %s\n" "Advanced instruction count (< 5500)" "$push" "$push_check"
+
+for i in {1..100}
+do
+	ARG=$(python3 rand_nums.py -20 20 5)
+	push=$(./push_swap $ARG | wc -l)
+	push_check=$(./push_swap $ARG | ./checker $ARG)
+	if [ $push -ge 13 ]
+	then
+		printf "%-30s %s\n" "Arg: $ARG" "count: $push"
+	fi 
+done

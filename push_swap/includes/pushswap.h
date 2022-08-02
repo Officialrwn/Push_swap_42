@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 02:34:19 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 04:44:35 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	print_list(t_struct *st);
 void	get_lis_nums(t_struct *st, t_nums *arr);
 void	sort_list(t_struct *st, t_nums *arr);
 
+int		sort_small_list(t_struct *st, int size);
 int		validate_argv(t_struct *st, char *argv);
 int		check_if_sorted(t_struct *st);
 char	**init_str_argv(char *str, int *argc);

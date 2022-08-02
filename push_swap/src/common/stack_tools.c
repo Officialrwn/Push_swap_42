@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 02:57:37 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 04:34:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,17 @@ static void	print_op(t_op op, int flag)
 
 void	swap(t_struct *st, t_op op, int flag)
 {
-	t_node	**stack;
-	t_node	**tail;
-
-	tail = &st->tail_a;
-	stack = &st->stack_a;
-	if (op == SB)
+	if (st->stack_a && st->stack_a->next && (op == SA || op == SS))
 	{
-		stack = &st->stack_b;
-		tail = &st->tail_b;
+		ft_nodeswap(&st->stack_a);
+		if (st->stack_a == st->tail_a)
+			st->tail_a = st->stack_a->next;
 	}
-	if ((*stack) && (*stack)->next)
+	if (st->stack_b && st->stack_b->next && (op == SB || op == SS))
 	{
-		ft_nodeswap(stack);
-		if ((*stack) == (*tail))
-			(*tail) = (*stack)->next;
+		ft_nodeswap(&st->stack_b);
+		if (st->stack_b == st->tail_b)
+			st->tail_b = st->stack_b->next;
 	}
 	print_op(op, flag);
 }

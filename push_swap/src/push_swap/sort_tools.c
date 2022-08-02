@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 02:58:10 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/02 05:16:36 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,20 @@ void	sort_list(t_struct *st, t_nums *arr)
 	op = find_optimal_operation(st, arr->size);
 	while (!check_if_sorted(st))
 		rotate(st, op, PRINT_ON);
+}
+
+int	sort_small_list(t_struct *st, int size)
+{
+	while (!check_if_sorted(st))
+	{
+		if (st->stack_a->num > st->stack_a->next->num
+			&& st->stack_a->num > st->tail_a->num)
+			rotate(st, RA, PRINT_ON);
+		if (st->stack_a->num > st->stack_a->next->num)
+			swap(st, SA, PRINT_ON);
+		if (st->stack_a->next->num > st->tail_a->num)
+			rotate(st, RRA, PRINT_ON);
+	}
+	size = 0;
+	return (0);
 }
