@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/08/06 12:10:33 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/13 11:34:32 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static t_op	find_optimal_correction(t_struct *st, int list_size)
 static t_op	find_optimal_operation(t_struct *st)
 {
 	t_op	op;
+
 	if (st->stack_b->num > st->stack_a->num)
 		op = RA;
 	else
