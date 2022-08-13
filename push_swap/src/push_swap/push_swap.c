@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 05:16:54 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/13 11:30:04 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	main(int argc, char **argv)
 		if (arr.size <= 3)
 			return (sort_small_list(&st, arr.size));
 		get_lis_nums(&st, &arr);
+		// ft_printf("\nSort:\n");
+		// print_list(&st);
 		sort_list(&st, &arr);
+		print_on_exit(&st, VALID, PRINT_OFF);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 04:44:35 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/13 11:30:50 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	initialize_struct(t_struct *st);
 void	swap(t_struct *st, t_op op, int flag);
 void	push(t_struct *st, t_op op, int flag);
 void	rotate(t_struct *st, t_op op, int flag);
-void	print_on_exit(t_struct *st, int flag);
+void	print_on_exit(t_struct *st, int flag, int print_flag);
 void	print_intarr(int *num, int size);
 void	print_list(t_struct *st);
 void	get_lis_nums(t_struct *st, t_nums *arr);

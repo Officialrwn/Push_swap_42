@@ -6,12 +6,11 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 05:16:36 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/06 12:10:33 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#define FLAG 1
 
 static int	check_push_conditions(t_struct *st)
 {
@@ -34,7 +33,7 @@ static int	check_push_conditions(t_struct *st)
 	return (res);
 }
 
-static t_op	find_optimal_operation(t_struct *st, int list_size)
+static t_op	find_optimal_correction(t_struct *st, int list_size)
 {
 	t_node	*current;
 	t_node	*temp;
@@ -57,6 +56,16 @@ static t_op	find_optimal_operation(t_struct *st, int list_size)
 	return (op);
 }
 
+static t_op	find_optimal_operation(t_struct *st)
+{
+	t_op	op;
+	if (st->stack_b->num > st->stack_a->num)
+		op = RA;
+	else
+		op = RRA;
+	return (op);
+}
+
 void	sort_list(t_struct *st, t_nums *arr)
 {
 	t_op	op;
@@ -71,12 +80,10 @@ void	sort_list(t_struct *st, t_nums *arr)
 		}
 		if (!st->stack_b)
 			break ;
-		if (st->stack_b->num > st->stack_a->num)
-			rotate(st, RA, PRINT_ON);
-		else
-			rotate(st, RRA, PRINT_ON);
+		op = find_optimal_operation(st);
+		rotate(st, op, PRINT_ON);
 	}
-	op = find_optimal_operation(st, arr->size);
+	op = find_optimal_correction(st, arr->size);
 	while (!check_if_sorted(st))
 		rotate(st, op, PRINT_ON);
 }

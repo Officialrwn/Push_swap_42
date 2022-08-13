@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:57:01 by leo               #+#    #+#             */
-/*   Updated: 2022/02/22 22:26:05 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/11 10:25:10 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	zero_print(t_formats *mod)
 	c = '0';
 	if (mod->uint_flag[1] == PLUS)
 		plus_print(mod);
-	if ((mod->formatcombo & DASH) != 0)
+	if ((mod->formatcombo & DASH) != 0) // if 
 		return ;
 	if (mod->uint_flag[2] == PRECISION && mod->specifier != 'f')
 	{

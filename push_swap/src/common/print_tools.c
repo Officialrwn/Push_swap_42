@@ -6,20 +6,23 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/07/30 19:02:42 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/13 11:29:52 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void	print_on_exit(t_struct *st, int flag)
+void	print_on_exit(t_struct *st, int flag, int print_flag)
 {
-	if (flag)
-		write(2, "Error\n", 6);
-	else if (check_if_sorted(st))
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
+	if (print_flag)
+	{
+		if (flag)
+			write(2, "Error\n", 6);
+		else if (check_if_sorted(st))
+			write(1, "OK\n", 3);
+		else
+			write(1, "KO\n", 3);
+	}
 	ft_nodedel(&st->stack_a);
 	ft_nodedel(&st->stack_b);
 	ft_lstdel(&st->op_list, &ft_del_lst_content);

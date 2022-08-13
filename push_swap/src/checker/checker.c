@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/08/02 02:35:27 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/13 11:31:09 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	get_op_calls(t_struct *st, char *input, int ret)
 				return (store_op_call(&st->op_list, i));
 			i++;
 		}
-		print_on_exit(st, ERROR);
+		print_on_exit(st, ERROR, PRINT_ON);
 	}
 	return (0);
 }
@@ -63,7 +63,7 @@ static void	execute_op(t_struct *st)
 		g_execute_op[i](st, op, PRINT_OFF);
 		current_node = current_node->next;
 	}
-	print_on_exit(st, VALID);
+	print_on_exit(st, VALID, PRINT_ON);
 }
 
 int	main(int argc, char **argv)
