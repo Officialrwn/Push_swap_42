@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/08/13 11:34:32 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/13 13:16:52 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,10 @@ static t_op	find_optimal_operation(t_struct *st)
 	return (op);
 }
 
-void	sort_list(t_struct *st, t_nums *arr)
+void	sort_list(t_struct *st, int list_size)
 {
 	t_op	op;
 
-	arr->mean = 0;
 	while (1)
 	{
 		if (st->stack_b && check_push_conditions(st))
@@ -84,23 +83,33 @@ void	sort_list(t_struct *st, t_nums *arr)
 		op = find_optimal_operation(st);
 		rotate(st, op, PRINT_ON);
 	}
-	op = find_optimal_correction(st, arr->size);
-	while (!check_if_sorted(st))
+	op = find_optimal_correction(st, list_size);
+	while (!check_if_sorted(st) && (!st->stack_b))
 		rotate(st, op, PRINT_ON);
 }
 
-int	sort_small_list(t_struct *st, int size)
+int	sort_small_list(t_struct *st, int list_size)
 {
+	if (list_size > 3)
+	{
+		push(st, PB, PRINT_ON);
+		push(st, PB, PRINT_ON);
+	}
+	st->max = ft_max(st->stack_a->num, st->stack_a->next->num);
+	st->max = ft_max(st->max, st->tail_a->num);
+	st->min = ft_min(st->stack_a->num, st->stack_a->next->num);
+	st->min = ft_min(st->min, st->tail_a->num);
 	while (!check_if_sorted(st))
 	{
 		if (st->stack_a->num > st->stack_a->next->num
 			&& st->stack_a->num > st->tail_a->num)
 			rotate(st, RA, PRINT_ON);
-		if (st->stack_a->num > st->stack_a->next->num)
-			swap(st, SA, PRINT_ON);
-		if (st->stack_a->next->num > st->tail_a->num)
+		else if (st->stack_a->next->num > st->tail_a->num)
 			rotate(st, RRA, PRINT_ON);
+		else if (st->stack_a->num > st->stack_a->next->num)
+			swap(st, SA, PRINT_ON);
 	}
-	size = 0;
+	sort_list(st, list_size);
+	print_on_exit(st, VALID, PRINT_OFF);
 	return (0);
 }

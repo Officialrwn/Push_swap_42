@@ -1,5 +1,5 @@
-#!/bin/sh
-echo "REMEMBER TO CHECK FOR MEMORY LEAKS"
+	#!/bin/sh
+echo "REMEMBER TO CHECK FOR MEMORY LEAKS AND ADD CHECK IF ST->STACKB IS EMPTY TO CHECKIFSORTED"
 
 echo "Running test"
 
@@ -28,13 +28,17 @@ push=$(./push_swap $ARG | wc -l)
 push_check=$(./push_swap $ARG | ./checker $ARG)
 printf "%-40s avg:%s status: %s\n" "Advanced instruction count (< 5500)" "$push" "$push_check"
 
-for i in {1..100}
+result='All test passed!'
+for i in {1..500}
 do
 	ARG=$(python3 rand_nums.py -20 20 5)
+	# echo $ARG
 	push=$(./push_swap $ARG | wc -l)
 	push_check=$(./push_swap $ARG | ./checker $ARG)
 	if [ $push -ge 13 ]
 	then
 		printf "%-30s %s\n" "Arg: $ARG" "count: $push"
-	fi 
+		result=''
+	fi
 done
+printf "$result"
