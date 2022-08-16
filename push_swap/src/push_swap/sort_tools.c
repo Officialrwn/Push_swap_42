@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/08/13 13:16:52 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/16 03:01:53 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,30 +86,4 @@ void	sort_list(t_struct *st, int list_size)
 	op = find_optimal_correction(st, list_size);
 	while (!check_if_sorted(st) && (!st->stack_b))
 		rotate(st, op, PRINT_ON);
-}
-
-int	sort_small_list(t_struct *st, int list_size)
-{
-	if (list_size > 3)
-	{
-		push(st, PB, PRINT_ON);
-		push(st, PB, PRINT_ON);
-	}
-	st->max = ft_max(st->stack_a->num, st->stack_a->next->num);
-	st->max = ft_max(st->max, st->tail_a->num);
-	st->min = ft_min(st->stack_a->num, st->stack_a->next->num);
-	st->min = ft_min(st->min, st->tail_a->num);
-	while (!check_if_sorted(st))
-	{
-		if (st->stack_a->num > st->stack_a->next->num
-			&& st->stack_a->num > st->tail_a->num)
-			rotate(st, RA, PRINT_ON);
-		else if (st->stack_a->next->num > st->tail_a->num)
-			rotate(st, RRA, PRINT_ON);
-		else if (st->stack_a->num > st->stack_a->next->num)
-			swap(st, SA, PRINT_ON);
-	}
-	sort_list(st, list_size);
-	print_on_exit(st, VALID, PRINT_OFF);
-	return (0);
 }

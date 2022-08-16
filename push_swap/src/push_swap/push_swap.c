@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/08/13 13:22:27 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/16 03:08:59 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,32 @@ static void	init_intarrays(t_nums *arr, int size)
 	arr->mean = 0;
 	while (size--)
 		arr->lis[size] = 1;
+}
+
+static int	sort_small_list(t_struct *st, int list_size)
+{
+	if (list_size > 3)
+	{
+		push(st, PB, PRINT_ON);
+		push(st, PB, PRINT_ON);
+	}
+	st->max = ft_max(st->stack_a->num, st->stack_a->next->num);
+	st->max = ft_max(st->max, st->tail_a->num);
+	st->min = ft_min(st->stack_a->num, st->stack_a->next->num);
+	st->min = ft_min(st->min, st->tail_a->num);
+	while (!check_if_sorted(st))
+	{
+		if (st->stack_a->num > st->stack_a->next->num
+			&& st->stack_a->num > st->tail_a->num)
+			rotate(st, RA, PRINT_ON);
+		else if (st->stack_a->next->num > st->tail_a->num)
+			rotate(st, RRA, PRINT_ON);
+		else if (st->stack_a->num > st->stack_a->next->num)
+			swap(st, SA, PRINT_ON);
+	}
+	sort_list(st, list_size);
+	print_on_exit(st, VALID, PRINT_OFF);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -48,9 +74,10 @@ int	main(int argc, char **argv)
 		if (arr.size <= 5)
 			return (sort_small_list(&st, arr.size));
 		get_lis_nums(&st, &arr);
-		sort_list(&st, arr.size);
+		print_intarr(arr.num, arr.size);
+		// sort_list(&st, arr.size);
 		// ft_printf("\nSort:\n");
-		// print_list(&st);
+		print_list(&st);
 		print_on_exit(&st, VALID, PRINT_OFF);
 	}
 	return (0);
