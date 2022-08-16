@@ -29,7 +29,7 @@ push_check=$(./push_swap $ARG | ./checker $ARG)
 printf "%-40s avg:%s status: %s\n" "Advanced instruction count (< 5500)" "$push" "$push_check"
 
 result='All test passed!'
-for i in {1..500}
+for i in {1..100}
 do
 	ARG=$(python3 rand_nums.py -20 20 5)
 	# echo $ARG
