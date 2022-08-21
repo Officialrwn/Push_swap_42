@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/08/16 03:01:53 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/21 17:22:07 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,12 @@ static t_op	find_optimal_correction(t_struct *st, int list_size)
 static t_op	find_optimal_operation(t_struct *st)
 {
 	t_op	op;
+	int		a;
+	int		b;
 
+	a = 0;
+	b = 0;
+	get_min_movement(*st, &a, &b);
 	if (st->stack_b->num > st->stack_a->num)
 		op = RA;
 	else

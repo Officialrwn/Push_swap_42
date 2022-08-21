@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/08/14 21:18:22 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/21 17:21:52 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	sort_list(t_struct *st, int list_size);
 int		validate_argv(t_struct *st, char *argv);
 int		check_if_sorted(t_struct *st);
 char	**init_str_argv(char *str, int *argc);
+t_op	get_min_movement(t_struct st, int *a, int *b);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op, int print_flag);
 
