@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:05:34 by leo               #+#    #+#             */
-/*   Updated: 2022/08/21 17:39:45 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/21 20:47:41 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,16 @@ static int	check_from_left(t_struct st, int *a, int *b)
 	{
 		count = 0;
 		temp = st.stack_b;
+		ft_printf("stacka\n");
 		while (temp)
 		{
-			if (check_push_conditions(&st))
+			ft_printf("temp\n");
+			if (check_push_conditions(&st))///not working properly
 			{
 				min = ft_min(min, count);
 				*a = st.stack_a->num;
 				*b = temp->num;
-				// ft_printf("Steps: %d a: %d b: %d\n", count, *a, *b);
+				ft_printf("Steps a: %d b: %d\n", *a, *b);
 				break ;
 			}
 			count++;
@@ -64,25 +66,43 @@ static int	check_from_left(t_struct st, int *a, int *b)
 	return (min);
 }
 
-static void	sort_min_movement(t_struct st, int *a, int *b)
-{
-	t_op	op;
-
-	op = RRA;
-	check_from_left(st, a, b);
-		op = RA;
-}
+// static void	sort_min_movement(t_struct st, int *a, int *b)
+// {
+// 	check_from_left(st, a, b);
+// }
 
 void	sort_list2(t_struct *st, int list_size)
 {
 	t_op	op;
 	int		a;
 	int		b;
+	int		res;
 
-	a = 0;
-	b = 0;
-	sort_min_movement(*st, &a, &b);
+	a = st->stack_a->num;
+	if (st->stack_b)
+	{
+		b = st->stack_b->num;
+		res = check_from_left(*st, &a, &b);
+		// ft_printf("a: %d b: %d\n", a, b);
+		// sort_min_movement(*st, &a, &b);
+		while (1)
+		{
+			if (st->stack_a->num == a && st->stack_b->num == b)
+				break ;
+			if (st->stack_a->num == a)
+				rotate(st, RB, PRINT_ON);
+			else if (st->stack_b->num == b)
+				rotate(st, RA, PRINT_ON);
+			else
+				rotate(st, RR, PRINT_ON);
+		}
+		check_push_conditions(st);
+		push(st, PA, PRINT_ON);
+		print_list("after push:", st);
+		sort_list2(st, list_size);
+	}
+	// ft_printf("end\n");
 	op = find_optimal_correction(st, list_size);
-	while (!check_if_sorted(st) && (!st->stack_b))
+	while (!check_if_sorted(st))
 		rotate(st, op, PRINT_ON);
 }
