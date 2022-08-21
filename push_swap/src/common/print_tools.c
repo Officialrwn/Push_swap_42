@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/08/13 11:29:52 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/21 17:24:32 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ void	print_on_exit(t_struct *st, int flag, int print_flag)
 	exit(flag);
 }
 
-void	print_list(t_struct *st)
+void	print_list(char *str, t_struct *st)
 {
 	t_node	*temp;
 
 	temp = st->stack_a;
+	ft_printf("%s\n", str);
 	ft_putstr("stack a: ");
 	while (temp && st->stack_a)
 	{

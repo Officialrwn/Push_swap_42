@@ -6,13 +6,13 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/08/21 17:22:07 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/21 17:35:55 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int	check_push_conditions(t_struct *st)
+int	check_push_conditions(t_struct *st)
 {
 	int	res;
 
@@ -59,12 +59,7 @@ static t_op	find_optimal_correction(t_struct *st, int list_size)
 static t_op	find_optimal_operation(t_struct *st)
 {
 	t_op	op;
-	int		a;
-	int		b;
 
-	a = 0;
-	b = 0;
-	get_min_movement(*st, &a, &b);
 	if (st->stack_b->num > st->stack_a->num)
 		op = RA;
 	else
@@ -81,12 +76,14 @@ void	sort_list(t_struct *st, int list_size)
 		if (st->stack_b && check_push_conditions(st))
 		{
 			push(st, PA, PRINT_ON);
+			print_list("after push:", st);
 			continue ;
 		}
 		if (!st->stack_b)
 			break ;
 		op = find_optimal_operation(st);
 		rotate(st, op, PRINT_ON);
+		print_list("after rotate:", st);
 	}
 	op = find_optimal_correction(st, list_size);
 	while (!check_if_sorted(st) && (!st->stack_b))

@@ -6,31 +6,33 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:05:34 by leo               #+#    #+#             */
-/*   Updated: 2022/08/21 17:20:25 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/21 17:39:45 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int	check_push_a_conditions(t_struct *st)
+static t_op	find_optimal_correction(t_struct *st, int list_size)
 {
-	int	res;
+	t_node	*current;
+	t_node	*temp;
+	t_op	op;
+	int		count;
 
-	res = 0;
-	if (st->stack_a->num < st->stack_b->num
-		&& st->stack_a->num > st->tail_b->num)
-		res = 1;
-	if (st->stack_a->num > st->tail_b->num && st->tail_b->num == st->max)
+	current = st->stack_a;
+	op = RA;
+	count = 0;
+	while (current)
 	{
-		res = 1;
-		st->max = st->stack_a->num;
+		temp = current;
+		if (current->num == st->max)
+			break ;
+		current = current->next;
+		count++;
 	}
-	if (st->stack_a->num < st->stack_b->num && st->stack_b->num == st->min)
-	{
-		res = 1;
-		st->min = st->stack_a->num;
-	}
-	return (res);
+	if (count >= list_size / 2)
+		op = RRA;
+	return (op);
 }
 
 static int	check_from_left(t_struct st, int *a, int *b)
@@ -46,11 +48,12 @@ static int	check_from_left(t_struct st, int *a, int *b)
 		temp = st.stack_b;
 		while (temp)
 		{
-			if (check_push_a_conditions(&st))
+			if (check_push_conditions(&st))
 			{
 				min = ft_min(min, count);
 				*a = st.stack_a->num;
 				*b = temp->num;
+				// ft_printf("Steps: %d a: %d b: %d\n", count, *a, *b);
 				break ;
 			}
 			count++;
@@ -61,13 +64,25 @@ static int	check_from_left(t_struct st, int *a, int *b)
 	return (min);
 }
 
-t_op	get_min_movement(t_struct st, int *a, int *b)
+static void	sort_min_movement(t_struct st, int *a, int *b)
 {
 	t_op	op;
 
 	op = RRA;
 	check_from_left(st, a, b);
 		op = RA;
-	return (op);
 }
 
+void	sort_list2(t_struct *st, int list_size)
+{
+	t_op	op;
+	int		a;
+	int		b;
+
+	a = 0;
+	b = 0;
+	sort_min_movement(*st, &a, &b);
+	op = find_optimal_correction(st, list_size);
+	while (!check_if_sorted(st) && (!st->stack_b))
+		rotate(st, op, PRINT_ON);
+}

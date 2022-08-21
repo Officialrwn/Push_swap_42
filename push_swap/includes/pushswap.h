@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/08/21 17:21:52 by leo              ###   ########.fr       */
+/*   Updated: 2022/08/21 17:38:28 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define VALID	0
 # define ERROR 	1
-# define PRINT_ON 1
+# define PRINT_ON 0
 # define PRINT_OFF 0
 # define OP_INDEX "00011222222"
 # define STACK_A 0x129
@@ -87,14 +87,15 @@ void	push(t_struct *st, t_op op, int print_flag);
 void	rotate(t_struct *st, t_op op, int print_flag);
 void	print_on_exit(t_struct *st, int flag, int print_flag);
 void	print_intarr(int *num, int size);
-void	print_list(t_struct *st);
+void	print_list(char *str, t_struct *st);
 void	get_lis_nums(t_struct *st, t_nums *arr);
 void	sort_list(t_struct *st, int list_size);
+void	sort_list2(t_struct *st, int list_size);
 
+int		check_push_conditions(t_struct *st);
 int		validate_argv(t_struct *st, char *argv);
 int		check_if_sorted(t_struct *st);
 char	**init_str_argv(char *str, int *argc);
-t_op	get_min_movement(t_struct st, int *a, int *b);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op, int print_flag);
 
