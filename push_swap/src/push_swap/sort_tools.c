@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/09/10 14:56:18 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/10 18:01:35 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	sort_list(t_struct *st, int list_size)
 		rotate(st, op, PRINT_ON);
 		// print_list("after rotate:", st);
 	}
+	// exit(1);
 	op = find_optimal_correction(st, list_size);
 	while (!check_if_sorted(st))
 		rotate(st, op, PRINT_ON);

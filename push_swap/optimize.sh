@@ -6,4 +6,5 @@
 
 ./push_swap "-5 19 1 9 4 -17 2 15 7 -19 -13 -12 20 -6 6 13 -7 -3 0 -18"
 
+# can use > test.txt to see all outputs
 #93 steps
