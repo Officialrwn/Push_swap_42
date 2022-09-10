@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:05:34 by leo               #+#    #+#             */
-/*   Updated: 2022/08/21 20:47:41 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/10 17:43:34 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,58 @@ static t_op	find_optimal_correction(t_struct *st, int list_size)
 	return (op);
 }
 
+static int	check_push(int a_prev, int a_next, int b, int a_max, int a_min)
+{
+	int res;
+	
+	res = 0;
+	if (b > a_prev && b < a_next)
+		res = 1;
+	if (b > a_max && a_prev == a_min)
+		res = 1;
+	if (b < a_prev && a_next == a_min)
+		res = 1;
+	return (res);
+}
+
 static int	check_from_left(t_struct st, int *a, int *b)
 {
 	t_node	*temp;
 	int		count;
+	int		temp_a_count;
 	int		min;
+	int		a_prev;
 
 	min = 0;
+	temp_a_count = 0;
+	a_prev = st.tail_a->num;
 	while (st.stack_a)
 	{
-		count = 0;
+		count = 0 + temp_a_count;
 		temp = st.stack_b;
-		ft_printf("stacka\n");
+		ft_printf("{YEL}stack_a loop current a->num: %d{EOC}\n", st.stack_a->num);
+		// ft_printf("min: %d max: %d\n", st.min, st.max);
 		while (temp)
 		{
-			ft_printf("temp\n");
-			if (check_push_conditions(&st))///not working properly
+			ft_printf("stack_b loop current b->num: %d, ", temp->num);
+			if (check_push(a_prev, st.stack_a->num, temp->num, st.max, st.min) && (min > count || min == 0))///not working properly
 			{
-				min = ft_min(min, count);
+				min = count;
 				*a = st.stack_a->num;
 				*b = temp->num;
-				ft_printf("Steps a: %d b: %d\n", *a, *b);
+				ft_printf("checkpush: {GRN}true\n[Steps a: %d b: %d min_count: %d]{EOC}\n", *a, *b, count);
 				break ;
 			}
+			else
+				ft_printf("checkpush: {RED}false{EOC}\n");
 			count++;
 			temp = temp->next;
 		}
+		a_prev = st.stack_a->num;
 		st.stack_a = st.stack_a->next;
+		temp_a_count++;
 	}
+	ft_printf("checkffomleft done, final a: %d b: %d\n", *a, *b);
 	return (min);
 }
 
@@ -83,7 +107,8 @@ void	sort_list2(t_struct *st, int list_size)
 	{
 		b = st->stack_b->num;
 		res = check_from_left(*st, &a, &b);
-		// ft_printf("a: %d b: %d\n", a, b);
+		ft_printf("a: %d b: %d\n", a, b);
+		print_list("Current stack", st);
 		// sort_min_movement(*st, &a, &b);
 		while (1)
 		{
@@ -101,7 +126,8 @@ void	sort_list2(t_struct *st, int list_size)
 		print_list("after push:", st);
 		sort_list2(st, list_size);
 	}
-	// ft_printf("end\n");
+	ft_printf("end\n");
+	exit(1);
 	op = find_optimal_correction(st, list_size);
 	while (!check_if_sorted(st))
 		rotate(st, op, PRINT_ON);

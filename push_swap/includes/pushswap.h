@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/08/21 20:21:39 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/10 14:56:46 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define VALID	0
 # define ERROR 	1
-# define PRINT_ON 0
+# define PRINT_ON 1
 # define PRINT_OFF 0
 # define OP_INDEX "00011222222"
 # define STACK_A 0x129

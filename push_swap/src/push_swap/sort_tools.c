@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/08/21 20:38:45 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/10 14:56:18 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_push_conditions(t_struct *st)
 	if (st->stack_b->num < st->stack_a->num
 		&& st->stack_b->num > st->tail_a->num)
 		res = 1;
-	if (st->stack_b->num > st->tail_a->num && st->tail_a->num == st->max)
+	if (st->stack_b->num > st->max && st->stack_a->num == st->min)
 	{
 		res = 1;
 		st->max = st->stack_b->num;
@@ -76,16 +76,16 @@ void	sort_list(t_struct *st, int list_size)
 		if (st->stack_b && check_push_conditions(st))
 		{
 			push(st, PA, PRINT_ON);
-			print_list("after push:", st);
+			// print_list("after push:", st);
 			continue ;
 		}
 		if (!st->stack_b)
 			break ;
 		op = find_optimal_operation(st);
 		rotate(st, op, PRINT_ON);
-		print_list("after rotate:", st);
+		// print_list("after rotate:", st);
 	}
 	op = find_optimal_correction(st, list_size);
-	while (!check_if_sorted(st) && (!st->stack_b))
+	while (!check_if_sorted(st))
 		rotate(st, op, PRINT_ON);
 }
