@@ -6,7 +6,7 @@
 #    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/03/19 15:48:05 by leo              ###   ########.fr        #
+#    Updated: 2022/09/11 13:39:27 by leo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ PS_SRC = src/push_swap/*.c
 COMMON_SRC = src/common/*.c
 #SRCS = $(addprefix ./src/, $(SRC))
 HEADERS = /includes/
-FLAGS = -Wall -Wextra -Werror -O3 -I. -Iincludes/
+# FLAGS = -Wall -Wextra -Werror -O3 -I. -Iincludes/
+FLAGS = -O3 -I. -Iincludes/
 OBJ = *.o
 
 all: $(CHECKER) $(PUSHSWAP)
