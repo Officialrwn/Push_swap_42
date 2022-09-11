@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:05:34 by leo               #+#    #+#             */
-/*   Updated: 2022/09/11 22:48:17 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/11 22:53:11 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	check_from_left(t_struct st, int *a, int *b)
 		{
 			// ft_printf("stack_b loop current b->num: %d\nstackmin: %d stackmax: %d min: %d count: %d, ", temp->num, st.min, st.max, min, count);
 			// ft_printf("a_prev: %d a->next: %d ", a_prev, st.stack_a->num);
-			if (check_push(a_prev, st.stack_a->num, temp->num, st.max, st.min) && (min > count || min == 0))///not working properly
+			if (check_push(a_prev, st.stack_a->num, temp->num, st.max, st.min) && (min > count || min == 0))
 			{
 				if (count > temp_a_count)
 					min = count - temp_a_count;
