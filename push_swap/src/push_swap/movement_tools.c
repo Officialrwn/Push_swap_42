@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:05:34 by leo               #+#    #+#             */
-/*   Updated: 2022/09/11 14:02:55 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/11 14:20:45 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static int	check_push(int a_prev, int a_next, int b, int a_max, int a_min)
 	res = 0;
 	if (b > a_prev && b < a_next)
 		res = 1;
-	if (b > a_max && a_prev == a_max)
+	if (b > a_max && a_prev == a_min)
 		res = 1;
-	if (b < a_next && a_prev == a_max && a_next == a_min)
+	if (b < a_prev && a_next == a_min)
 		res = 1;
 	return (res);
 }
@@ -90,6 +90,11 @@ static int	check_from_left(t_struct st, int *a, int *b)
 	return (min);
 }
 
+// static void	sort_min_movement(t_struct st, int *a, int *b)
+// {
+// 	check_from_left(st, a, b);
+// }
+
 void	sort_list2(t_struct *st, int list_size)
 {
 	t_op	op;
@@ -126,5 +131,5 @@ void	sort_list2(t_struct *st, int list_size)
 	op = find_optimal_correction(st, list_size);
 	while (!check_if_sorted(st))
 		rotate(st, op, PRINT_ON);
-	// print_list("after sort:", st);
+	print_list("after sort:", st);
 }
