@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 13:18:45 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/21 15:56:37 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/12 21:39:31 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_nodeadd_front(t_node **head, t_node *node)
 {
 	node->next = (*head);
+	node->prev = NULL;
 	(*head)->prev = node;
 	(*head) = node;
 }

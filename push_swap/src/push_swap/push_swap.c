@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/09/11 22:39:40 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/12 21:47:20 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ int	main(int argc, char **argv)
 		if (arr.size <= 5)
 			return (sort_small_list(&st, arr.size));
 		get_lis_nums(&st, &arr);
-		// print_list("presort:", &st);
+		print_list("presort:", &st);
+		ft_printf("a prev: %s b prev: %s\n", st.stack_a->prev, st.stack_b->prev);
+		ft_printf("a tailnext: %s b tailnext: %s\n", st.tail_a->next, st.tail_b->next);
+		exit (1);
 		// print_intarr(arr.num, arr.size);
 		// sort_list(&st, arr.size);
 		sort_list2(&st, arr.size);
