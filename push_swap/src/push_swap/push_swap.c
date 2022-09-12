@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/09/12 22:39:52 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/12 22:52:11 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	main(int argc, char **argv)
 		// print_list("presort:", &st);
 		// print_intarr(arr.num, arr.size);
 		// sort_list(&st, arr.size);
+		exit(1);
 		sort_list2(&st, arr.size);
 		// ft_printf("\nSort:\n");
 		print_on_exit(&st, VALID, PRINT_OFF);

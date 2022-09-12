@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:05:34 by leo               #+#    #+#             */
-/*   Updated: 2022/09/12 22:50:00 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/12 22:51:24 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,8 @@ void	sort_list2(t_struct *st, int list_size)
 		// ft_printf("stack min: %d stack max: %d\n", st->min, st->max);
 		while (1)
 		{
-			if (res < res2)
-			{
+			// if (res < res2)
+			// {
 				if (st->stack_a->num == a && st->stack_b->num == b)
 					break ;
 				if (st->stack_a->num == a)
@@ -167,18 +167,18 @@ void	sort_list2(t_struct *st, int list_size)
 					rotate(st, RA, PRINT_ON);
 				else
 					rotate(st, RR, PRINT_ON);
-			}
-			else
-			{
-				if (st->stack_a->num == c && st->stack_b->num == d)
-					break ;
-				if (st->stack_a->num == c)
-					rotate(st, RRB, PRINT_ON);
-				else if (st->stack_b->num == d)
-					rotate(st, RRA, PRINT_ON);
-				else
-					rotate(st, RRR, PRINT_ON);
-			}
+			// }
+			// else
+			// {
+			// 	if (st->stack_a->num == c && st->stack_b->num == d)
+			// 		break ;
+			// 	if (st->stack_a->num == c)
+			// 		rotate(st, RRB, PRINT_ON);
+			// 	else if (st->stack_b->num == d)
+			// 		rotate(st, RRA, PRINT_ON);
+			// 	else
+			// 		rotate(st, RRR, PRINT_ON);
+			// }
 		}
 		check_push_conditions(st);
 		push(st, PA, PRINT_ON);
