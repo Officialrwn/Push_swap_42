@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/09/12 22:35:57 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/12 22:38:31 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ void	push(t_struct *st, t_op op, int print_flag)
 			st->stack_a = ft_nodepop(&st->stack_b);
 		}
 		else
-		{
-			ft_printf("TEST\n");
 			ft_nodeadd_front(&st->stack_a, ft_nodepop(&st->stack_b));
-		}
 	}
 	if (op == PB && st->stack_a)
 	{
