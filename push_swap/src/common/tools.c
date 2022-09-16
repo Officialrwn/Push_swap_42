@@ -81,3 +81,24 @@ char	**init_str_argv(char *str, int *argc)
 		(*argc)++;
 	return (argv);
 }
+
+int	check_push_conditions(t_struct *st)
+{
+	int	res;
+
+	res = 0;
+	if (st->stack_b->num < st->stack_a->num
+		&& st->stack_b->num > st->tail_a->num)
+		res = 1;
+	if (st->stack_b->num > st->max && st->stack_a->num == st->min)
+	{
+		res = 1;
+		st->max = st->stack_b->num;
+	}
+	if (st->stack_b->num < st->stack_a->num && st->stack_a->num == st->min)
+	{
+		res = 1;
+		st->min = st->stack_b->num;
+	}
+	return (res);
+}

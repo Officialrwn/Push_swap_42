@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_tools.c                                       :+:      :+:    :+:   */
+/*   movement_tools.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/29 00:42:51 by leo               #+#    #+#             */
-/*   Updated: 2022/09/10 18:01:35 by leo              ###   ########.fr       */
+/*   Created: 2022/08/20 15:05:34 by leo               #+#    #+#             */
+/*   Updated: 2022/09/12 22:51:24 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-int	check_push_conditions(t_struct *st)
-{
-	int	res;
-
-	res = 0;
-	if (st->stack_b->num < st->stack_a->num
-		&& st->stack_b->num > st->tail_a->num)
-		res = 1;
-	if (st->stack_b->num > st->max && st->stack_a->num == st->min)
-	{
-		res = 1;
-		st->max = st->stack_b->num;
-	}
-	if (st->stack_b->num < st->stack_a->num && st->stack_a->num == st->min)
-	{
-		res = 1;
-		st->min = st->stack_b->num;
-	}
-	return (res);
-}
 
 static t_op	find_optimal_correction(t_struct *st, int list_size)
 {
@@ -56,36 +35,85 @@ static t_op	find_optimal_correction(t_struct *st, int list_size)
 	return (op);
 }
 
-static t_op	find_optimal_operation(t_struct *st)
+static int	check_push(t_struct st, int a_prev, int a_next, int b)
 {
-	t_op	op;
+	int	res;
 
-	if (st->stack_b->num > st->stack_a->num)
-		op = RA;
-	else
-		op = RRA;
-	return (op);
+	res = 0;
+	if (b > a_prev && b < a_next)
+		res = 1;
+	if (b > st.max && a_prev == st.max)
+		res = 1;
+	if (b < a_next && a_prev == st.max && a_next == st.min)
+		res = 1;
+	return (res);
+}
+
+static int	check_from_left(t_struct st, int *a, int *b)
+{
+	t_node	*temp;
+	int		count;
+	int		temp_a_count;
+	int		min;
+	int		a_prev;
+
+	min = 0;
+	temp_a_count = 0;
+	a_prev = st.tail_a->num;
+	while (st.stack_a)
+	{
+		count = 0 + temp_a_count;
+		temp = st.stack_b;
+		while (temp)
+		{
+			if (check_push(st, a_prev, st.stack_a->num, temp->num)
+				&& (min > count || min == 0))
+			{
+				if (count > temp_a_count)
+					min = count - temp_a_count;
+				else
+					min = count;
+				*a = st.stack_a->num;
+				*b = temp->num;
+				break ;
+			}
+			count++;
+			temp = temp->next;
+		}
+		a_prev = st.stack_a->num;
+		st.stack_a = st.stack_a->next;
+		temp_a_count++;
+	}
+	return (min);
 }
 
 void	sort_list(t_struct *st, int list_size)
 {
 	t_op	op;
+	int		a;
+	int		b;
+	int		res;
 
-	while (1)
+	a = st->stack_a->num;
+	if (st->stack_b)
 	{
-		if (st->stack_b && check_push_conditions(st))
+		b = st->stack_b->num;
+		res = check_from_left(*st, &a, &b);
+		while (1)
 		{
-			push(st, PA, PRINT_ON);
-			// print_list("after push:", st);
-			continue ;
+			if (st->stack_a->num == a && st->stack_b->num == b)
+				break ;
+			if (st->stack_a->num == a)
+				rotate(st, RB, PRINT_ON);
+			else if (st->stack_b->num == b)
+				rotate(st, RA, PRINT_ON);
+			else
+				rotate(st, RR, PRINT_ON);
 		}
-		if (!st->stack_b)
-			break ;
-		op = find_optimal_operation(st);
-		rotate(st, op, PRINT_ON);
-		// print_list("after rotate:", st);
+		check_push_conditions(st);
+		push(st, PA, PRINT_ON);
+		sort_list(st, list_size);
 	}
-	// exit(1);
 	op = find_optimal_correction(st, list_size);
 	while (!check_if_sorted(st))
 		rotate(st, op, PRINT_ON);
