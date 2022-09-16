@@ -28,17 +28,31 @@ push=$(./push_swap $ARG | wc -l)
 push_check=$(./push_swap $ARG | ./checker $ARG)
 printf "%-40s avg:%s status: %s\n" "Advanced instruction count (< 5500)" "$push" "$push_check"
 
-result='All test passed!'
+result='All test passed for 100 num!'
 for i in {1..100}
 do
-	ARG=$(python3 rand_nums.py -20 20 5)
+	ARG=$(python3 rand_nums.py -100 100 100)
 	# echo $ARG
 	push=$(./push_swap $ARG | wc -l)
 	push_check=$(./push_swap $ARG | ./checker $ARG)
-	if [ $push -ge 13 ]
+	if [ $push -ge 1100 ]
 	then
 		printf "%-30s %s\n" "Arg: $ARG" "count: $push"
 		result=''
 	fi
 done
-printf "$result"
+printf "$result\n"
+result='All test passed for 500 num!'
+for i in {1..100}
+do
+	ARG=$(python3 rand_nums.py -500 500 500)
+	# echo $ARG
+	push=$(./push_swap $ARG | wc -l)
+	push_check=$(./push_swap $ARG | ./checker $ARG)
+	if [ $push -ge 10000 ]
+	then
+		printf "%-30s %s\n" "Arg: $ARG" "count: $push"
+		result=''
+	fi
+done
+printf "$result\n"
