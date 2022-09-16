@@ -49,30 +49,35 @@ static int	check_push(t_struct st, int a_prev, int a_next, int b)
 	return (res);
 }
 
-static int	check_from_left(t_struct st, int *a, int *b)
+static int	count_moves(int *min, int count, int a_count)
+{
+	if (*min > count || *min == 0)
+	{
+		if (count > a_count)
+			*min = count - a_count;
+		else
+			*min = count;
+		return (1);
+	}
+	return (0);
+}
+
+static void	check_from_left(t_struct st, int *a, int *b, int min)
 {
 	t_node	*temp;
 	int		count;
-	int		temp_a_count;
-	int		min;
-	int		a_prev;
+	int		a_count;
 
-	min = 0;
-	temp_a_count = 0;
-	a_prev = st.tail_a->num;
+	a_count = 0;
 	while (st.stack_a)
 	{
-		count = 0 + temp_a_count;
+		count = 0 + a_count;
 		temp = st.stack_b;
 		while (temp)
 		{
-			if (check_push(st, a_prev, st.stack_a->num, temp->num)
-				&& (min > count || min == 0))
+			if (check_push(st, st.tail_a->num, st.stack_a->num, temp->num)
+				&& count_moves(&min, count, a_count))
 			{
-				if (count > temp_a_count)
-					min = count - temp_a_count;
-				else
-					min = count;
 				*a = st.stack_a->num;
 				*b = temp->num;
 				break ;
@@ -80,11 +85,10 @@ static int	check_from_left(t_struct st, int *a, int *b)
 			count++;
 			temp = temp->next;
 		}
-		a_prev = st.stack_a->num;
+		st.tail_a = st.stack_a;
 		st.stack_a = st.stack_a->next;
-		temp_a_count++;
+		a_count++;
 	}
-	return (min);
 }
 
 void	sort_list(t_struct *st, int list_size)
@@ -92,17 +96,14 @@ void	sort_list(t_struct *st, int list_size)
 	t_op	op;
 	int		a;
 	int		b;
-	int		res;
 
 	a = st->stack_a->num;
 	if (st->stack_b)
 	{
 		b = st->stack_b->num;
-		res = check_from_left(*st, &a, &b);
-		while (1)
+		check_from_left(*st, &a, &b, 0);
+		while (st->stack_a->num != a || st->stack_b->num != b)
 		{
-			if (st->stack_a->num == a && st->stack_b->num == b)
-				break ;
 			if (st->stack_a->num == a)
 				rotate(st, RB, PRINT_ON);
 			else if (st->stack_b->num == b)
