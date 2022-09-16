@@ -101,6 +101,8 @@ static void	init_push_non_lis_to_b(t_struct *st, t_nums *arr)
 	int	left;
 	int	right;
 
+	if (arr->size == 1)
+		return ;
 	while (1)
 	{
 		n = &left;

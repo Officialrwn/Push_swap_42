@@ -74,6 +74,8 @@ char	**init_str_argv(char *str, int *argc)
 	char	**argv;
 	char	**temp;
 
+	if (ft_strchr(str, ' ') == NULL)
+		exit(1);
 	argv = ft_strsplit(str, ' ');
 	temp = argv;
 	*argc = 1;
