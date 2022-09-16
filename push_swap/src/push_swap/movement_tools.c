@@ -93,92 +93,30 @@ static int	check_from_left(t_struct st, int *a, int *b)
 	return (min);
 }
 
-static int	check_from_right(t_struct st, int *a, int *b)
-{
-	t_node	*temp;
-	int		count;
-	int		temp_a_count;
-	int		min;
-	int		a_prev;
-
-	min = 0;
-	temp_a_count = 0;
-	a_prev = st.tail_a->prev->num;
-	while (st.tail_a->prev)
-	{
-		count = 0 + temp_a_count;
-		temp = st.tail_b;
-		// ft_printf("{YEL}stack_a loop current a->num: %d{EOC}\n", st.tail_a->num);
-		while (temp != st.stack_b->prev)
-		{
-			// ft_printf("stack_b loop current b->num: %d\nstackmin: %d stackmax: %d min: %d count: %d, ", temp->num, st.min, st.max, min, count);
-			// ft_printf("a_prev: %d a->next: %d ", a_prev, st.tail_a->num);
-			if (check_push(a_prev, st.tail_a->num, temp->num, st.max, st.min) && (min > count || min == 0))
-			{
-				if (count > temp_a_count)
-					min = count - temp_a_count;
-				else
-					min = count;
-				*a = st.tail_a->num;
-				*b = temp->num;
-				// ft_printf("checkpush: {GRN}true\n[Steps a: %d b: %d min_count: %d]{EOC}\n", *a, *b, count);
-				break ;
-			}
-			// else
-				// ft_printf("checkpush: {RED}false{EOC}\n");
-			count++;
-			temp = temp->prev;
-		}
-		a_prev = st.tail_a->prev->prev->num;
-		st.tail_a = st.tail_a->prev;
-		temp_a_count++;
-	}
-	// ft_printf("target a: %d b: %d\n", *a, *b);
-	return (min);
-}
-
 void	sort_list2(t_struct *st, int list_size)
 {
 	t_op	op;
 	int		a;
 	int		b;
 	int		res;
-	int		c, d, res2;
 
 	a = st->stack_a->num;
-	c = st->stack_a->num;
 	if (st->stack_b)
 	{
 		b = st->stack_b->num;
-		d = st->stack_b->num;
 		res = check_from_left(*st, &a, &b);
-		res2 = check_from_right(*st, &c, &d);
 		// print_list("Current stack", st);
 		// ft_printf("stack min: %d stack max: %d\n", st->min, st->max);
 		while (1)
 		{
-			// if (res < res2)
-			// {
-				if (st->stack_a->num == a && st->stack_b->num == b)
-					break ;
-				if (st->stack_a->num == a)
-					rotate(st, RB, PRINT_ON);
-				else if (st->stack_b->num == b)
-					rotate(st, RA, PRINT_ON);
-				else
-					rotate(st, RR, PRINT_ON);
-			// }
-			// else
-			// {
-			// 	if (st->stack_a->num == c && st->stack_b->num == d)
-			// 		break ;
-			// 	if (st->stack_a->num == c)
-			// 		rotate(st, RRB, PRINT_ON);
-			// 	else if (st->stack_b->num == d)
-			// 		rotate(st, RRA, PRINT_ON);
-			// 	else
-			// 		rotate(st, RRR, PRINT_ON);
-			// }
+			if (st->stack_a->num == a && st->stack_b->num == b)
+				break ;
+			if (st->stack_a->num == a)
+				rotate(st, RB, PRINT_ON);
+			else if (st->stack_b->num == b)
+				rotate(st, RA, PRINT_ON);
+			else
+				rotate(st, RR, PRINT_ON);
 		}
 		check_push_conditions(st);
 		push(st, PA, PRINT_ON);

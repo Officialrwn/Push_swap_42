@@ -77,7 +77,6 @@ int	main(int argc, char **argv)
 		// print_list("presort:", &st);
 		// print_intarr(arr.num, arr.size);
 		// sort_list(&st, arr.size);
-		exit(1);
 		sort_list2(&st, arr.size);
 		// ft_printf("\nSort:\n");
 		print_on_exit(&st, VALID, PRINT_OFF);
