@@ -16,9 +16,10 @@ NODE = libft/node_struct/libftnode.a
 CHECKER = checker
 CHK_SRC = src/checker/checker.c
 PUSHSWAP = push_swap
-PS_SRC = src/push_swap/*.c
-COMMON_SRC = src/common/*.c
-#SRCS = $(addprefix ./src/, $(SRC))
+PS_SRC = lis_tools.c push_swap.c sort_tools.c
+PS_SRCS = $(addprefix ./src/push_swap/, $(PS_SRC))
+COMMON_SRC = print_tools.c stack_tools.c tools.c
+COMMON_SRCS = $(addprefix ./src/common/, $(COMMON_SRC))
 HEADERS = /includes/
 FLAGS = -Wall -Wextra -Werror -O3 -I. -Iincludes/
 OBJ = *.o
@@ -27,12 +28,10 @@ all: $(CHECKER) $(PUSHSWAP)
 
 $(CHECKER):
 	@make -C $(LIBFT_DIR)
-	gcc $(FLAGS) $(LIBFT) $(NODE) $(COMMON_SRC) $(CHK_SRC) -o $(CHECKER)
+	gcc $(FLAGS) $(LIBFT) $(NODE) $(COMMON_SRCS) $(CHK_SRC) -o $(CHECKER)
 
 $(PUSHSWAP):
-	gcc $(FLAGS) $(LIBFT) $(NODE) $(COMMON_SRC) $(PS_SRC) -o $(PUSHSWAP)
-	
-#$(SRCS)
+	gcc $(FLAGS) $(LIBFT) $(NODE) $(COMMON_SRCS) $(PS_SRCS) -o $(PUSHSWAP)
 
 clean:
 	@make -C $(LIBFT_DIR) clean

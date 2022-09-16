@@ -18,7 +18,7 @@ void	print_on_exit(t_struct *st, int flag, int print_flag)
 	{
 		if (flag)
 			write(2, "Error\n", 6);
-		else if (check_if_sorted(st))
+		else if (check_if_sorted(st) && !st->stack_b)
 			write(1, "OK\n", 3);
 		else
 			write(1, "KO\n", 3);
