@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 			*temp = validate_argv(&st, *(argv++));
 			temp++;
 		}
-		if (arr.size <= 5)
+		if (arr.size <= 5 && !check_if_sorted(&st))
 			return (sort_small_list(&st, arr.size));
 		get_lis_nums(&st, &arr);
 		sort_list(&st, arr.size);

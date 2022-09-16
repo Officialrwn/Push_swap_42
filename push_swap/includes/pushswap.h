@@ -86,11 +86,8 @@ void	swap(t_struct *st, t_op op, int print_flag);
 void	push(t_struct *st, t_op op, int print_flag);
 void	rotate(t_struct *st, t_op op, int print_flag);
 void	print_on_exit(t_struct *st, int flag, int print_flag);
-void	print_intarr(int *num, int size);
-void	print_list(char *str, t_struct *st);
 void	get_lis_nums(t_struct *st, t_nums *arr);
 void	sort_list(t_struct *st, int list_size);
-// void	sort_list2(t_struct *st, int list_size);
 
 int		check_push_conditions(t_struct *st);
 int		validate_argv(t_struct *st, char *argv);
