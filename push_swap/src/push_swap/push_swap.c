@@ -6,24 +6,24 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/09/12 22:52:11 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/22 10:11:51 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static void	init_intarrays(t_nums *arr, int size)
+static void	init_intarrays(t_struct *st, int size)
 {
-	arr->lis_head = NULL;
-	arr->lis_tail = NULL;
-	arr->lis = (int *)malloc(sizeof(int) * size);
-	arr->num = (int *)malloc(sizeof(int) * size);
-	if (!arr->num || !arr->lis)
+	st->lis_arr.head = NULL;
+	st->lis_arr.tail = NULL;
+	st->lis_arr.lis = (int *)malloc(sizeof(int) * size);
+	st->lis_arr.num = (int *)malloc(sizeof(int) * size);
+	if (!st->lis_arr.num || !st->lis_arr.lis)
 		exit (1);
-	arr->size = size;
-	arr->mean = 0;
+	st->lis_arr.size = size;
+	st->lis_arr.mean = 0;
 	while (size--)
-		arr->lis[size] = 1;
+		st->lis_arr.lis[size] = 1;
 }
 
 static int	sort_small_list(t_struct *st, int list_size)
@@ -55,7 +55,6 @@ static int	sort_small_list(t_struct *st, int list_size)
 int	main(int argc, char **argv)
 {
 	t_struct	st;
-	t_nums		arr;
 	int			*temp;
 
 	if (argc > 1)
@@ -64,17 +63,17 @@ int	main(int argc, char **argv)
 		if (argc == 2)
 			argv = init_str_argv(argv[0], &argc);
 		initialize_struct(&st);
-		init_intarrays(&arr, argc - 1);
-		temp = arr.num;
+		init_intarrays(&st, argc - 1);
+		temp = st.lis_arr.num;
 		while (--argc)
 		{
 			*temp = validate_argv(&st, *(argv++));
 			temp++;
 		}
-		if (arr.size <= 5 && !check_if_sorted(&st))
-			return (sort_small_list(&st, arr.size));
-		get_lis_nums(&st, &arr);
-		sort_list(&st, arr.size);
+		if (st.lis_arr.size <= 5 && !check_if_sorted(&st))
+			return (sort_small_list(&st, st.lis_arr.size));
+		get_lis_nums(&st);
+		sort_list(&st, st.lis_arr.size);
 		print_on_exit(&st, VALID, PRINT_OFF);
 	}
 	return (0);

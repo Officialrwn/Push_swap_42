@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/09/10 14:56:46 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/22 10:04:15 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 
 typedef struct s_nums
 {
-	t_node	*lis_head;
-	t_node	*lis_tail;
+	t_node	*head;
+	t_node	*tail;
 	int		*lis;
 	int		*num;
 	int		size;
@@ -46,6 +46,7 @@ typedef struct s_struct
 	t_node	*stack_b;
 	t_node	*tail_a;
 	t_node	*tail_b;
+	t_nums	lis_arr;
 	int		min;
 	int		max;
 }	t_struct;
@@ -86,7 +87,7 @@ void	swap(t_struct *st, t_op op, int print_flag);
 void	push(t_struct *st, t_op op, int print_flag);
 void	rotate(t_struct *st, t_op op, int print_flag);
 void	print_on_exit(t_struct *st, int flag, int print_flag);
-void	get_lis_nums(t_struct *st, t_nums *arr);
+void	get_lis_nums(t_struct *st);
 void	sort_list(t_struct *st, int list_size);
 
 int		check_push_conditions(t_struct *st);

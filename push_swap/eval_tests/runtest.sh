@@ -13,17 +13,17 @@ push=$(./push_swap $ARG | wc -l)
 push_check=$(./push_swap $ARG | ./checker $ARG)
 printf "%-40s avg:%s status: %s\n" "Simple2 instruction count (< 13)" "$push" "$push_check"
 
-ARG=$(python3 rand_nums.py -20 20 5)
+ARG=$(python3 ./eval_tests/rand_nums.py -20 20 5)
 push=$(./push_swap $ARG | wc -l)
 push_check=$(./push_swap $ARG | ./checker $ARG)
 printf "%-40s avg:%s status: %s\n" "Random Simple instruction count (< 13)" "$push" "$push_check"
 
-ARG=$(python3 rand_nums.py -100 100 100)
+ARG=$(python3 ./eval_tests/rand_nums.py -100 100 100)
 push=$(./push_swap $ARG | wc -l)
 push_check=$(./push_swap $ARG | ./checker $ARG)
 printf "%-40s avg:%s status: %s\n" "Middle instruction count (< 700)" "$push" "$push_check"
 
-ARG=$(python3 rand_nums.py -500 500 500)
+ARG=$(python3 ./eval_tests/rand_nums.py -500 500 500)
 push=$(./push_swap $ARG | wc -l)
 push_check=$(./push_swap $ARG | ./checker $ARG)
 printf "%-40s avg:%s status: %s\n" "Advanced instruction count (< 5500)" "$push" "$push_check"
@@ -31,7 +31,7 @@ printf "%-40s avg:%s status: %s\n" "Advanced instruction count (< 5500)" "$push"
 result='All test passed for 100 num!'
 for i in {1..100}
 do
-	ARG=$(python3 rand_nums.py -100 100 100)
+	ARG=$(python3 ./eval_tests/rand_nums.py -100 100 100)
 	# echo $ARG
 	push=$(./push_swap $ARG | wc -l)
 	push_check=$(./push_swap $ARG | ./checker $ARG)
@@ -45,7 +45,7 @@ printf "$result\n"
 result='All test passed for 500 num!'
 for i in {1..100}
 do
-	ARG=$(python3 rand_nums.py -500 500 500)
+	ARG=$(python3 ./eval_tests/rand_nums.py -500 500 500)
 	# echo $ARG
 	push=$(./push_swap $ARG | wc -l)
 	push_check=$(./push_swap $ARG | ./checker $ARG)

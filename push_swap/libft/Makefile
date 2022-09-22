@@ -3,14 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
+#    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/03/21 11:59:01 by leotran          ###   ########.fr        #
+#    Updated: 2022/09/22 12:56:57 by leo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAKEFLAGS += --silent
 NAME = libft.a
 NODE = node_struct/
 PRINTF = ft_printf/
@@ -28,28 +27,32 @@ SRC = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c 
 		ft_uint_base_count.c ft_int_base_count.c ft_itoa_base.c ft_float_count.c ft_ftoa.c ft_strjoin_update.c \
 		ft_del_lst_content.c ft_swap.c ft_lstswap.c ft_min.c ft_max.c ft_atol.c \
 
-SRCS = $(addprefix ./, $(SRC))
 FLAGS = -Wall -Wextra -Werror -O3 -I. -Iincludes/
-OBJ = $(SRC:.c=.o)
+OBJS = $(addprefix ./obj/, $(SRC:.c=.o))
+OBJ_DIR = obj
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ_DIR) $(OBJS)
 	@make -C $(NODE)
 	@make -C $(PRINTF)
-	cp $(NODE)libftnode.a $(NAME)
-	cp $(PRINTF)libftprintf.a $(NAME)
-	gcc $(FLAGS) -c $(SRCS)
-	ar rc $(NAME) $(OBJ)
+	@cp $(NODE)libftnode.a $(NAME)
+	@cp $(PRINTF)libftprintf.a $(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@printf "Libft make done.\n"
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
+	@gcc $(FLAGS) -c -o $@ $<
 
 clean:
 	@make -C $(NODE) clean
 	@make -C $(PRINTF) clean
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJS)
 
 fclean: clean
 	@make -C $(NODE) fclean
 	@make -C $(PRINTF) fclean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
