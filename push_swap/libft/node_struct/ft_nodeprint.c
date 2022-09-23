@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nodeprint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 03:12:42 by leo               #+#    #+#             */
-/*   Updated: 2022/05/30 03:28:12 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/23 11:41:20 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "node.h"
-#include "../ft_printf/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_nodeprint(t_node **head)
 {
