@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
+#    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/09/22 12:37:26 by leo              ###   ########.fr        #
+#    Updated: 2022/09/23 10:38:11 by leotran          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,9 @@ all: $(NAME)
 $(NAME): $(OBJ_DIR) $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@printf "Printf done.\n"
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)

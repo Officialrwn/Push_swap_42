@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
+#    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/09/22 12:37:35 by leo              ###   ########.fr        #
+#    Updated: 2022/09/23 10:36:30 by leotran          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,10 @@ $(NAME): $(OBJ_DIR) $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@printf "Nodestruct done.\n"
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: %.c
 	@gcc $(FLAGS) -c -o $@ $<
 
 clean:
