@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/09/22 10:04:15 by leo              ###   ########.fr       */
+/*   Updated: 2022/09/23 11:49:34 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "libft/libft.h"
-# include "libft/node_struct/node.h"
+# include "libft/includes/libft.h"
+# include "libft/includes/node.h"
 
 typedef struct s_nums
 {
