@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 22:19:37 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 00:40:10 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define ERROR 	1
 # define PRINT_ON 1
 # define PRINT_OFF 0
-# define OP_INDEX "00011222222"
+# define OP_INDEX "000112222223"
 # define STACK_A 0x129
 # define STACK_B 0x252
 # define STACK_AB 0x484
@@ -79,7 +79,7 @@ static const char	*g_op[] = {
 	"rr",
 	"rra",
 	"rrb",
-	"rrr"
+	"rrr",
 };
 
 void	rotate_ab(t_struct *stm, t_op op);
@@ -88,6 +88,7 @@ void	initialize_struct(t_struct *st);
 void	swap(t_struct *st, t_op op, int print_flag);
 void	push(t_struct *st, t_op op, int print_flag);
 void	rotate(t_struct *st, t_op op, int print_flag);
+void	invalid_op(t_struct *st, t_op op, int print_flag);
 void	print_on_exit(t_struct *st, int flag, int print_flag);
 void	get_lis_nums(t_struct *st);
 void	sort_list(t_struct *st, int list_size);
@@ -100,10 +101,11 @@ char	**init_str_argv(t_struct *st, char **argv, int *argc);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op, int print_flag);
 
-static const t_fptr	g_execute_op[3] = {
+static const t_fptr	g_execute_op[4] = {
 	swap,
 	push,
 	rotate,
+	invalid_op,
 };
 
 #endif

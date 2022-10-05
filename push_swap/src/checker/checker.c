@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 00:23:08 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 00:49:12 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	get_op_calls(t_struct *st, char *input, int ret)
 				return (store_op_call(&st->op_list, i));
 			i++;
 		}
-		print_on_exit(st, ERROR, PRINT_ON);
+		return (store_op_call(&st->op_list, 11));
 	}
 	return (0);
 }
