@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lis_tools.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 13:31:49 by leo               #+#    #+#             */
-/*   Updated: 2022/09/22 10:13:24 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/05 14:20:14 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,6 @@ void	get_lis_nums(t_struct *st)
 	while (--j)
 		max = ft_max(max, st->lis_arr.lis[j]);
 	init_lis_stack(st, max, st->lis_arr.size);
-	st->lis_arr.mean /= (st->lis_arr.size - max);
+	st->lis_arr.mean /= (st->lis_arr.size - max) + 1;
 	init_push_non_lis_to_b(st);
 }

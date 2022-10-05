@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/09/22 10:11:51 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/03 14:38:59 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,15 @@ static void	init_intarrays(t_struct *st, int size)
 	st->lis_arr.head = NULL;
 	st->lis_arr.tail = NULL;
 	st->lis_arr.lis = (int *)malloc(sizeof(int) * size);
-	st->lis_arr.num = (int *)malloc(sizeof(int) * size);
-	if (!st->lis_arr.num || !st->lis_arr.lis)
+	if (!st->lis_arr.lis)
 		exit (1);
+	st->lis_arr.num = (int *)malloc(sizeof(int) * size);
+	if (!st->lis_arr.num)
+	{
+		free(st->lis_arr.lis);
+		st->lis_arr.lis = NULL;
+		exit (1);
+	}
 	st->lis_arr.size = size;
 	st->lis_arr.mean = 0;
 	while (size--)
@@ -60,9 +66,9 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		argv++;
-		if (argc == 2)
-			argv = init_str_argv(argv[0], &argc);
 		initialize_struct(&st);
+		if (argc == 2)
+			argv = init_str_argv(&st, argv[0], &argc);
 		init_intarrays(&st, argc - 1);
 		temp = st.lis_arr.num;
 		while (--argc)

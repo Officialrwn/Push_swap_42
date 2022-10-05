@@ -6,7 +6,7 @@
 #    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/09/23 12:18:45 by leotran          ###   ########.fr        #
+#    Updated: 2022/10/05 14:16:35 by leotran          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ PS_SRCS		=	$(addprefix $(PS_DIR), $(PS_SRC))
 COMMON_SRCS	=	$(addprefix $(COMMON_DIR), $(COMMON_SRC))
 
 OBJ_DIR		=	obj/
+OBJS		= 	$(CHK_OBJS) $(PS_OBJS) $(COMMON_OBJS)
 CHK_OBJS	=	$(patsubst %, $(OBJ_DIR)%, $(CHK_SRC:.c=.o))
 PS_OBJS		=	$(patsubst %, $(OBJ_DIR)%, $(PS_SRC:.c=.o))
 COMMON_OBJS	=	$(patsubst %, $(OBJ_DIR)%, $(COMMON_SRC:.c=.o))

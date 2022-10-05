@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/09/23 11:49:34 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/03 14:19:56 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ typedef struct s_struct
 	t_nums	lis_arr;
 	int		min;
 	int		max;
+	int		argc;
+	char	**argv;
 }	t_struct;
 
 typedef enum e_op
@@ -89,11 +91,12 @@ void	rotate(t_struct *st, t_op op, int print_flag);
 void	print_on_exit(t_struct *st, int flag, int print_flag);
 void	get_lis_nums(t_struct *st);
 void	sort_list(t_struct *st, int list_size);
+void	free_argv(char **argv, int argc);
 
 int		check_push_conditions(t_struct *st);
 int		validate_argv(t_struct *st, char *argv);
 int		check_if_sorted(t_struct *st);
-char	**init_str_argv(char *str, int *argc);
+char	**init_str_argv(t_struct *st, char *str, int *argc);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op, int print_flag);
 

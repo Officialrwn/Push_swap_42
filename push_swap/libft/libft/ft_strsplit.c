@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:46:30 by leotran           #+#    #+#             */
-/*   Updated: 2022/02/06 07:39:16 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/05 14:15:37 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,7 @@ char	**ft_strsplit(const char *s, char c)
 	arr = (char **)ft_memalloc(sizeof(char *) * wrdlen + 1);
 	if (arr && cptoarray(arr, s, c))
 	{
-		arr[wrdlen] = (char *)ft_memalloc(sizeof(char) * 1);
-		if (!arr[wrdlen])
-		{
-			freearrays(arr, wrdlen);
-			free(arr);
-			return (NULL);
-		}
-		arr[wrdlen] = 0;
+		arr[wrdlen] = NULL;
 	}
 	return (arr);
 }

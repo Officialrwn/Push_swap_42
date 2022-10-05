@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/09/23 12:19:34 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/03 14:04:26 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		argv++;
-		if (argc == 2)
-			argv = init_str_argv(argv[0], &argc);
 		initialize_struct(&st);
+		if (argc == 2)
+			argv = init_str_argv(&st, argv[0], &argc);
 		while (--argc)
 			validate_argv(&st, *(argv++));
 		while (ret)

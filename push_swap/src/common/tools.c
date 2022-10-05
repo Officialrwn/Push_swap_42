@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/09/22 09:51:25 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/05 14:19:38 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	initialize_struct(t_struct *st)
 	st->stack_b = NULL;
 	st->tail_a = NULL;
 	st->tail_b = NULL;
+	st->argv = NULL;
+	st->argc = 0;
 	st->min = 0;
 	st->max = 0;
 }
@@ -69,18 +71,30 @@ int	check_if_sorted(t_struct *st)
 	return (flag);
 }
 
-char	**init_str_argv(char *str, int *argc)
+char	**init_str_argv(t_struct *st, char *str, int *argc)
 {
 	char	**argv;
 	char	**temp;
 
 	if (ft_strchr(str, ' ') == NULL)
+	{
+		while (*str)
+		{
+			if (!ft_isdigit(*str++))
+			{
+				write(2, "Error\n", 6);
+				break ;
+			}
+		}
 		exit(0);
+	}
 	argv = ft_strsplit(str, ' ');
 	temp = argv;
 	*argc = 1;
 	while (*(temp++))
 		(*argc)++;
+	st->argc = *argc;
+	st->argv = argv;
 	return (argv);
 }
 
