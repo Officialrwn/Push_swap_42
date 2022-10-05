@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 14:52:22 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:03:23 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,9 @@ void	print_on_exit(t_struct *st, int flag, int print_flag)
 
 void	free_argv(char **argv, int argc)
 {
-	argv[argc - 1] = ft_strdup("random");
 	while (argc--)
 	{
-		if (argv[argc])
-			free(argv[argc]);
+		ft_strdel(&argv[argc]);
 	}
 	free(argv);
 	argv = NULL;
