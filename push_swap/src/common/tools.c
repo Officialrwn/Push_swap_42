@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 22:44:36 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/05 23:15:41 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,28 +73,9 @@ int	check_if_sorted(t_struct *st)
 
 char	**init_str_argv(t_struct *st, char **argv, int *argc)
 {
-	char	**temp;
-
-	temp = argv;
-	if (ft_strchr(*temp, ' ') == NULL)
-	{
-		while (*(*temp))
-		{
-			// if (*(*temp) == '-')
-			// 	(*temp)++;
-			if (!ft_isdigit(*(*temp)++))
-			{
-				write(2, "Error\n", 6);
-				exit(1);
-			}
-		}
-	}
-	else
-	{
-		argv = ft_strsplit(*argv, ' ', argc);
-		st->argc = *argc;
-		st->argv = argv;
-	}
+	argv = ft_strsplit(*argv, ' ', argc);
+	st->argc = *argc;
+	st->argv = argv;
 	return (argv);
 }
 

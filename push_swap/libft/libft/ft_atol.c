@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 10:23:23 by leotran           #+#    #+#             */
-/*   Updated: 2022/10/05 22:09:07 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/05 23:14:53 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ long	ft_atol(const char *nptr)
 		sign = 1 - (2 * (nptr[i++] == '-'));
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		if (nptr[i] == ' ')
+		res = res * 10 + (nptr[i++] - '0');
+		if (nptr[i] != '\0' && (nptr[i] == ' ' || !ft_isdigit(nptr[i])))
 			return (0);
-		else
-			res = res * 10 + (nptr[i++] - '0');
 	}
 	return (res * sign);
 }
