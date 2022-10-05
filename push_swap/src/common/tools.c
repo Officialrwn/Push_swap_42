@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 14:50:04 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:12:11 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	check_if_sorted(t_struct *st)
 char	**init_str_argv(t_struct *st, char *str, int *argc)
 {
 	char	**argv;
-	char	**temp;
 
 	if (ft_strchr(str, ' ') == NULL)
 	{
@@ -88,11 +87,7 @@ char	**init_str_argv(t_struct *st, char *str, int *argc)
 		}
 		exit(0);
 	}
-	argv = ft_strsplit(str, ' ');
-	temp = argv;
-	*argc = 1;
-	while (*(temp++))
-		(*argc)++;
+	argv = ft_strsplit(str, ' ', argc);
 	st->argc = *argc;
 	st->argv = argv;
 	return (argv);

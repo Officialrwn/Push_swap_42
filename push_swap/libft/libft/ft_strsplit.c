@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 13:46:30 by leotran           #+#    #+#             */
-/*   Updated: 2022/10/05 14:15:37 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:08:35 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	cptoarray(char **arr, const char *s, char c)
 	return (1);
 }
 
-char	**ft_strsplit(const char *s, char c)
+char	**ft_strsplit(const char *s, char c, int *arrsize)
 {
 	int		wrdlen;
 	char	**arr;
@@ -94,5 +94,6 @@ char	**ft_strsplit(const char *s, char c)
 	{
 		arr[wrdlen] = NULL;
 	}
+	*arrsize = wrdlen + 1;
 	return (arr);
 }

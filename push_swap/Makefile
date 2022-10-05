@@ -6,7 +6,7 @@
 #    By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/10/05 15:00:27 by leotran          ###   ########.fr        #
+#    Updated: 2022/10/05 15:12:05 by leotran          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ CHECKER		=	checker
 PUSHSWAP	=	push_swap
 LIBFT		=	libft/libft.a
 FLAGS		=	-Wall -Wextra -Werror -O3 -I. -Iincludes/ 
-# -g -fsanitize=address
 
 CHK_SRC		=	checker.c
 PS_SRC		=	lis_tools.c push_swap.c sort_tools.c

@@ -6,7 +6,7 @@
 /*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 09:13:31 by leotran           #+#    #+#             */
-/*   Updated: 2022/03/21 12:10:59 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/05 15:09:06 by leotran          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		ft_strnequ(const char *s1, const char *s2, size_t n);
 char	*ft_strsub(const char *s, unsigned int start, size_t len);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *s);
-char	**ft_strsplit(const char *s, char c);
+char	**ft_strsplit(const char *s, char c, int *arrsize);
 char	*ft_itoa(int n);
 void	ft_putchar(int c);
 void	ft_putstr(const char *s);
