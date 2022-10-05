@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 23:27:51 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 00:06:25 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	validate_argv(t_struct *st, char *argv)
 
 	current_node = st->stack_a;
 	num = ft_atol(argv);
-	if ((num == 0 && ft_strcmp(argv, "0") != 0) || num > MAXINT || num < MININT)
+	if (num > MAXINT || num < MININT || (num == 0 && !ft_strequ(argv, "0")
+			&& !ft_strequ(argv, "-0") && !ft_strequ(argv, "+0")))
 		print_on_exit(st, ERROR, PRINT_ON);
 	while (current_node)
 	{
