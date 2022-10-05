@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 22:18:38 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/05 23:30:42 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int argc, char **argv)
 	{
 		argv++;
 		initialize_struct(&st);
-		if (argc == 2)
+		if (argc == 2 && ft_strchr(*argv, ' '))
 			argv = init_str_argv(&st, argv, &argc);
 		init_intarrays(&st, argc - 1);
 		temp = st.lis_arr.num;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement_tools.c                                   :+:      :+:    :+:   */
+/*   sort_tools.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:05:34 by leo               #+#    #+#             */
-/*   Updated: 2022/09/12 22:51:24 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/05 23:38:19 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static t_op	find_optimal_correction(t_struct *st, int list_size)
 {
 	t_node	*current;
-	t_node	*temp;
 	t_op	op;
 	int		count;
 
@@ -24,7 +23,6 @@ static t_op	find_optimal_correction(t_struct *st, int list_size)
 	count = 0;
 	while (current)
 	{
-		temp = current;
 		if (current->num == st->max)
 			break ;
 		current = current->next;

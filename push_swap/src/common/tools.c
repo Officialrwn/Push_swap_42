@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 23:15:41 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/05 23:27:51 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,19 @@ int	check_if_sorted(t_struct *st)
 
 char	**init_str_argv(t_struct *st, char **argv, int *argc)
 {
-	argv = ft_strsplit(*argv, ' ', argc);
-	st->argc = *argc;
-	st->argv = argv;
+	char	**temp;
+
+	temp = argv;
+	while (*(*temp) == ' ')
+		(*temp)++;
+	if (*(*temp) != '\0')
+	{
+		argv = ft_strsplit(*argv, ' ', argc);
+		st->argc = *argc;
+		st->argv = argv;
+	}
+	else
+		exit(1);
 	return (argv);
 }
 
