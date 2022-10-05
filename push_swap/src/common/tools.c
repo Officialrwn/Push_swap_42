@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 00:21:31 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 01:50:04 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,10 @@ char	**init_str_argv(t_struct *st, char **argv, int *argc)
 		st->argv = argv;
 	}
 	else
+	{
+		write(2, "Error\n", 6);
 		exit(1);
+	}	
 	return (argv);
 }
 
