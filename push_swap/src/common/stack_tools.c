@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 00:48:38 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 00:50:53 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	print_op(t_op op, int print_flag)
 
 void	invalid_op(t_struct *st, t_op op, int print_flag)
 {
-	print_on_exit(st, ERROR, PRINT_ON);
 	print_op(op, print_flag);
+	print_on_exit(st, ERROR, PRINT_ON);
 }
 
 void	swap(t_struct *st, t_op op, int print_flag)
