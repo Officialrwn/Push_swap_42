@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/10/03 14:19:56 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/05 22:19:37 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	free_argv(char **argv, int argc);
 int		check_push_conditions(t_struct *st);
 int		validate_argv(t_struct *st, char *argv);
 int		check_if_sorted(t_struct *st);
-char	**init_str_argv(t_struct *st, char *str, int *argc);
+char	**init_str_argv(t_struct *st, char **argv, int *argc);
 
 typedef void		(*t_fptr)(t_struct *st, t_op op, int print_flag);
 

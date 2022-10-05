@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 15:12:11 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/05 22:44:36 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,25 +71,30 @@ int	check_if_sorted(t_struct *st)
 	return (flag);
 }
 
-char	**init_str_argv(t_struct *st, char *str, int *argc)
+char	**init_str_argv(t_struct *st, char **argv, int *argc)
 {
-	char	**argv;
+	char	**temp;
 
-	if (ft_strchr(str, ' ') == NULL)
+	temp = argv;
+	if (ft_strchr(*temp, ' ') == NULL)
 	{
-		while (*str)
+		while (*(*temp))
 		{
-			if (!ft_isdigit(*str++))
+			// if (*(*temp) == '-')
+			// 	(*temp)++;
+			if (!ft_isdigit(*(*temp)++))
 			{
 				write(2, "Error\n", 6);
-				break ;
+				exit(1);
 			}
 		}
-		exit(0);
 	}
-	argv = ft_strsplit(str, ' ', argc);
-	st->argc = *argc;
-	st->argv = argv;
+	else
+	{
+		argv = ft_strsplit(*argv, ' ', argc);
+		st->argc = *argc;
+		st->argv = argv;
+	}
 	return (argv);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leotran <leotran@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/10/05 14:49:36 by leotran          ###   ########.fr       */
+/*   Updated: 2022/10/05 22:21:20 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ int	main(int argc, char **argv)
 		argv++;
 		initialize_struct(&st);
 		if (argc == 2)
-			argv = init_str_argv(&st, argv[0], &argc);
-		while (--argc)
+			argv = init_str_argv(&st, argv, &argc);
+		while (argv && --argc)
 			validate_argv(&st, *(argv++));
-		while (ret)
+		while (ret && argv)
 		{
 			ret = ft_get_next_line(fd, &input);
 			get_op_calls(&st, input, ret);
