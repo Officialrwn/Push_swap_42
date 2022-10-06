@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 14:41:45 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 14:47:27 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,18 @@ static int	get_op_calls(t_struct *st, char *input, int ret)
 	return (0);
 }
 
+static void	exec_op_in_table(t_struct *st, t_op op, int index, int print_flag)
+{
+	if (index == 0)
+		swap(st, op, print_flag);
+	else if (index == 1)
+		push(st, op, print_flag);
+	else if (index == 2)
+		rotate(st, op, print_flag);
+	else if (index == 3)
+		invalid_op(st, op, print_flag);
+}
+
 static void	execute_op(t_struct *st)
 {
 	t_list	*current_node;
@@ -61,7 +73,7 @@ static void	execute_op(t_struct *st)
 		op = current_node->content_size;
 		temp = (char *)current_node->content;
 		i = temp[0] - '0';
-		g_execute_op[i](st, op, PRINT_OFF);
+		exec_op_in_table(st, op, i, PRINT_OFF);
 		current_node = current_node->next;
 	}
 	print_on_exit(st, VALID, PRINT_ON);

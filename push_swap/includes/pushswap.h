@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 14:42:06 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 14:47:30 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,5 @@ int		check_push_conditions(t_struct *st);
 int		validate_argv(t_struct *st, char *argv);
 int		check_if_sorted(t_struct *st);
 char	**init_str_argv(t_struct *st, char **argv, int *argc);
-
-typedef void		(*t_fptr)(t_struct *st, t_op op, int print_flag);
-
-static const t_fptr	g_execute_op[4] = {
-	swap,
-	push,
-	rotate,
-	invalid_op,
-};
 
 #endif
