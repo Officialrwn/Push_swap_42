@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 19:12:47 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 01:53:20 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 12:41:10 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	print_on_exit(t_struct *st, int is_error, int print_flag)
 		free_argv(st->argv, st->argc);
 	ft_nodedel(&st->stack_a);
 	ft_nodedel(&st->stack_b);
-	ft_lstdel(&st->op_list, &ft_del_lst_content);
+	ft_lstdel(&st->stored_op_list, &ft_del_lst_content);
 	exit(is_error);
 }
 

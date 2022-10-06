@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:48:55 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 00:50:53 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 14:41:56 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 static void	print_op(t_op op, int print_flag)
 {
+	char	**op_list;
+
+	op_list = (char *[]){"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
+		"rra", "rrb", "rrr"};
 	if (print_flag)
-		ft_printf("%s\n", g_op[op]);
+		ft_printf("%s\n", op_list[op]);
 }
 
 void	invalid_op(t_struct *st, t_op op, int print_flag)

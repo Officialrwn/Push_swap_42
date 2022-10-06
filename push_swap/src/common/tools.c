@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 00:49:08 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 01:50:04 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 14:30:37 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	initialize_struct(t_struct *st)
 {
-	st->op_list = NULL;
+	st->stored_op_list = NULL;
 	st->stack_a = NULL;
 	st->stack_b = NULL;
 	st->tail_a = NULL;

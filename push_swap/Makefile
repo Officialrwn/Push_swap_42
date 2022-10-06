@@ -6,11 +6,11 @@
 #    By: leo <leo@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/20 12:39:13 by leotran           #+#    #+#              #
-#    Updated: 2022/10/06 01:54:39 by leo              ###   ########.fr        #
+#    Updated: 2022/10/06 12:03:15 by leo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CHECKER		=	checker
+NAME		=	checker
 PUSHSWAP	=	push_swap
 LIBFT		=	libft/libft.a
 FLAGS		=	-Wall -Wextra -Werror -O3 -I. -Iincludes/
@@ -34,10 +34,10 @@ CHK_OBJS	=	$(patsubst %, $(OBJ_DIR)%, $(CHK_SRC:.c=.o))
 PS_OBJS		=	$(patsubst %, $(OBJ_DIR)%, $(PS_SRC:.c=.o))
 COMMON_OBJS	=	$(patsubst %, $(OBJ_DIR)%, $(COMMON_SRC:.c=.o))
 
-all: $(CHECKER)
+all: $(NAME)
 
-$(CHECKER): $(LIBFT) $(OBJ_DIR) $(CHK_OBJS) $(PS_OBJS) $(COMMON_OBJS)
-	@gcc $(FLAGS) $(LIBFT) $(COMMON_OBJS) $(CHK_OBJS) -o $(CHECKER)
+$(NAME): $(LIBFT) $(OBJ_DIR) $(CHK_OBJS) $(PS_OBJS) $(COMMON_OBJS)
+	@gcc $(FLAGS) $(LIBFT) $(COMMON_OBJS) $(CHK_OBJS) -o $(NAME)
 	@gcc $(FLAGS) $(LIBFT) $(COMMON_OBJS) $(PS_OBJS) -o $(PUSHSWAP)
 	@printf "Compilation complete.\n"
 	
@@ -65,6 +65,6 @@ clean:
 
 fclean: clean
 	@make -C $(LIBFT_DIR) fclean
-	@rm -rf $(CHECKER) $(PUSHSWAP) *.out
+	@rm -rf $(NAME) $(PUSHSWAP) *.out
 
 re: fclean all

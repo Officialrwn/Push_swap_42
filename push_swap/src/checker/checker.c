@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 23:38:59 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 00:49:12 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 14:41:45 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,21 @@ static int	store_op_call(t_list **op_list, int op_enum)
 
 static int	get_op_calls(t_struct *st, char *input, int ret)
 {
+	char	**op_list;
 	int		i;
-	int		op_len;
 
+	op_list = (char *[]){"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr",
+		"rra", "rrb", "rrr"};
 	i = 0;
-	op_len = sizeof(g_op) / sizeof(g_op[0]);
 	if (ret)
 	{
-		while (i < op_len)
+		while (i < 11)
 		{
-			if (ft_strcmp(input, g_op[i]) == 0)
-				return (store_op_call(&st->op_list, i));
+			if (ft_strcmp(input, op_list[i]) == 0)
+				return (store_op_call(&st->stored_op_list, i));
 			i++;
 		}
-		return (store_op_call(&st->op_list, 11));
+		return (store_op_call(&st->stored_op_list, 11));
 	}
 	return (0);
 }
@@ -54,7 +55,7 @@ static void	execute_op(t_struct *st)
 	char	*temp;
 	int		i;
 
-	current_node = st->op_list;
+	current_node = st->stored_op_list;
 	while (current_node != NULL)
 	{
 		op = current_node->content_size;

@@ -6,7 +6,7 @@
 /*   By: leo <leo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 19:47:50 by leo               #+#    #+#             */
-/*   Updated: 2022/10/06 00:53:06 by leo              ###   ########.fr       */
+/*   Updated: 2022/10/06 14:42:06 by leo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ typedef struct s_nums
 
 typedef struct s_struct
 {
-	t_list	*op_list;
+	t_list	*stored_op_list;
 	t_node	*stack_a;
 	t_node	*stack_b;
 	t_node	*tail_a;
 	t_node	*tail_b;
 	t_nums	lis_arr;
+	char	**op_list;
 	int		min;
 	int		max;
 	int		argc;
@@ -67,20 +68,6 @@ typedef enum e_op
 	RRB = 9,
 	RRR = 10,
 }	t_op;
-
-static const char	*g_op[] = {
-	"sa",
-	"sb",
-	"ss",
-	"pa",
-	"pb",
-	"ra",
-	"rb",
-	"rr",
-	"rra",
-	"rrb",
-	"rrr",
-};
 
 void	rotate_ab(t_struct *stm, t_op op);
 void	reverse_rotate_ab(t_struct *st, t_op op);
